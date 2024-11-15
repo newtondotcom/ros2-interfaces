@@ -1,2 +1,0 @@
-pub mod smacc_get_transition_history;
-pub use smacc_get_transition_history::SmaccGetTransitionHistory;

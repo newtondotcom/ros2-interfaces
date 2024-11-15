@@ -1,4 +1,4 @@
-name: Release Jazzy Interfaces
+name: Release Rolling Interfaces
 on:
   workflow_dispatch:
     inputs:
@@ -41,8 +41,8 @@ jobs:
     steps:
       - uses: ncipollo/release-action@v1
         with:
-          tag: jazzy/${{ github.event.inputs.version }}
-          name: Jazzy Release ${{ github.event.inputs.version }}
+          tag: rolling/${{ github.event.inputs.version }}
+          name: Rolling Release ${{ github.event.inputs.version }}
           removeArtifacts: true
           omitBody: true
           allowUpdates: true

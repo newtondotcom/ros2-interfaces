@@ -1,4 +1,0 @@
-pub mod micro_ros_diagnostic_status;
-pub use micro_ros_diagnostic_status::MicroROSDiagnosticStatus;
-pub mod micro_ros_diagnostic_key_value;
-pub use micro_ros_diagnostic_key_value::MicroROSDiagnosticKeyValue;

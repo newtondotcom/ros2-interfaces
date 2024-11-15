@@ -1,8 +1,8 @@
 [package]
-name = "ros2-interfaces-jazzy"
+name = "ros2-interfaces-rolling"
 version = "0.0.0"
 authors = ["Nisse Knudsen <nisse@make87.com>", "Phillip Thomas <phillip@make87.com>"]
-description = "Structs for Messages and Services listed by ROS Index for ROS2 Jazzy. Built around the `ros2-client` crate."
+description = "Structs for Messages and Services listed by ROS Index for ROS2 Rolling. Built around the `ros2-client` crate."
 homepage = "https://www.make87.com"
 edition = "2021"
 license = "MIT"

@@ -1,4 +1,0 @@
-pub mod test_topic_service_response;
-pub use test_topic_service_response::TestTopicServiceResponse;
-pub mod test_topic_service_request;
-pub use test_topic_service_request::TestTopicServiceRequest;
