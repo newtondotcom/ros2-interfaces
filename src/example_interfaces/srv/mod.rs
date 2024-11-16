@@ -1,0 +1,12 @@
+mod add_two_ints;
+pub use add_two_ints::AddTwoInts;
+pub use add_two_ints::AddTwoIntsReq;
+pub use add_two_ints::AddTwoIntsRes;
+mod set_bool;
+pub use set_bool::SetBool;
+pub use set_bool::SetBoolReq;
+pub use set_bool::SetBoolRes;
+mod trigger;
+pub use trigger::Trigger;
+pub use trigger::TriggerReq;
+pub use trigger::TriggerRes;

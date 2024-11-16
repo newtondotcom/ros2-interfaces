@@ -59,10 +59,9 @@ fn test_publisher() {
 ### Disabled Interfaces
 The following packages (and thereby: features) do not compile due to incompatible or missing interface definitions:
 
-* `depthai_ros_msgs`
 * `mrpt_msgs`
 * `mrpt_nav_interfaces`
 * `rosbag2_test_msgdefs`
-* `sick_scan_xd`
+* `ublox_msgs`
 
 Therefore, the features have been commented out in the `Cargo.toml` file.
