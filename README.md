@@ -56,11 +56,13 @@ fn test_publisher() {
 
 ## Known Issues
 
-### Outdated / Incorrect Interfaces
-The following packages (and thereby: features) do not compile due to outdated, incorrect or missing interface definitions:
+### Disabled Interfaces
+The following packages (and thereby: features) do not compile due to incompatible or missing interface definitions:
 
 * `depthai_ros_msgs`
 * `mrpt_msgs`
 * `mrpt_nav_interfaces`
 * `rosbag2_test_msgdefs`
 * `sick_scan_xd`
+
+Therefore, the features have been commented out in the `Cargo.toml` file.
