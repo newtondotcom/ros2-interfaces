@@ -1,7 +1,7 @@
 # ROS2 Interfaces for Rust
 
 This repository contains Rust structs for all interfaces (i.e., messages and services) that are listed as releases
-on the [ROS Index for Jazzy](https://index.ros.org/packages/#jazzy).
+on the [ROS Index for Rolling](https://index.ros.org/packages/#rolling).
 
 The interfaces implement traits from the `ros2-client` library and can be used easily in conjunction.
 
@@ -14,14 +14,14 @@ Add this crate to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-ros2-interfaces-jazzy = { version = "*", features = ["std_msgs"] }  # replace with the latest version and features you need
+ros2-interfaces-rolling = { version = "*", features = ["std_msgs"] }  # replace with the latest version and features you need
 ```
 
 Then you can use the interfaces in your code:
 
 ```rust
 use ros2_client::{Context, MessageTypeName, Name, NodeName, NodeOptions};
-use ros2_interfaces_jazzy::std_msgs;
+use ros2_interfaces_rolling::std_msgs;
 
 fn test_publisher() {
     let context = Context::new().unwrap();
