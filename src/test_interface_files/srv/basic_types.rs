@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BasicTypesReq {
+pub struct BasicTypesRequest {
     pub bool_value: bool,
     pub byte_value: u8,
     pub char_value: i8,
@@ -19,9 +19,9 @@ pub struct BasicTypesReq {
     pub string_value: ::std::string::String,
 }
 
-impl Default for BasicTypesReq {
+impl Default for BasicTypesRequest {
     fn default() -> Self {
-        BasicTypesReq {
+        BasicTypesRequest {
             bool_value: false,
             byte_value: 0,
             char_value: 0,
@@ -40,12 +40,12 @@ impl Default for BasicTypesReq {
     }
 }
 
-impl ros2_client::Message for BasicTypesReq {}
+impl ros2_client::Message for BasicTypesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BasicTypesRes {
+pub struct BasicTypesResponse {
     pub bool_value: bool,
     pub byte_value: u8,
     pub char_value: i8,
@@ -62,9 +62,9 @@ pub struct BasicTypesRes {
     pub string_value: ::std::string::String,
 }
 
-impl Default for BasicTypesRes {
+impl Default for BasicTypesResponse {
     fn default() -> Self {
-        BasicTypesRes {
+        BasicTypesResponse {
             bool_value: false,
             byte_value: 0,
             char_value: 0,
@@ -83,14 +83,14 @@ impl Default for BasicTypesRes {
     }
 }
 
-impl ros2_client::Message for BasicTypesRes {}
+impl ros2_client::Message for BasicTypesResponse {}
 
 
 pub struct BasicTypes;
 impl ros2_client::Service for BasicTypes {
-    type Request = BasicTypesReq;
-    type Response = BasicTypesRes;
+    type Request = BasicTypesRequest;
+    type Response = BasicTypesResponse;
 
-    fn request_type_name(&self) -> &str { "BasicTypesReq" }
-    fn response_type_name(&self) -> &str { "BasicTypesRes" }
+    fn request_type_name(&self) -> &str { "BasicTypesRequest" }
+    fn response_type_name(&self) -> &str { "BasicTypesResponse" }
 }

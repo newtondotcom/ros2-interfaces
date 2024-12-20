@@ -2,33 +2,33 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetProgramStateReq {
+pub struct GetProgramStateRequest {
 
 }
 
-impl Default for GetProgramStateReq {
+impl Default for GetProgramStateRequest {
     fn default() -> Self {
-        GetProgramStateReq {
+        GetProgramStateRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetProgramStateReq {}
+impl ros2_client::Message for GetProgramStateRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetProgramStateRes {
+pub struct GetProgramStateResponse {
     pub state: crate::ur_dashboard_msgs::msg::ProgramState,
     pub program_name: ::std::string::String,
     pub answer: ::std::string::String,
     pub success: bool,
 }
 
-impl Default for GetProgramStateRes {
+impl Default for GetProgramStateResponse {
     fn default() -> Self {
-        GetProgramStateRes {
+        GetProgramStateResponse {
             state: crate::ur_dashboard_msgs::msg::ProgramState::default(),
             program_name: ::std::string::String::new(),
             answer: ::std::string::String::new(),
@@ -37,14 +37,14 @@ impl Default for GetProgramStateRes {
     }
 }
 
-impl ros2_client::Message for GetProgramStateRes {}
+impl ros2_client::Message for GetProgramStateResponse {}
 
 
 pub struct GetProgramState;
 impl ros2_client::Service for GetProgramState {
-    type Request = GetProgramStateReq;
-    type Response = GetProgramStateRes;
+    type Request = GetProgramStateRequest;
+    type Response = GetProgramStateResponse;
 
-    fn request_type_name(&self) -> &str { "GetProgramStateReq" }
-    fn response_type_name(&self) -> &str { "GetProgramStateRes" }
+    fn request_type_name(&self) -> &str { "GetProgramStateRequest" }
+    fn response_type_name(&self) -> &str { "GetProgramStateResponse" }
 }

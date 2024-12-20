@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SilhouetteMatchDetectObjectReq {
+pub struct SilhouetteMatchDetectObjectRequest {
     pub object_to_detect: crate::rc_reason_msgs::msg::SilhouetteMatchObject,
     pub offset: f64,
     pub pose_frame: ::std::string::String,
@@ -12,9 +12,9 @@ pub struct SilhouetteMatchDetectObjectReq {
     pub object_plane_detection: bool,
 }
 
-impl Default for SilhouetteMatchDetectObjectReq {
+impl Default for SilhouetteMatchDetectObjectRequest {
     fn default() -> Self {
-        SilhouetteMatchDetectObjectReq {
+        SilhouetteMatchDetectObjectRequest {
             object_to_detect: crate::rc_reason_msgs::msg::SilhouetteMatchObject::default(),
             offset: 0.0,
             pose_frame: ::std::string::String::new(),
@@ -26,12 +26,12 @@ impl Default for SilhouetteMatchDetectObjectReq {
     }
 }
 
-impl ros2_client::Message for SilhouetteMatchDetectObjectReq {}
+impl ros2_client::Message for SilhouetteMatchDetectObjectRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SilhouetteMatchDetectObjectRes {
+pub struct SilhouetteMatchDetectObjectResponse {
     pub timestamp: crate::builtin_interfaces::msg::Time,
     pub object_id: ::std::string::String,
     pub matches: Vec<crate::rc_reason_msgs::msg::Match>,
@@ -40,9 +40,9 @@ pub struct SilhouetteMatchDetectObjectRes {
     pub return_code: crate::rc_common_msgs::msg::ReturnCode,
 }
 
-impl Default for SilhouetteMatchDetectObjectRes {
+impl Default for SilhouetteMatchDetectObjectResponse {
     fn default() -> Self {
-        SilhouetteMatchDetectObjectRes {
+        SilhouetteMatchDetectObjectResponse {
             timestamp: crate::builtin_interfaces::msg::Time::default(),
             object_id: ::std::string::String::new(),
             matches: Vec::new(),
@@ -53,14 +53,14 @@ impl Default for SilhouetteMatchDetectObjectRes {
     }
 }
 
-impl ros2_client::Message for SilhouetteMatchDetectObjectRes {}
+impl ros2_client::Message for SilhouetteMatchDetectObjectResponse {}
 
 
 pub struct SilhouetteMatchDetectObject;
 impl ros2_client::Service for SilhouetteMatchDetectObject {
-    type Request = SilhouetteMatchDetectObjectReq;
-    type Response = SilhouetteMatchDetectObjectRes;
+    type Request = SilhouetteMatchDetectObjectRequest;
+    type Response = SilhouetteMatchDetectObjectResponse;
 
-    fn request_type_name(&self) -> &str { "SilhouetteMatchDetectObjectReq" }
-    fn response_type_name(&self) -> &str { "SilhouetteMatchDetectObjectRes" }
+    fn request_type_name(&self) -> &str { "SilhouetteMatchDetectObjectRequest" }
+    fn response_type_name(&self) -> &str { "SilhouetteMatchDetectObjectResponse" }
 }

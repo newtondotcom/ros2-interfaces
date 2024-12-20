@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetImuCalibrationReq {
+pub struct SetImuCalibrationRequest {
     pub gyro_bias_x: f64,
     pub gyro_bias_y: f64,
     pub gyro_bias_z: f64,
 }
 
-impl Default for SetImuCalibrationReq {
+impl Default for SetImuCalibrationRequest {
     fn default() -> Self {
-        SetImuCalibrationReq {
+        SetImuCalibrationRequest {
             gyro_bias_x: 0.0,
             gyro_bias_y: 0.0,
             gyro_bias_z: 0.0,
@@ -18,31 +18,31 @@ impl Default for SetImuCalibrationReq {
     }
 }
 
-impl ros2_client::Message for SetImuCalibrationReq {}
+impl ros2_client::Message for SetImuCalibrationRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetImuCalibrationRes {
+pub struct SetImuCalibrationResponse {
     pub success: bool,
 }
 
-impl Default for SetImuCalibrationRes {
+impl Default for SetImuCalibrationResponse {
     fn default() -> Self {
-        SetImuCalibrationRes {
+        SetImuCalibrationResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetImuCalibrationRes {}
+impl ros2_client::Message for SetImuCalibrationResponse {}
 
 
 pub struct SetImuCalibration;
 impl ros2_client::Service for SetImuCalibration {
-    type Request = SetImuCalibrationReq;
-    type Response = SetImuCalibrationRes;
+    type Request = SetImuCalibrationRequest;
+    type Response = SetImuCalibrationResponse;
 
-    fn request_type_name(&self) -> &str { "SetImuCalibrationReq" }
-    fn response_type_name(&self) -> &str { "SetImuCalibrationRes" }
+    fn request_type_name(&self) -> &str { "SetImuCalibrationRequest" }
+    fn response_type_name(&self) -> &str { "SetImuCalibrationResponse" }
 }

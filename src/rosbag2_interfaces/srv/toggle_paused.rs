@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TogglePausedReq {
+pub struct TogglePausedRequest {
 
 }
 
-impl Default for TogglePausedReq {
+impl Default for TogglePausedRequest {
     fn default() -> Self {
-        TogglePausedReq {
+        TogglePausedRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for TogglePausedReq {}
+impl ros2_client::Message for TogglePausedRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TogglePausedRes {
+pub struct TogglePausedResponse {
 
 }
 
-impl Default for TogglePausedRes {
+impl Default for TogglePausedResponse {
     fn default() -> Self {
-        TogglePausedRes {
+        TogglePausedResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for TogglePausedRes {}
+impl ros2_client::Message for TogglePausedResponse {}
 
 
 pub struct TogglePaused;
 impl ros2_client::Service for TogglePaused {
-    type Request = TogglePausedReq;
-    type Response = TogglePausedRes;
+    type Request = TogglePausedRequest;
+    type Response = TogglePausedResponse;
 
-    fn request_type_name(&self) -> &str { "TogglePausedReq" }
-    fn response_type_name(&self) -> &str { "TogglePausedRes" }
+    fn request_type_name(&self) -> &str { "TogglePausedRequest" }
+    fn response_type_name(&self) -> &str { "TogglePausedResponse" }
 }

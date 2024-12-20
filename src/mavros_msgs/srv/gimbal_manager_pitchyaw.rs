@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GimbalManagerPitchyawReq {
+pub struct GimbalManagerPitchyawRequest {
     pub pitch: f32,
     pub yaw: f32,
     pub pitch_rate: f32,
@@ -11,7 +11,7 @@ pub struct GimbalManagerPitchyawReq {
     pub gimbal_device_id: u8,
 }
 
-impl GimbalManagerPitchyawReq {
+impl GimbalManagerPitchyawRequest {
     pub const GIMBAL_MANAGER_FLAGS_RETRACT: u32 = 1;
     pub const GIMBAL_MANAGER_FLAGS_NEUTRAL: u32 = 2;
     pub const GIMBAL_MANAGER_FLAGS_ROLL_LOCK: u32 = 4;
@@ -19,9 +19,9 @@ impl GimbalManagerPitchyawReq {
     pub const GIMBAL_MANAGER_FLAGS_YAW_LOCK: u32 = 16;
 }
 
-impl Default for GimbalManagerPitchyawReq {
+impl Default for GimbalManagerPitchyawRequest {
     fn default() -> Self {
-        GimbalManagerPitchyawReq {
+        GimbalManagerPitchyawRequest {
             pitch: 0.0,
             yaw: 0.0,
             pitch_rate: 0.0,
@@ -32,33 +32,33 @@ impl Default for GimbalManagerPitchyawReq {
     }
 }
 
-impl ros2_client::Message for GimbalManagerPitchyawReq {}
+impl ros2_client::Message for GimbalManagerPitchyawRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GimbalManagerPitchyawRes {
+pub struct GimbalManagerPitchyawResponse {
     pub success: bool,
     pub result: u8,
 }
 
-impl Default for GimbalManagerPitchyawRes {
+impl Default for GimbalManagerPitchyawResponse {
     fn default() -> Self {
-        GimbalManagerPitchyawRes {
+        GimbalManagerPitchyawResponse {
             success: false,
             result: 0,
         }
     }
 }
 
-impl ros2_client::Message for GimbalManagerPitchyawRes {}
+impl ros2_client::Message for GimbalManagerPitchyawResponse {}
 
 
 pub struct GimbalManagerPitchyaw;
 impl ros2_client::Service for GimbalManagerPitchyaw {
-    type Request = GimbalManagerPitchyawReq;
-    type Response = GimbalManagerPitchyawRes;
+    type Request = GimbalManagerPitchyawRequest;
+    type Response = GimbalManagerPitchyawResponse;
 
-    fn request_type_name(&self) -> &str { "GimbalManagerPitchyawReq" }
-    fn response_type_name(&self) -> &str { "GimbalManagerPitchyawRes" }
+    fn request_type_name(&self) -> &str { "GimbalManagerPitchyawRequest" }
+    fn response_type_name(&self) -> &str { "GimbalManagerPitchyawResponse" }
 }

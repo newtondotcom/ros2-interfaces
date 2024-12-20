@@ -2,16 +2,16 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TestMultipleRequestFieldsReq {
+pub struct TestMultipleRequestFieldsRequest {
     pub int_value: i32,
     pub float_value: f32,
     pub string: ::std::string::String,
     pub bool_value: bool,
 }
 
-impl Default for TestMultipleRequestFieldsReq {
+impl Default for TestMultipleRequestFieldsRequest {
     fn default() -> Self {
-        TestMultipleRequestFieldsReq {
+        TestMultipleRequestFieldsRequest {
             int_value: 0,
             float_value: 0.0,
             string: ::std::string::String::new(),
@@ -20,31 +20,31 @@ impl Default for TestMultipleRequestFieldsReq {
     }
 }
 
-impl ros2_client::Message for TestMultipleRequestFieldsReq {}
+impl ros2_client::Message for TestMultipleRequestFieldsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TestMultipleRequestFieldsRes {
+pub struct TestMultipleRequestFieldsResponse {
 
 }
 
-impl Default for TestMultipleRequestFieldsRes {
+impl Default for TestMultipleRequestFieldsResponse {
     fn default() -> Self {
-        TestMultipleRequestFieldsRes {
+        TestMultipleRequestFieldsResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for TestMultipleRequestFieldsRes {}
+impl ros2_client::Message for TestMultipleRequestFieldsResponse {}
 
 
 pub struct TestMultipleRequestFields;
 impl ros2_client::Service for TestMultipleRequestFields {
-    type Request = TestMultipleRequestFieldsReq;
-    type Response = TestMultipleRequestFieldsRes;
+    type Request = TestMultipleRequestFieldsRequest;
+    type Response = TestMultipleRequestFieldsResponse;
 
-    fn request_type_name(&self) -> &str { "TestMultipleRequestFieldsReq" }
-    fn response_type_name(&self) -> &str { "TestMultipleRequestFieldsRes" }
+    fn request_type_name(&self) -> &str { "TestMultipleRequestFieldsRequest" }
+    fn response_type_name(&self) -> &str { "TestMultipleRequestFieldsResponse" }
 }

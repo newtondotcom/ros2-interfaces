@@ -62,6 +62,5 @@ The following packages (and thereby: features) do not compile due to incompatibl
 * `mrpt_msgs`
 * `mrpt_nav_interfaces`
 * `rosbag2_test_msgdefs`
-* `ublox_msgs`
 
 Therefore, the features have been commented out in the `Cargo.toml` file.

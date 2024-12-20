@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetBlackboardVariablesReq {
+pub struct GetBlackboardVariablesRequest {
 
 }
 
-impl Default for GetBlackboardVariablesReq {
+impl Default for GetBlackboardVariablesRequest {
     fn default() -> Self {
-        GetBlackboardVariablesReq {
+        GetBlackboardVariablesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetBlackboardVariablesReq {}
+impl ros2_client::Message for GetBlackboardVariablesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetBlackboardVariablesRes {
+pub struct GetBlackboardVariablesResponse {
     pub variables: Vec<::std::string::String>,
 }
 
-impl Default for GetBlackboardVariablesRes {
+impl Default for GetBlackboardVariablesResponse {
     fn default() -> Self {
-        GetBlackboardVariablesRes {
+        GetBlackboardVariablesResponse {
             variables: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetBlackboardVariablesRes {}
+impl ros2_client::Message for GetBlackboardVariablesResponse {}
 
 
 pub struct GetBlackboardVariables;
 impl ros2_client::Service for GetBlackboardVariables {
-    type Request = GetBlackboardVariablesReq;
-    type Response = GetBlackboardVariablesRes;
+    type Request = GetBlackboardVariablesRequest;
+    type Response = GetBlackboardVariablesResponse;
 
-    fn request_type_name(&self) -> &str { "GetBlackboardVariablesReq" }
-    fn response_type_name(&self) -> &str { "GetBlackboardVariablesRes" }
+    fn request_type_name(&self) -> &str { "GetBlackboardVariablesRequest" }
+    fn response_type_name(&self) -> &str { "GetBlackboardVariablesResponse" }
 }

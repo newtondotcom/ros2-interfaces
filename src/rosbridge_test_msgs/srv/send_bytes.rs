@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SendBytesReq {
+pub struct SendBytesRequest {
     pub count: i64,
 }
 
-impl Default for SendBytesReq {
+impl Default for SendBytesRequest {
     fn default() -> Self {
-        SendBytesReq {
+        SendBytesRequest {
             count: 0,
         }
     }
 }
 
-impl ros2_client::Message for SendBytesReq {}
+impl ros2_client::Message for SendBytesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SendBytesRes {
+pub struct SendBytesResponse {
     pub data: ::std::string::String,
 }
 
-impl Default for SendBytesRes {
+impl Default for SendBytesResponse {
     fn default() -> Self {
-        SendBytesRes {
+        SendBytesResponse {
             data: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SendBytesRes {}
+impl ros2_client::Message for SendBytesResponse {}
 
 
 pub struct SendBytes;
 impl ros2_client::Service for SendBytes {
-    type Request = SendBytesReq;
-    type Response = SendBytesRes;
+    type Request = SendBytesRequest;
+    type Response = SendBytesResponse;
 
-    fn request_type_name(&self) -> &str { "SendBytesReq" }
-    fn response_type_name(&self) -> &str { "SendBytesRes" }
+    fn request_type_name(&self) -> &str { "SendBytesRequest" }
+    fn response_type_name(&self) -> &str { "SendBytesResponse" }
 }

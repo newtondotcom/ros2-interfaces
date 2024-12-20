@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetCartesianPathReq {
+pub struct GetCartesianPathRequest {
     pub header: crate::std_msgs::msg::Header,
     pub start_state: crate::moveit_msgs::msg::RobotState,
     pub group_name: ::std::string::String,
@@ -20,9 +20,9 @@ pub struct GetCartesianPathReq {
     pub max_cartesian_speed: f64,
 }
 
-impl Default for GetCartesianPathReq {
+impl Default for GetCartesianPathRequest {
     fn default() -> Self {
-        GetCartesianPathReq {
+        GetCartesianPathRequest {
             header: crate::std_msgs::msg::Header::default(),
             start_state: crate::moveit_msgs::msg::RobotState::default(),
             group_name: ::std::string::String::new(),
@@ -42,21 +42,21 @@ impl Default for GetCartesianPathReq {
     }
 }
 
-impl ros2_client::Message for GetCartesianPathReq {}
+impl ros2_client::Message for GetCartesianPathRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetCartesianPathRes {
+pub struct GetCartesianPathResponse {
     pub start_state: crate::moveit_msgs::msg::RobotState,
     pub solution: crate::moveit_msgs::msg::RobotTrajectory,
     pub fraction: f64,
     pub error_code: crate::moveit_msgs::msg::MoveItErrorCodes,
 }
 
-impl Default for GetCartesianPathRes {
+impl Default for GetCartesianPathResponse {
     fn default() -> Self {
-        GetCartesianPathRes {
+        GetCartesianPathResponse {
             start_state: crate::moveit_msgs::msg::RobotState::default(),
             solution: crate::moveit_msgs::msg::RobotTrajectory::default(),
             fraction: 0.0,
@@ -65,14 +65,14 @@ impl Default for GetCartesianPathRes {
     }
 }
 
-impl ros2_client::Message for GetCartesianPathRes {}
+impl ros2_client::Message for GetCartesianPathResponse {}
 
 
 pub struct GetCartesianPath;
 impl ros2_client::Service for GetCartesianPath {
-    type Request = GetCartesianPathReq;
-    type Response = GetCartesianPathRes;
+    type Request = GetCartesianPathRequest;
+    type Response = GetCartesianPathResponse;
 
-    fn request_type_name(&self) -> &str { "GetCartesianPathReq" }
-    fn response_type_name(&self) -> &str { "GetCartesianPathRes" }
+    fn request_type_name(&self) -> &str { "GetCartesianPathRequest" }
+    fn response_type_name(&self) -> &str { "GetCartesianPathResponse" }
 }

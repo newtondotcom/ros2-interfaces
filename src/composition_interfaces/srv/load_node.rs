@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LoadNodeReq {
+pub struct LoadNodeRequest {
     pub package_name: ::std::string::String,
     pub plugin_name: ::std::string::String,
     pub node_name: ::std::string::String,
@@ -13,9 +13,9 @@ pub struct LoadNodeReq {
     pub extra_arguments: Vec<crate::rcl_interfaces::msg::Parameter>,
 }
 
-impl Default for LoadNodeReq {
+impl Default for LoadNodeRequest {
     fn default() -> Self {
-        LoadNodeReq {
+        LoadNodeRequest {
             package_name: ::std::string::String::new(),
             plugin_name: ::std::string::String::new(),
             node_name: ::std::string::String::new(),
@@ -28,21 +28,21 @@ impl Default for LoadNodeReq {
     }
 }
 
-impl ros2_client::Message for LoadNodeReq {}
+impl ros2_client::Message for LoadNodeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LoadNodeRes {
+pub struct LoadNodeResponse {
     pub success: bool,
     pub error_message: ::std::string::String,
     pub full_node_name: ::std::string::String,
     pub unique_id: u64,
 }
 
-impl Default for LoadNodeRes {
+impl Default for LoadNodeResponse {
     fn default() -> Self {
-        LoadNodeRes {
+        LoadNodeResponse {
             success: false,
             error_message: ::std::string::String::new(),
             full_node_name: ::std::string::String::new(),
@@ -51,14 +51,14 @@ impl Default for LoadNodeRes {
     }
 }
 
-impl ros2_client::Message for LoadNodeRes {}
+impl ros2_client::Message for LoadNodeResponse {}
 
 
 pub struct LoadNode;
 impl ros2_client::Service for LoadNode {
-    type Request = LoadNodeReq;
-    type Response = LoadNodeRes;
+    type Request = LoadNodeRequest;
+    type Response = LoadNodeResponse;
 
-    fn request_type_name(&self) -> &str { "LoadNodeReq" }
-    fn response_type_name(&self) -> &str { "LoadNodeRes" }
+    fn request_type_name(&self) -> &str { "LoadNodeRequest" }
+    fn response_type_name(&self) -> &str { "LoadNodeResponse" }
 }

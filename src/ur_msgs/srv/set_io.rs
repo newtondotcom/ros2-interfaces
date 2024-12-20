@@ -2,13 +2,13 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetIOReq {
+pub struct SetIORequest {
     pub fun: i8,
     pub pin: i8,
     pub state: f32,
 }
 
-impl SetIOReq {
+impl SetIORequest {
     pub const PIN_AOUT0: i8 = 0;
     pub const PIN_AOUT1: i8 = 1;
     pub const PIN_DOUT0: i8 = 0;
@@ -40,9 +40,9 @@ impl SetIOReq {
     pub const STATE_TOOL_VOLTAGE_24V: i8 = 24;
 }
 
-impl Default for SetIOReq {
+impl Default for SetIORequest {
     fn default() -> Self {
-        SetIOReq {
+        SetIORequest {
             fun: 0,
             pin: 0,
             state: 0.0,
@@ -50,31 +50,31 @@ impl Default for SetIOReq {
     }
 }
 
-impl ros2_client::Message for SetIOReq {}
+impl ros2_client::Message for SetIORequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetIORes {
+pub struct SetIOResponse {
     pub success: bool,
 }
 
-impl Default for SetIORes {
+impl Default for SetIOResponse {
     fn default() -> Self {
-        SetIORes {
+        SetIOResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetIORes {}
+impl ros2_client::Message for SetIOResponse {}
 
 
 pub struct SetIO;
 impl ros2_client::Service for SetIO {
-    type Request = SetIOReq;
-    type Response = SetIORes;
+    type Request = SetIORequest;
+    type Response = SetIOResponse;
 
-    fn request_type_name(&self) -> &str { "SetIOReq" }
-    fn response_type_name(&self) -> &str { "SetIORes" }
+    fn request_type_name(&self) -> &str { "SetIORequest" }
+    fn response_type_name(&self) -> &str { "SetIOResponse" }
 }

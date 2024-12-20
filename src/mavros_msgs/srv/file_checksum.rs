@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileChecksumReq {
+pub struct FileChecksumRequest {
     pub file_path: ::std::string::String,
 }
 
-impl Default for FileChecksumReq {
+impl Default for FileChecksumRequest {
     fn default() -> Self {
-        FileChecksumReq {
+        FileChecksumRequest {
             file_path: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for FileChecksumReq {}
+impl ros2_client::Message for FileChecksumRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileChecksumRes {
+pub struct FileChecksumResponse {
     pub crc32: u32,
     pub success: bool,
     pub r_errno: i32,
 }
 
-impl Default for FileChecksumRes {
+impl Default for FileChecksumResponse {
     fn default() -> Self {
-        FileChecksumRes {
+        FileChecksumResponse {
             crc32: 0,
             success: false,
             r_errno: 0,
@@ -35,14 +35,14 @@ impl Default for FileChecksumRes {
     }
 }
 
-impl ros2_client::Message for FileChecksumRes {}
+impl ros2_client::Message for FileChecksumResponse {}
 
 
 pub struct FileChecksum;
 impl ros2_client::Service for FileChecksum {
-    type Request = FileChecksumReq;
-    type Response = FileChecksumRes;
+    type Request = FileChecksumRequest;
+    type Response = FileChecksumResponse;
 
-    fn request_type_name(&self) -> &str { "FileChecksumReq" }
-    fn response_type_name(&self) -> &str { "FileChecksumRes" }
+    fn request_type_name(&self) -> &str { "FileChecksumRequest" }
+    fn response_type_name(&self) -> &str { "FileChecksumResponse" }
 }

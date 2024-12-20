@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct WarmStartReq {
+pub struct WarmStartRequest {
     pub reset_type: u8,
 }
 
-impl Default for WarmStartReq {
+impl Default for WarmStartRequest {
     fn default() -> Self {
-        WarmStartReq {
+        WarmStartRequest {
             reset_type: 0,
         }
     }
 }
 
-impl ros2_client::Message for WarmStartReq {}
+impl ros2_client::Message for WarmStartRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct WarmStartRes {
+pub struct WarmStartResponse {
 
 }
 
-impl Default for WarmStartRes {
+impl Default for WarmStartResponse {
     fn default() -> Self {
-        WarmStartRes {
+        WarmStartResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for WarmStartRes {}
+impl ros2_client::Message for WarmStartResponse {}
 
 
 pub struct WarmStart;
 impl ros2_client::Service for WarmStart {
-    type Request = WarmStartReq;
-    type Response = WarmStartRes;
+    type Request = WarmStartRequest;
+    type Response = WarmStartResponse;
 
-    fn request_type_name(&self) -> &str { "WarmStartReq" }
-    fn response_type_name(&self) -> &str { "WarmStartRes" }
+    fn request_type_name(&self) -> &str { "WarmStartRequest" }
+    fn response_type_name(&self) -> &str { "WarmStartResponse" }
 }

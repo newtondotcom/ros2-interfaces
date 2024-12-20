@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetAvailableStatesReq {
+pub struct GetAvailableStatesRequest {
 
 }
 
-impl Default for GetAvailableStatesReq {
+impl Default for GetAvailableStatesRequest {
     fn default() -> Self {
-        GetAvailableStatesReq {
+        GetAvailableStatesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetAvailableStatesReq {}
+impl ros2_client::Message for GetAvailableStatesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetAvailableStatesRes {
+pub struct GetAvailableStatesResponse {
     pub available_states: Vec<crate::lifecycle_msgs::msg::State>,
 }
 
-impl Default for GetAvailableStatesRes {
+impl Default for GetAvailableStatesResponse {
     fn default() -> Self {
-        GetAvailableStatesRes {
+        GetAvailableStatesResponse {
             available_states: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetAvailableStatesRes {}
+impl ros2_client::Message for GetAvailableStatesResponse {}
 
 
 pub struct GetAvailableStates;
 impl ros2_client::Service for GetAvailableStates {
-    type Request = GetAvailableStatesReq;
-    type Response = GetAvailableStatesRes;
+    type Request = GetAvailableStatesRequest;
+    type Response = GetAvailableStatesResponse;
 
-    fn request_type_name(&self) -> &str { "GetAvailableStatesReq" }
-    fn response_type_name(&self) -> &str { "GetAvailableStatesRes" }
+    fn request_type_name(&self) -> &str { "GetAvailableStatesRequest" }
+    fn response_type_name(&self) -> &str { "GetAvailableStatesResponse" }
 }

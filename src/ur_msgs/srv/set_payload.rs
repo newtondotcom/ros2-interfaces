@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPayloadReq {
+pub struct SetPayloadRequest {
     pub mass: f32,
     pub center_of_gravity: crate::geometry_msgs::msg::Vector3,
 }
 
-impl Default for SetPayloadReq {
+impl Default for SetPayloadRequest {
     fn default() -> Self {
-        SetPayloadReq {
+        SetPayloadRequest {
             mass: 0.0,
             center_of_gravity: crate::geometry_msgs::msg::Vector3::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetPayloadReq {}
+impl ros2_client::Message for SetPayloadRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPayloadRes {
+pub struct SetPayloadResponse {
     pub success: bool,
 }
 
-impl Default for SetPayloadRes {
+impl Default for SetPayloadResponse {
     fn default() -> Self {
-        SetPayloadRes {
+        SetPayloadResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetPayloadRes {}
+impl ros2_client::Message for SetPayloadResponse {}
 
 
 pub struct SetPayload;
 impl ros2_client::Service for SetPayload {
-    type Request = SetPayloadReq;
-    type Response = SetPayloadRes;
+    type Request = SetPayloadRequest;
+    type Response = SetPayloadResponse;
 
-    fn request_type_name(&self) -> &str { "SetPayloadReq" }
-    fn response_type_name(&self) -> &str { "SetPayloadRes" }
+    fn request_type_name(&self) -> &str { "SetPayloadRequest" }
+    fn response_type_name(&self) -> &str { "SetPayloadResponse" }
 }

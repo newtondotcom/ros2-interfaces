@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct OpenBlackboardStreamReq {
+pub struct OpenBlackboardStreamRequest {
     pub variables: Vec<::std::string::String>,
     pub filter_on_visited_path: bool,
     pub with_activity_stream: bool,
 }
 
-impl Default for OpenBlackboardStreamReq {
+impl Default for OpenBlackboardStreamRequest {
     fn default() -> Self {
-        OpenBlackboardStreamReq {
+        OpenBlackboardStreamRequest {
             variables: Vec::new(),
             filter_on_visited_path: false,
             with_activity_stream: false,
@@ -18,31 +18,31 @@ impl Default for OpenBlackboardStreamReq {
     }
 }
 
-impl ros2_client::Message for OpenBlackboardStreamReq {}
+impl ros2_client::Message for OpenBlackboardStreamRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct OpenBlackboardStreamRes {
+pub struct OpenBlackboardStreamResponse {
     pub topic: ::std::string::String,
 }
 
-impl Default for OpenBlackboardStreamRes {
+impl Default for OpenBlackboardStreamResponse {
     fn default() -> Self {
-        OpenBlackboardStreamRes {
+        OpenBlackboardStreamResponse {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for OpenBlackboardStreamRes {}
+impl ros2_client::Message for OpenBlackboardStreamResponse {}
 
 
 pub struct OpenBlackboardStream;
 impl ros2_client::Service for OpenBlackboardStream {
-    type Request = OpenBlackboardStreamReq;
-    type Response = OpenBlackboardStreamRes;
+    type Request = OpenBlackboardStreamRequest;
+    type Response = OpenBlackboardStreamResponse;
 
-    fn request_type_name(&self) -> &str { "OpenBlackboardStreamReq" }
-    fn response_type_name(&self) -> &str { "OpenBlackboardStreamRes" }
+    fn request_type_name(&self) -> &str { "OpenBlackboardStreamRequest" }
+    fn response_type_name(&self) -> &str { "OpenBlackboardStreamResponse" }
 }

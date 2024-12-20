@@ -2,16 +2,16 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SpawnReq {
+pub struct SpawnRequest {
     pub x: f32,
     pub y: f32,
     pub theta: f32,
     pub name: ::std::string::String,
 }
 
-impl Default for SpawnReq {
+impl Default for SpawnRequest {
     fn default() -> Self {
-        SpawnReq {
+        SpawnRequest {
             x: 0.0,
             y: 0.0,
             theta: 0.0,
@@ -20,31 +20,31 @@ impl Default for SpawnReq {
     }
 }
 
-impl ros2_client::Message for SpawnReq {}
+impl ros2_client::Message for SpawnRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SpawnRes {
+pub struct SpawnResponse {
     pub name: ::std::string::String,
 }
 
-impl Default for SpawnRes {
+impl Default for SpawnResponse {
     fn default() -> Self {
-        SpawnRes {
+        SpawnResponse {
             name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SpawnRes {}
+impl ros2_client::Message for SpawnResponse {}
 
 
 pub struct Spawn;
 impl ros2_client::Service for Spawn {
-    type Request = SpawnReq;
-    type Response = SpawnRes;
+    type Request = SpawnRequest;
+    type Response = SpawnResponse;
 
-    fn request_type_name(&self) -> &str { "SpawnReq" }
-    fn response_type_name(&self) -> &str { "SpawnRes" }
+    fn request_type_name(&self) -> &str { "SpawnRequest" }
+    fn response_type_name(&self) -> &str { "SpawnResponse" }
 }

@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AddMapvizDisplayReq {
+pub struct AddMapvizDisplayRequest {
     pub name: ::std::string::String,
     #[serde(rename = "type")]    pub type_: ::std::string::String,
     pub draw_order: i32,
@@ -10,9 +10,9 @@ pub struct AddMapvizDisplayReq {
     pub properties: Vec<crate::marti_common_msgs::msg::KeyValue>,
 }
 
-impl Default for AddMapvizDisplayReq {
+impl Default for AddMapvizDisplayRequest {
     fn default() -> Self {
-        AddMapvizDisplayReq {
+        AddMapvizDisplayRequest {
             name: ::std::string::String::new(),
             type_: ::std::string::String::new(),
             draw_order: 0,
@@ -22,33 +22,33 @@ impl Default for AddMapvizDisplayReq {
     }
 }
 
-impl ros2_client::Message for AddMapvizDisplayReq {}
+impl ros2_client::Message for AddMapvizDisplayRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AddMapvizDisplayRes {
+pub struct AddMapvizDisplayResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for AddMapvizDisplayRes {
+impl Default for AddMapvizDisplayResponse {
     fn default() -> Self {
-        AddMapvizDisplayRes {
+        AddMapvizDisplayResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for AddMapvizDisplayRes {}
+impl ros2_client::Message for AddMapvizDisplayResponse {}
 
 
 pub struct AddMapvizDisplay;
 impl ros2_client::Service for AddMapvizDisplay {
-    type Request = AddMapvizDisplayReq;
-    type Response = AddMapvizDisplayRes;
+    type Request = AddMapvizDisplayRequest;
+    type Response = AddMapvizDisplayResponse;
 
-    fn request_type_name(&self) -> &str { "AddMapvizDisplayReq" }
-    fn response_type_name(&self) -> &str { "AddMapvizDisplayRes" }
+    fn request_type_name(&self) -> &str { "AddMapvizDisplayRequest" }
+    fn response_type_name(&self) -> &str { "AddMapvizDisplayResponse" }
 }

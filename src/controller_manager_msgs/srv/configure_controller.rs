@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ConfigureControllerReq {
+pub struct ConfigureControllerRequest {
     pub name: ::std::string::String,
 }
 
-impl Default for ConfigureControllerReq {
+impl Default for ConfigureControllerRequest {
     fn default() -> Self {
-        ConfigureControllerReq {
+        ConfigureControllerRequest {
             name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ConfigureControllerReq {}
+impl ros2_client::Message for ConfigureControllerRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ConfigureControllerRes {
+pub struct ConfigureControllerResponse {
     pub ok: bool,
 }
 
-impl Default for ConfigureControllerRes {
+impl Default for ConfigureControllerResponse {
     fn default() -> Self {
-        ConfigureControllerRes {
+        ConfigureControllerResponse {
             ok: false,
         }
     }
 }
 
-impl ros2_client::Message for ConfigureControllerRes {}
+impl ros2_client::Message for ConfigureControllerResponse {}
 
 
 pub struct ConfigureController;
 impl ros2_client::Service for ConfigureController {
-    type Request = ConfigureControllerReq;
-    type Response = ConfigureControllerRes;
+    type Request = ConfigureControllerRequest;
+    type Response = ConfigureControllerResponse;
 
-    fn request_type_name(&self) -> &str { "ConfigureControllerReq" }
-    fn response_type_name(&self) -> &str { "ConfigureControllerRes" }
+    fn request_type_name(&self) -> &str { "ConfigureControllerRequest" }
+    fn response_type_name(&self) -> &str { "ConfigureControllerResponse" }
 }

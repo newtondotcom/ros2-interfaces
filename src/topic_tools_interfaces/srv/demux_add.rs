@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DemuxAddReq {
+pub struct DemuxAddRequest {
     pub topic: ::std::string::String,
 }
 
-impl Default for DemuxAddReq {
+impl Default for DemuxAddRequest {
     fn default() -> Self {
-        DemuxAddReq {
+        DemuxAddRequest {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for DemuxAddReq {}
+impl ros2_client::Message for DemuxAddRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DemuxAddRes {
+pub struct DemuxAddResponse {
     pub success: bool,
 }
 
-impl Default for DemuxAddRes {
+impl Default for DemuxAddResponse {
     fn default() -> Self {
-        DemuxAddRes {
+        DemuxAddResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for DemuxAddRes {}
+impl ros2_client::Message for DemuxAddResponse {}
 
 
 pub struct DemuxAdd;
 impl ros2_client::Service for DemuxAdd {
-    type Request = DemuxAddReq;
-    type Response = DemuxAddRes;
+    type Request = DemuxAddRequest;
+    type Response = DemuxAddResponse;
 
-    fn request_type_name(&self) -> &str { "DemuxAddReq" }
-    fn response_type_name(&self) -> &str { "DemuxAddRes" }
+    fn request_type_name(&self) -> &str { "DemuxAddRequest" }
+    fn response_type_name(&self) -> &str { "DemuxAddResponse" }
 }

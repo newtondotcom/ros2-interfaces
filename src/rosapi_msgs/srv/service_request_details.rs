@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ServiceRequestDetailsReq {
+pub struct ServiceRequestDetailsRequest {
     #[serde(rename = "type")]    pub type_: ::std::string::String,
 }
 
-impl Default for ServiceRequestDetailsReq {
+impl Default for ServiceRequestDetailsRequest {
     fn default() -> Self {
-        ServiceRequestDetailsReq {
+        ServiceRequestDetailsRequest {
             type_: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ServiceRequestDetailsReq {}
+impl ros2_client::Message for ServiceRequestDetailsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ServiceRequestDetailsRes {
+pub struct ServiceRequestDetailsResponse {
     pub typedefs: Vec<crate::rosapi_msgs::msg::TypeDef>,
 }
 
-impl Default for ServiceRequestDetailsRes {
+impl Default for ServiceRequestDetailsResponse {
     fn default() -> Self {
-        ServiceRequestDetailsRes {
+        ServiceRequestDetailsResponse {
             typedefs: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ServiceRequestDetailsRes {}
+impl ros2_client::Message for ServiceRequestDetailsResponse {}
 
 
 pub struct ServiceRequestDetails;
 impl ros2_client::Service for ServiceRequestDetails {
-    type Request = ServiceRequestDetailsReq;
-    type Response = ServiceRequestDetailsRes;
+    type Request = ServiceRequestDetailsRequest;
+    type Response = ServiceRequestDetailsResponse;
 
-    fn request_type_name(&self) -> &str { "ServiceRequestDetailsReq" }
-    fn response_type_name(&self) -> &str { "ServiceRequestDetailsRes" }
+    fn request_type_name(&self) -> &str { "ServiceRequestDetailsRequest" }
+    fn response_type_name(&self) -> &str { "ServiceRequestDetailsResponse" }
 }

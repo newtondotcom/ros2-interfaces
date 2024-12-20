@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DemuxListReq {
+pub struct DemuxListRequest {
 
 }
 
-impl Default for DemuxListReq {
+impl Default for DemuxListRequest {
     fn default() -> Self {
-        DemuxListReq {
+        DemuxListRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for DemuxListReq {}
+impl ros2_client::Message for DemuxListRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DemuxListRes {
+pub struct DemuxListResponse {
     pub topics: Vec<::std::string::String>,
 }
 
-impl Default for DemuxListRes {
+impl Default for DemuxListResponse {
     fn default() -> Self {
-        DemuxListRes {
+        DemuxListResponse {
             topics: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for DemuxListRes {}
+impl ros2_client::Message for DemuxListResponse {}
 
 
 pub struct DemuxList;
 impl ros2_client::Service for DemuxList {
-    type Request = DemuxListReq;
-    type Response = DemuxListRes;
+    type Request = DemuxListRequest;
+    type Response = DemuxListResponse;
 
-    fn request_type_name(&self) -> &str { "DemuxListReq" }
-    fn response_type_name(&self) -> &str { "DemuxListRes" }
+    fn request_type_name(&self) -> &str { "DemuxListRequest" }
+    fn response_type_name(&self) -> &str { "DemuxListResponse" }
 }

@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IsPausedReq {
+pub struct IsPausedRequest {
 
 }
 
-impl Default for IsPausedReq {
+impl Default for IsPausedRequest {
     fn default() -> Self {
-        IsPausedReq {
+        IsPausedRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for IsPausedReq {}
+impl ros2_client::Message for IsPausedRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IsPausedRes {
+pub struct IsPausedResponse {
     pub paused: bool,
 }
 
-impl Default for IsPausedRes {
+impl Default for IsPausedResponse {
     fn default() -> Self {
-        IsPausedRes {
+        IsPausedResponse {
             paused: false,
         }
     }
 }
 
-impl ros2_client::Message for IsPausedRes {}
+impl ros2_client::Message for IsPausedResponse {}
 
 
 pub struct IsPaused;
 impl ros2_client::Service for IsPaused {
-    type Request = IsPausedReq;
-    type Response = IsPausedRes;
+    type Request = IsPausedRequest;
+    type Response = IsPausedResponse;
 
-    fn request_type_name(&self) -> &str { "IsPausedReq" }
-    fn response_type_name(&self) -> &str { "IsPausedRes" }
+    fn request_type_name(&self) -> &str { "IsPausedRequest" }
+    fn response_type_name(&self) -> &str { "IsPausedResponse" }
 }

@@ -1,12 +1,12 @@
 mod reset_pose;
 pub use reset_pose::ResetPose;
-pub use reset_pose::ResetPoseReq;
-pub use reset_pose::ResetPoseRes;
+pub use reset_pose::ResetPoseRequest;
+pub use reset_pose::ResetPoseResponse;
 mod e_stop;
 pub use e_stop::EStop;
-pub use e_stop::EStopReq;
-pub use e_stop::EStopRes;
+pub use e_stop::EStopRequest;
+pub use e_stop::EStopResponse;
 mod robot_power;
 pub use robot_power::RobotPower;
-pub use robot_power::RobotPowerReq;
-pub use robot_power::RobotPowerRes;
+pub use robot_power::RobotPowerRequest;
+pub use robot_power::RobotPowerResponse;

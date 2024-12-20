@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AddTwoIntsReq {
+pub struct AddTwoIntsRequest {
     pub a: i64,
     pub b: i64,
 }
 
-impl Default for AddTwoIntsReq {
+impl Default for AddTwoIntsRequest {
     fn default() -> Self {
-        AddTwoIntsReq {
+        AddTwoIntsRequest {
             a: 0,
             b: 0,
         }
     }
 }
 
-impl ros2_client::Message for AddTwoIntsReq {}
+impl ros2_client::Message for AddTwoIntsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AddTwoIntsRes {
+pub struct AddTwoIntsResponse {
     pub sum: i64,
 }
 
-impl Default for AddTwoIntsRes {
+impl Default for AddTwoIntsResponse {
     fn default() -> Self {
-        AddTwoIntsRes {
+        AddTwoIntsResponse {
             sum: 0,
         }
     }
 }
 
-impl ros2_client::Message for AddTwoIntsRes {}
+impl ros2_client::Message for AddTwoIntsResponse {}
 
 
 pub struct AddTwoInts;
 impl ros2_client::Service for AddTwoInts {
-    type Request = AddTwoIntsReq;
-    type Response = AddTwoIntsRes;
+    type Request = AddTwoIntsRequest;
+    type Response = AddTwoIntsResponse;
 
-    fn request_type_name(&self) -> &str { "AddTwoIntsReq" }
-    fn response_type_name(&self) -> &str { "AddTwoIntsRes" }
+    fn request_type_name(&self) -> &str { "AddTwoIntsRequest" }
+    fn response_type_name(&self) -> &str { "AddTwoIntsResponse" }
 }

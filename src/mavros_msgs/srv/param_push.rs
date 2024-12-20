@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ParamPushReq {
+pub struct ParamPushRequest {
 
 }
 
-impl Default for ParamPushReq {
+impl Default for ParamPushRequest {
     fn default() -> Self {
-        ParamPushReq {
+        ParamPushRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ParamPushReq {}
+impl ros2_client::Message for ParamPushRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ParamPushRes {
+pub struct ParamPushResponse {
     pub success: bool,
     pub param_transfered: u32,
 }
 
-impl Default for ParamPushRes {
+impl Default for ParamPushResponse {
     fn default() -> Self {
-        ParamPushRes {
+        ParamPushResponse {
             success: false,
             param_transfered: 0,
         }
     }
 }
 
-impl ros2_client::Message for ParamPushRes {}
+impl ros2_client::Message for ParamPushResponse {}
 
 
 pub struct ParamPush;
 impl ros2_client::Service for ParamPush {
-    type Request = ParamPushReq;
-    type Response = ParamPushRes;
+    type Request = ParamPushRequest;
+    type Response = ParamPushResponse;
 
-    fn request_type_name(&self) -> &str { "ParamPushReq" }
-    fn response_type_name(&self) -> &str { "ParamPushRes" }
+    fn request_type_name(&self) -> &str { "ParamPushRequest" }
+    fn response_type_name(&self) -> &str { "ParamPushResponse" }
 }

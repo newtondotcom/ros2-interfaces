@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct QueryPlannerInterfacesReq {
+pub struct QueryPlannerInterfacesRequest {
 
 }
 
-impl Default for QueryPlannerInterfacesReq {
+impl Default for QueryPlannerInterfacesRequest {
     fn default() -> Self {
-        QueryPlannerInterfacesReq {
+        QueryPlannerInterfacesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for QueryPlannerInterfacesReq {}
+impl ros2_client::Message for QueryPlannerInterfacesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct QueryPlannerInterfacesRes {
+pub struct QueryPlannerInterfacesResponse {
     pub planner_interfaces: Vec<crate::moveit_msgs::msg::PlannerInterfaceDescription>,
 }
 
-impl Default for QueryPlannerInterfacesRes {
+impl Default for QueryPlannerInterfacesResponse {
     fn default() -> Self {
-        QueryPlannerInterfacesRes {
+        QueryPlannerInterfacesResponse {
             planner_interfaces: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for QueryPlannerInterfacesRes {}
+impl ros2_client::Message for QueryPlannerInterfacesResponse {}
 
 
 pub struct QueryPlannerInterfaces;
 impl ros2_client::Service for QueryPlannerInterfaces {
-    type Request = QueryPlannerInterfacesReq;
-    type Response = QueryPlannerInterfacesRes;
+    type Request = QueryPlannerInterfacesRequest;
+    type Response = QueryPlannerInterfacesResponse;
 
-    fn request_type_name(&self) -> &str { "QueryPlannerInterfacesReq" }
-    fn response_type_name(&self) -> &str { "QueryPlannerInterfacesRes" }
+    fn request_type_name(&self) -> &str { "QueryPlannerInterfacesRequest" }
+    fn response_type_name(&self) -> &str { "QueryPlannerInterfacesResponse" }
 }

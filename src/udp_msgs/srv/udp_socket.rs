@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UdpSocketReq {
+pub struct UdpSocketRequest {
     pub local_address: ::std::string::String,
     pub local_port: u16,
     pub remote_address: ::std::string::String,
@@ -10,9 +10,9 @@ pub struct UdpSocketReq {
     pub is_broadcast: bool,
 }
 
-impl Default for UdpSocketReq {
+impl Default for UdpSocketRequest {
     fn default() -> Self {
-        UdpSocketReq {
+        UdpSocketRequest {
             local_address: ::std::string::String::new(),
             local_port: 0,
             remote_address: ::std::string::String::new(),
@@ -22,31 +22,31 @@ impl Default for UdpSocketReq {
     }
 }
 
-impl ros2_client::Message for UdpSocketReq {}
+impl ros2_client::Message for UdpSocketRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UdpSocketRes {
+pub struct UdpSocketResponse {
     pub socket_created: bool,
 }
 
-impl Default for UdpSocketRes {
+impl Default for UdpSocketResponse {
     fn default() -> Self {
-        UdpSocketRes {
+        UdpSocketResponse {
             socket_created: false,
         }
     }
 }
 
-impl ros2_client::Message for UdpSocketRes {}
+impl ros2_client::Message for UdpSocketResponse {}
 
 
 pub struct UdpSocket;
 impl ros2_client::Service for UdpSocket {
-    type Request = UdpSocketReq;
-    type Response = UdpSocketRes;
+    type Request = UdpSocketRequest;
+    type Response = UdpSocketResponse;
 
-    fn request_type_name(&self) -> &str { "UdpSocketReq" }
-    fn response_type_name(&self) -> &str { "UdpSocketRes" }
+    fn request_type_name(&self) -> &str { "UdpSocketRequest" }
+    fn response_type_name(&self) -> &str { "UdpSocketResponse" }
 }

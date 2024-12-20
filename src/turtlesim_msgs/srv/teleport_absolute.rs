@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TeleportAbsoluteReq {
+pub struct TeleportAbsoluteRequest {
     pub x: f32,
     pub y: f32,
     pub theta: f32,
 }
 
-impl Default for TeleportAbsoluteReq {
+impl Default for TeleportAbsoluteRequest {
     fn default() -> Self {
-        TeleportAbsoluteReq {
+        TeleportAbsoluteRequest {
             x: 0.0,
             y: 0.0,
             theta: 0.0,
@@ -18,31 +18,31 @@ impl Default for TeleportAbsoluteReq {
     }
 }
 
-impl ros2_client::Message for TeleportAbsoluteReq {}
+impl ros2_client::Message for TeleportAbsoluteRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TeleportAbsoluteRes {
+pub struct TeleportAbsoluteResponse {
 
 }
 
-impl Default for TeleportAbsoluteRes {
+impl Default for TeleportAbsoluteResponse {
     fn default() -> Self {
-        TeleportAbsoluteRes {
+        TeleportAbsoluteResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for TeleportAbsoluteRes {}
+impl ros2_client::Message for TeleportAbsoluteResponse {}
 
 
 pub struct TeleportAbsolute;
 impl ros2_client::Service for TeleportAbsolute {
-    type Request = TeleportAbsoluteReq;
-    type Response = TeleportAbsoluteRes;
+    type Request = TeleportAbsoluteRequest;
+    type Response = TeleportAbsoluteResponse;
 
-    fn request_type_name(&self) -> &str { "TeleportAbsoluteReq" }
-    fn response_type_name(&self) -> &str { "TeleportAbsoluteRes" }
+    fn request_type_name(&self) -> &str { "TeleportAbsoluteRequest" }
+    fn response_type_name(&self) -> &str { "TeleportAbsoluteResponse" }
 }

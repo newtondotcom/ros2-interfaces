@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CancelTriggerReq {
+pub struct CancelTriggerRequest {
     pub name: ::std::string::String,
 }
 
-impl Default for CancelTriggerReq {
+impl Default for CancelTriggerRequest {
     fn default() -> Self {
-        CancelTriggerReq {
+        CancelTriggerRequest {
             name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for CancelTriggerReq {}
+impl ros2_client::Message for CancelTriggerRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CancelTriggerRes {
+pub struct CancelTriggerResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for CancelTriggerRes {
+impl Default for CancelTriggerResponse {
     fn default() -> Self {
-        CancelTriggerRes {
+        CancelTriggerResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for CancelTriggerRes {}
+impl ros2_client::Message for CancelTriggerResponse {}
 
 
 pub struct CancelTrigger;
 impl ros2_client::Service for CancelTrigger {
-    type Request = CancelTriggerReq;
-    type Response = CancelTriggerRes;
+    type Request = CancelTriggerRequest;
+    type Response = CancelTriggerResponse;
 
-    fn request_type_name(&self) -> &str { "CancelTriggerReq" }
-    fn response_type_name(&self) -> &str { "CancelTriggerRes" }
+    fn request_type_name(&self) -> &str { "CancelTriggerRequest" }
+    fn response_type_name(&self) -> &str { "CancelTriggerResponse" }
 }

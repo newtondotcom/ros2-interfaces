@@ -2,34 +2,34 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetGeographicMapReq {
+pub struct GetGeographicMapRequest {
     pub url: ::std::string::String,
     pub bounds: crate::geographic_msgs::msg::BoundingBox,
 }
 
-impl Default for GetGeographicMapReq {
+impl Default for GetGeographicMapRequest {
     fn default() -> Self {
-        GetGeographicMapReq {
+        GetGeographicMapRequest {
             url: ::std::string::String::new(),
             bounds: crate::geographic_msgs::msg::BoundingBox::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetGeographicMapReq {}
+impl ros2_client::Message for GetGeographicMapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetGeographicMapRes {
+pub struct GetGeographicMapResponse {
     pub success: bool,
     pub status: ::std::string::String,
     pub map: crate::geographic_msgs::msg::GeographicMap,
 }
 
-impl Default for GetGeographicMapRes {
+impl Default for GetGeographicMapResponse {
     fn default() -> Self {
-        GetGeographicMapRes {
+        GetGeographicMapResponse {
             success: false,
             status: ::std::string::String::new(),
             map: crate::geographic_msgs::msg::GeographicMap::default(),
@@ -37,14 +37,14 @@ impl Default for GetGeographicMapRes {
     }
 }
 
-impl ros2_client::Message for GetGeographicMapRes {}
+impl ros2_client::Message for GetGeographicMapResponse {}
 
 
 pub struct GetGeographicMap;
 impl ros2_client::Service for GetGeographicMap {
-    type Request = GetGeographicMapReq;
-    type Response = GetGeographicMapRes;
+    type Request = GetGeographicMapRequest;
+    type Response = GetGeographicMapResponse;
 
-    fn request_type_name(&self) -> &str { "GetGeographicMapReq" }
-    fn response_type_name(&self) -> &str { "GetGeographicMapRes" }
+    fn request_type_name(&self) -> &str { "GetGeographicMapRequest" }
+    fn response_type_name(&self) -> &str { "GetGeographicMapResponse" }
 }

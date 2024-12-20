@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReadMetricsReq {
+pub struct ReadMetricsRequest {
 
 }
 
-impl Default for ReadMetricsReq {
+impl Default for ReadMetricsRequest {
     fn default() -> Self {
-        ReadMetricsReq {
+        ReadMetricsRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ReadMetricsReq {}
+impl ros2_client::Message for ReadMetricsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReadMetricsRes {
+pub struct ReadMetricsResponse {
     pub status: crate::cartographer_ros_msgs::msg::StatusResponse,
     pub metric_families: Vec<crate::cartographer_ros_msgs::msg::MetricFamily>,
     pub timestamp: crate::builtin_interfaces::msg::Time,
 }
 
-impl Default for ReadMetricsRes {
+impl Default for ReadMetricsResponse {
     fn default() -> Self {
-        ReadMetricsRes {
+        ReadMetricsResponse {
             status: crate::cartographer_ros_msgs::msg::StatusResponse::default(),
             metric_families: Vec::new(),
             timestamp: crate::builtin_interfaces::msg::Time::default(),
@@ -35,14 +35,14 @@ impl Default for ReadMetricsRes {
     }
 }
 
-impl ros2_client::Message for ReadMetricsRes {}
+impl ros2_client::Message for ReadMetricsResponse {}
 
 
 pub struct ReadMetrics;
 impl ros2_client::Service for ReadMetrics {
-    type Request = ReadMetricsReq;
-    type Response = ReadMetricsRes;
+    type Request = ReadMetricsRequest;
+    type Response = ReadMetricsResponse;
 
-    fn request_type_name(&self) -> &str { "ReadMetricsReq" }
-    fn response_type_name(&self) -> &str { "ReadMetricsRes" }
+    fn request_type_name(&self) -> &str { "ReadMetricsRequest" }
+    fn response_type_name(&self) -> &str { "ReadMetricsResponse" }
 }

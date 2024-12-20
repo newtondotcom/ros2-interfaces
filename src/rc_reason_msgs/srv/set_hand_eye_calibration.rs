@@ -2,34 +2,34 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetHandEyeCalibrationReq {
+pub struct SetHandEyeCalibrationRequest {
     pub pose: crate::geometry_msgs::msg::Pose,
     pub robot_mounted: bool,
 }
 
-impl Default for SetHandEyeCalibrationReq {
+impl Default for SetHandEyeCalibrationRequest {
     fn default() -> Self {
-        SetHandEyeCalibrationReq {
+        SetHandEyeCalibrationRequest {
             pose: crate::geometry_msgs::msg::Pose::default(),
             robot_mounted: false,
         }
     }
 }
 
-impl ros2_client::Message for SetHandEyeCalibrationReq {}
+impl ros2_client::Message for SetHandEyeCalibrationRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetHandEyeCalibrationRes {
+pub struct SetHandEyeCalibrationResponse {
     pub success: bool,
     pub status: i32,
     pub message: ::std::string::String,
 }
 
-impl Default for SetHandEyeCalibrationRes {
+impl Default for SetHandEyeCalibrationResponse {
     fn default() -> Self {
-        SetHandEyeCalibrationRes {
+        SetHandEyeCalibrationResponse {
             success: false,
             status: 0,
             message: ::std::string::String::new(),
@@ -37,14 +37,14 @@ impl Default for SetHandEyeCalibrationRes {
     }
 }
 
-impl ros2_client::Message for SetHandEyeCalibrationRes {}
+impl ros2_client::Message for SetHandEyeCalibrationResponse {}
 
 
 pub struct SetHandEyeCalibration;
 impl ros2_client::Service for SetHandEyeCalibration {
-    type Request = SetHandEyeCalibrationReq;
-    type Response = SetHandEyeCalibrationRes;
+    type Request = SetHandEyeCalibrationRequest;
+    type Response = SetHandEyeCalibrationResponse;
 
-    fn request_type_name(&self) -> &str { "SetHandEyeCalibrationReq" }
-    fn response_type_name(&self) -> &str { "SetHandEyeCalibrationRes" }
+    fn request_type_name(&self) -> &str { "SetHandEyeCalibrationRequest" }
+    fn response_type_name(&self) -> &str { "SetHandEyeCalibrationResponse" }
 }

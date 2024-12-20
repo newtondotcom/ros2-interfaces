@@ -2,11 +2,11 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetMavFrameReq {
+pub struct SetMavFrameRequest {
     pub mav_frame: u8,
 }
 
-impl SetMavFrameReq {
+impl SetMavFrameRequest {
     pub const FRAME_GLOBAL: u8 = 0;
     pub const FRAME_LOCAL_NED: u8 = 1;
     pub const FRAME_MISSION: u8 = 2;
@@ -31,39 +31,39 @@ impl SetMavFrameReq {
     pub const FRAME_LOCAL_FLU: u8 = 21;
 }
 
-impl Default for SetMavFrameReq {
+impl Default for SetMavFrameRequest {
     fn default() -> Self {
-        SetMavFrameReq {
+        SetMavFrameRequest {
             mav_frame: 0,
         }
     }
 }
 
-impl ros2_client::Message for SetMavFrameReq {}
+impl ros2_client::Message for SetMavFrameRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetMavFrameRes {
+pub struct SetMavFrameResponse {
     pub success: bool,
 }
 
-impl Default for SetMavFrameRes {
+impl Default for SetMavFrameResponse {
     fn default() -> Self {
-        SetMavFrameRes {
+        SetMavFrameResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetMavFrameRes {}
+impl ros2_client::Message for SetMavFrameResponse {}
 
 
 pub struct SetMavFrame;
 impl ros2_client::Service for SetMavFrame {
-    type Request = SetMavFrameReq;
-    type Response = SetMavFrameRes;
+    type Request = SetMavFrameRequest;
+    type Response = SetMavFrameResponse;
 
-    fn request_type_name(&self) -> &str { "SetMavFrameReq" }
-    fn response_type_name(&self) -> &str { "SetMavFrameRes" }
+    fn request_type_name(&self) -> &str { "SetMavFrameRequest" }
+    fn response_type_name(&self) -> &str { "SetMavFrameResponse" }
 }

@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetForceModeReq {
+pub struct SetForceModeRequest {
     pub task_frame: crate::geometry_msgs::msg::PoseStamped,
     pub selection_vector_x: bool, // default: 0
     pub selection_vector_y: bool, // default: 0
@@ -18,15 +18,15 @@ pub struct SetForceModeReq {
     pub gain_scaling: f32, // default: 0.5
 }
 
-impl SetForceModeReq {
+impl SetForceModeRequest {
     pub const TCP_TO_ORIGIN: u8 = 1;
     pub const NO_TRANSFORM: u8 = 2;
     pub const TCP_VELOCITY_TO_X_Y: u8 = 3;
 }
 
-impl Default for SetForceModeReq {
+impl Default for SetForceModeRequest {
     fn default() -> Self {
-        SetForceModeReq {
+        SetForceModeRequest {
             task_frame: crate::geometry_msgs::msg::PoseStamped::default(),
             selection_vector_x: false,
             selection_vector_y: false,
@@ -44,31 +44,31 @@ impl Default for SetForceModeReq {
     }
 }
 
-impl ros2_client::Message for SetForceModeReq {}
+impl ros2_client::Message for SetForceModeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetForceModeRes {
+pub struct SetForceModeResponse {
     pub success: bool,
 }
 
-impl Default for SetForceModeRes {
+impl Default for SetForceModeResponse {
     fn default() -> Self {
-        SetForceModeRes {
+        SetForceModeResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetForceModeRes {}
+impl ros2_client::Message for SetForceModeResponse {}
 
 
 pub struct SetForceMode;
 impl ros2_client::Service for SetForceMode {
-    type Request = SetForceModeReq;
-    type Response = SetForceModeRes;
+    type Request = SetForceModeRequest;
+    type Response = SetForceModeResponse;
 
-    fn request_type_name(&self) -> &str { "SetForceModeReq" }
-    fn response_type_name(&self) -> &str { "SetForceModeRes" }
+    fn request_type_name(&self) -> &str { "SetForceModeRequest" }
+    fn response_type_name(&self) -> &str { "SetForceModeResponse" }
 }

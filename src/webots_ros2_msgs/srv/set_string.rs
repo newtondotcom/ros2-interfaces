@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetStringReq {
+pub struct SetStringRequest {
     pub value: ::std::string::String,
 }
 
-impl Default for SetStringReq {
+impl Default for SetStringRequest {
     fn default() -> Self {
-        SetStringReq {
+        SetStringRequest {
             value: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetStringReq {}
+impl ros2_client::Message for SetStringRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetStringRes {
+pub struct SetStringResponse {
     pub success: bool,
 }
 
-impl Default for SetStringRes {
+impl Default for SetStringResponse {
     fn default() -> Self {
-        SetStringRes {
+        SetStringResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetStringRes {}
+impl ros2_client::Message for SetStringResponse {}
 
 
 pub struct SetString;
 impl ros2_client::Service for SetString {
-    type Request = SetStringReq;
-    type Response = SetStringRes;
+    type Request = SetStringRequest;
+    type Response = SetStringResponse;
 
-    fn request_type_name(&self) -> &str { "SetStringReq" }
-    fn response_type_name(&self) -> &str { "SetStringRes" }
+    fn request_type_name(&self) -> &str { "SetStringRequest" }
+    fn response_type_name(&self) -> &str { "SetStringResponse" }
 }

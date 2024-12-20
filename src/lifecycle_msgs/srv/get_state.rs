@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetStateReq {
+pub struct GetStateRequest {
 
 }
 
-impl Default for GetStateReq {
+impl Default for GetStateRequest {
     fn default() -> Self {
-        GetStateReq {
+        GetStateRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetStateReq {}
+impl ros2_client::Message for GetStateRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetStateRes {
+pub struct GetStateResponse {
     pub current_state: crate::lifecycle_msgs::msg::State,
 }
 
-impl Default for GetStateRes {
+impl Default for GetStateResponse {
     fn default() -> Self {
-        GetStateRes {
+        GetStateResponse {
             current_state: crate::lifecycle_msgs::msg::State::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetStateRes {}
+impl ros2_client::Message for GetStateResponse {}
 
 
 pub struct GetState;
 impl ros2_client::Service for GetState {
-    type Request = GetStateReq;
-    type Response = GetStateRes;
+    type Request = GetStateRequest;
+    type Response = GetStateResponse;
 
-    fn request_type_name(&self) -> &str { "GetStateReq" }
-    fn response_type_name(&self) -> &str { "GetStateRes" }
+    fn request_type_name(&self) -> &str { "GetStateRequest" }
+    fn response_type_name(&self) -> &str { "GetStateResponse" }
 }

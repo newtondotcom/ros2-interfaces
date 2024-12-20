@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxAddReq {
+pub struct MuxAddRequest {
     pub topic: ::std::string::String,
 }
 
-impl Default for MuxAddReq {
+impl Default for MuxAddRequest {
     fn default() -> Self {
-        MuxAddReq {
+        MuxAddRequest {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for MuxAddReq {}
+impl ros2_client::Message for MuxAddRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxAddRes {
+pub struct MuxAddResponse {
     pub success: bool,
 }
 
-impl Default for MuxAddRes {
+impl Default for MuxAddResponse {
     fn default() -> Self {
-        MuxAddRes {
+        MuxAddResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for MuxAddRes {}
+impl ros2_client::Message for MuxAddResponse {}
 
 
 pub struct MuxAdd;
 impl ros2_client::Service for MuxAdd {
-    type Request = MuxAddReq;
-    type Response = MuxAddRes;
+    type Request = MuxAddRequest;
+    type Response = MuxAddResponse;
 
-    fn request_type_name(&self) -> &str { "MuxAddReq" }
-    fn response_type_name(&self) -> &str { "MuxAddRes" }
+    fn request_type_name(&self) -> &str { "MuxAddRequest" }
+    fn response_type_name(&self) -> &str { "MuxAddResponse" }
 }

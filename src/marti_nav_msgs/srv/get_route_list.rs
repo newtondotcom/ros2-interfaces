@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetRouteListReq {
+pub struct GetRouteListRequest {
 
 }
 
-impl Default for GetRouteListReq {
+impl Default for GetRouteListRequest {
     fn default() -> Self {
-        GetRouteListReq {
+        GetRouteListRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetRouteListReq {}
+impl ros2_client::Message for GetRouteListRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetRouteListRes {
+pub struct GetRouteListResponse {
     pub routes: Vec<crate::marti_nav_msgs::msg::Route>,
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for GetRouteListRes {
+impl Default for GetRouteListResponse {
     fn default() -> Self {
-        GetRouteListRes {
+        GetRouteListResponse {
             routes: Vec::new(),
             success: false,
             message: ::std::string::String::new(),
@@ -35,14 +35,14 @@ impl Default for GetRouteListRes {
     }
 }
 
-impl ros2_client::Message for GetRouteListRes {}
+impl ros2_client::Message for GetRouteListResponse {}
 
 
 pub struct GetRouteList;
 impl ros2_client::Service for GetRouteList {
-    type Request = GetRouteListReq;
-    type Response = GetRouteListRes;
+    type Request = GetRouteListRequest;
+    type Response = GetRouteListResponse;
 
-    fn request_type_name(&self) -> &str { "GetRouteListReq" }
-    fn response_type_name(&self) -> &str { "GetRouteListRes" }
+    fn request_type_name(&self) -> &str { "GetRouteListRequest" }
+    fn response_type_name(&self) -> &str { "GetRouteListResponse" }
 }

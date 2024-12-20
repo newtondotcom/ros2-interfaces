@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ControlWorldReq {
+pub struct ControlWorldRequest {
     pub world_control: crate::ros_gz_interfaces::msg::WorldControl,
 }
 
-impl Default for ControlWorldReq {
+impl Default for ControlWorldRequest {
     fn default() -> Self {
-        ControlWorldReq {
+        ControlWorldRequest {
             world_control: crate::ros_gz_interfaces::msg::WorldControl::default(),
         }
     }
 }
 
-impl ros2_client::Message for ControlWorldReq {}
+impl ros2_client::Message for ControlWorldRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ControlWorldRes {
+pub struct ControlWorldResponse {
     pub success: bool,
 }
 
-impl Default for ControlWorldRes {
+impl Default for ControlWorldResponse {
     fn default() -> Self {
-        ControlWorldRes {
+        ControlWorldResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for ControlWorldRes {}
+impl ros2_client::Message for ControlWorldResponse {}
 
 
 pub struct ControlWorld;
 impl ros2_client::Service for ControlWorld {
-    type Request = ControlWorldReq;
-    type Response = ControlWorldRes;
+    type Request = ControlWorldRequest;
+    type Response = ControlWorldResponse;
 
-    fn request_type_name(&self) -> &str { "ControlWorldReq" }
-    fn response_type_name(&self) -> &str { "ControlWorldRes" }
+    fn request_type_name(&self) -> &str { "ControlWorldRequest" }
+    fn response_type_name(&self) -> &str { "ControlWorldResponse" }
 }

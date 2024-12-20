@@ -2,47 +2,47 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct WaypointPushReq {
+pub struct WaypointPushRequest {
     pub start_index: u16,
     pub waypoints: Vec<crate::mavros_msgs::msg::Waypoint>,
 }
 
-impl Default for WaypointPushReq {
+impl Default for WaypointPushRequest {
     fn default() -> Self {
-        WaypointPushReq {
+        WaypointPushRequest {
             start_index: 0,
             waypoints: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for WaypointPushReq {}
+impl ros2_client::Message for WaypointPushRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct WaypointPushRes {
+pub struct WaypointPushResponse {
     pub success: bool,
     pub wp_transfered: u32,
 }
 
-impl Default for WaypointPushRes {
+impl Default for WaypointPushResponse {
     fn default() -> Self {
-        WaypointPushRes {
+        WaypointPushResponse {
             success: false,
             wp_transfered: 0,
         }
     }
 }
 
-impl ros2_client::Message for WaypointPushRes {}
+impl ros2_client::Message for WaypointPushResponse {}
 
 
 pub struct WaypointPush;
 impl ros2_client::Service for WaypointPush {
-    type Request = WaypointPushReq;
-    type Response = WaypointPushRes;
+    type Request = WaypointPushRequest;
+    type Response = WaypointPushResponse;
 
-    fn request_type_name(&self) -> &str { "WaypointPushReq" }
-    fn response_type_name(&self) -> &str { "WaypointPushRes" }
+    fn request_type_name(&self) -> &str { "WaypointPushRequest" }
+    fn response_type_name(&self) -> &str { "WaypointPushResponse" }
 }

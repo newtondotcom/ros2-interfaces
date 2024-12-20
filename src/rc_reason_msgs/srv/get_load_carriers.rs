@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetLoadCarriersReq {
+pub struct GetLoadCarriersRequest {
     pub load_carrier_ids: Vec<::std::string::String>,
 }
 
-impl Default for GetLoadCarriersReq {
+impl Default for GetLoadCarriersRequest {
     fn default() -> Self {
-        GetLoadCarriersReq {
+        GetLoadCarriersRequest {
             load_carrier_ids: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetLoadCarriersReq {}
+impl ros2_client::Message for GetLoadCarriersRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetLoadCarriersRes {
+pub struct GetLoadCarriersResponse {
     pub load_carriers: Vec<crate::rc_reason_msgs::msg::LoadCarrierModel>,
     pub return_code: crate::rc_common_msgs::msg::ReturnCode,
 }
 
-impl Default for GetLoadCarriersRes {
+impl Default for GetLoadCarriersResponse {
     fn default() -> Self {
-        GetLoadCarriersRes {
+        GetLoadCarriersResponse {
             load_carriers: Vec::new(),
             return_code: crate::rc_common_msgs::msg::ReturnCode::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetLoadCarriersRes {}
+impl ros2_client::Message for GetLoadCarriersResponse {}
 
 
 pub struct GetLoadCarriers;
 impl ros2_client::Service for GetLoadCarriers {
-    type Request = GetLoadCarriersReq;
-    type Response = GetLoadCarriersRes;
+    type Request = GetLoadCarriersRequest;
+    type Response = GetLoadCarriersResponse;
 
-    fn request_type_name(&self) -> &str { "GetLoadCarriersReq" }
-    fn response_type_name(&self) -> &str { "GetLoadCarriersRes" }
+    fn request_type_name(&self) -> &str { "GetLoadCarriersRequest" }
+    fn response_type_name(&self) -> &str { "GetLoadCarriersResponse" }
 }

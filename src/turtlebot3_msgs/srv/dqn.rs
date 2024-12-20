@@ -2,34 +2,34 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DqnReq {
+pub struct DqnRequest {
     pub action: u8,
     pub init: bool,
 }
 
-impl Default for DqnReq {
+impl Default for DqnRequest {
     fn default() -> Self {
-        DqnReq {
+        DqnRequest {
             action: 0,
             init: false,
         }
     }
 }
 
-impl ros2_client::Message for DqnReq {}
+impl ros2_client::Message for DqnRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DqnRes {
+pub struct DqnResponse {
     pub state: Vec<f32>,
     pub reward: f32,
     pub done: bool,
 }
 
-impl Default for DqnRes {
+impl Default for DqnResponse {
     fn default() -> Self {
-        DqnRes {
+        DqnResponse {
             state: Vec::new(),
             reward: 0.0,
             done: false,
@@ -37,14 +37,14 @@ impl Default for DqnRes {
     }
 }
 
-impl ros2_client::Message for DqnRes {}
+impl ros2_client::Message for DqnResponse {}
 
 
 pub struct Dqn;
 impl ros2_client::Service for Dqn {
-    type Request = DqnReq;
-    type Response = DqnRes;
+    type Request = DqnRequest;
+    type Response = DqnResponse;
 
-    fn request_type_name(&self) -> &str { "DqnReq" }
-    fn response_type_name(&self) -> &str { "DqnRes" }
+    fn request_type_name(&self) -> &str { "DqnRequest" }
+    fn response_type_name(&self) -> &str { "DqnResponse" }
 }

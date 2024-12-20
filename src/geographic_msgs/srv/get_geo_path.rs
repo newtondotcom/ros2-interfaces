@@ -2,26 +2,26 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetGeoPathReq {
+pub struct GetGeoPathRequest {
     pub start: crate::geographic_msgs::msg::GeoPoint,
     pub goal: crate::geographic_msgs::msg::GeoPoint,
 }
 
-impl Default for GetGeoPathReq {
+impl Default for GetGeoPathRequest {
     fn default() -> Self {
-        GetGeoPathReq {
+        GetGeoPathRequest {
             start: crate::geographic_msgs::msg::GeoPoint::default(),
             goal: crate::geographic_msgs::msg::GeoPoint::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetGeoPathReq {}
+impl ros2_client::Message for GetGeoPathRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetGeoPathRes {
+pub struct GetGeoPathResponse {
     pub success: bool,
     pub status: ::std::string::String,
     pub plan: crate::geographic_msgs::msg::GeoPath,
@@ -31,9 +31,9 @@ pub struct GetGeoPathRes {
     pub distance: f64,
 }
 
-impl Default for GetGeoPathRes {
+impl Default for GetGeoPathResponse {
     fn default() -> Self {
-        GetGeoPathRes {
+        GetGeoPathResponse {
             success: false,
             status: ::std::string::String::new(),
             plan: crate::geographic_msgs::msg::GeoPath::default(),
@@ -45,14 +45,14 @@ impl Default for GetGeoPathRes {
     }
 }
 
-impl ros2_client::Message for GetGeoPathRes {}
+impl ros2_client::Message for GetGeoPathResponse {}
 
 
 pub struct GetGeoPath;
 impl ros2_client::Service for GetGeoPath {
-    type Request = GetGeoPathReq;
-    type Response = GetGeoPathRes;
+    type Request = GetGeoPathRequest;
+    type Response = GetGeoPathResponse;
 
-    fn request_type_name(&self) -> &str { "GetGeoPathReq" }
-    fn response_type_name(&self) -> &str { "GetGeoPathRes" }
+    fn request_type_name(&self) -> &str { "GetGeoPathRequest" }
+    fn response_type_name(&self) -> &str { "GetGeoPathResponse" }
 }

@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DetectFillingLevelReq {
+pub struct DetectFillingLevelRequest {
     pub pose_frame: ::std::string::String,
     pub region_of_interest_id: ::std::string::String,
     pub region_of_interest_2d_id: ::std::string::String,
@@ -11,9 +11,9 @@ pub struct DetectFillingLevelReq {
     pub filling_level_cell_count: crate::rc_reason_msgs::msg::GridSize,
 }
 
-impl Default for DetectFillingLevelReq {
+impl Default for DetectFillingLevelRequest {
     fn default() -> Self {
-        DetectFillingLevelReq {
+        DetectFillingLevelRequest {
             pose_frame: ::std::string::String::new(),
             region_of_interest_id: ::std::string::String::new(),
             region_of_interest_2d_id: ::std::string::String::new(),
@@ -24,20 +24,20 @@ impl Default for DetectFillingLevelReq {
     }
 }
 
-impl ros2_client::Message for DetectFillingLevelReq {}
+impl ros2_client::Message for DetectFillingLevelRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DetectFillingLevelRes {
+pub struct DetectFillingLevelResponse {
     pub timestamp: crate::builtin_interfaces::msg::Time,
     pub load_carriers: Vec<crate::rc_reason_msgs::msg::LoadCarrierWithFillingLevel>,
     pub return_code: crate::rc_common_msgs::msg::ReturnCode,
 }
 
-impl Default for DetectFillingLevelRes {
+impl Default for DetectFillingLevelResponse {
     fn default() -> Self {
-        DetectFillingLevelRes {
+        DetectFillingLevelResponse {
             timestamp: crate::builtin_interfaces::msg::Time::default(),
             load_carriers: Vec::new(),
             return_code: crate::rc_common_msgs::msg::ReturnCode::default(),
@@ -45,14 +45,14 @@ impl Default for DetectFillingLevelRes {
     }
 }
 
-impl ros2_client::Message for DetectFillingLevelRes {}
+impl ros2_client::Message for DetectFillingLevelResponse {}
 
 
 pub struct DetectFillingLevel;
 impl ros2_client::Service for DetectFillingLevel {
-    type Request = DetectFillingLevelReq;
-    type Response = DetectFillingLevelRes;
+    type Request = DetectFillingLevelRequest;
+    type Response = DetectFillingLevelResponse;
 
-    fn request_type_name(&self) -> &str { "DetectFillingLevelReq" }
-    fn response_type_name(&self) -> &str { "DetectFillingLevelRes" }
+    fn request_type_name(&self) -> &str { "DetectFillingLevelRequest" }
+    fn response_type_name(&self) -> &str { "DetectFillingLevelResponse" }
 }

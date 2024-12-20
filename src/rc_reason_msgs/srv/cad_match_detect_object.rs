@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CadMatchDetectObjectReq {
+pub struct CadMatchDetectObjectRequest {
     pub template_id: ::std::string::String,
     pub pose_frame: ::std::string::String,
     pub region_of_interest_id: ::std::string::String,
@@ -14,9 +14,9 @@ pub struct CadMatchDetectObjectReq {
     pub data_acquisition_mode: ::std::string::String,
 }
 
-impl Default for CadMatchDetectObjectReq {
+impl Default for CadMatchDetectObjectRequest {
     fn default() -> Self {
-        CadMatchDetectObjectReq {
+        CadMatchDetectObjectRequest {
             template_id: ::std::string::String::new(),
             pose_frame: ::std::string::String::new(),
             region_of_interest_id: ::std::string::String::new(),
@@ -30,12 +30,12 @@ impl Default for CadMatchDetectObjectReq {
     }
 }
 
-impl ros2_client::Message for CadMatchDetectObjectReq {}
+impl ros2_client::Message for CadMatchDetectObjectRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CadMatchDetectObjectRes {
+pub struct CadMatchDetectObjectResponse {
     pub timestamp: crate::builtin_interfaces::msg::Time,
     pub matches: Vec<crate::rc_reason_msgs::msg::Match>,
     pub grasps: Vec<crate::rc_reason_msgs::msg::Grasp>,
@@ -43,9 +43,9 @@ pub struct CadMatchDetectObjectRes {
     pub return_code: crate::rc_common_msgs::msg::ReturnCode,
 }
 
-impl Default for CadMatchDetectObjectRes {
+impl Default for CadMatchDetectObjectResponse {
     fn default() -> Self {
-        CadMatchDetectObjectRes {
+        CadMatchDetectObjectResponse {
             timestamp: crate::builtin_interfaces::msg::Time::default(),
             matches: Vec::new(),
             grasps: Vec::new(),
@@ -55,14 +55,14 @@ impl Default for CadMatchDetectObjectRes {
     }
 }
 
-impl ros2_client::Message for CadMatchDetectObjectRes {}
+impl ros2_client::Message for CadMatchDetectObjectResponse {}
 
 
 pub struct CadMatchDetectObject;
 impl ros2_client::Service for CadMatchDetectObject {
-    type Request = CadMatchDetectObjectReq;
-    type Response = CadMatchDetectObjectRes;
+    type Request = CadMatchDetectObjectRequest;
+    type Response = CadMatchDetectObjectResponse;
 
-    fn request_type_name(&self) -> &str { "CadMatchDetectObjectReq" }
-    fn response_type_name(&self) -> &str { "CadMatchDetectObjectRes" }
+    fn request_type_name(&self) -> &str { "CadMatchDetectObjectRequest" }
+    fn response_type_name(&self) -> &str { "CadMatchDetectObjectResponse" }
 }

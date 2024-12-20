@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct COWriteReq {
+pub struct COWriteRequest {
     pub index: u16,
     pub subindex: u8,
     pub data: u32,
 }
 
-impl Default for COWriteReq {
+impl Default for COWriteRequest {
     fn default() -> Self {
-        COWriteReq {
+        COWriteRequest {
             index: 0,
             subindex: 0,
             data: 0,
@@ -18,31 +18,31 @@ impl Default for COWriteReq {
     }
 }
 
-impl ros2_client::Message for COWriteReq {}
+impl ros2_client::Message for COWriteRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct COWriteRes {
+pub struct COWriteResponse {
     pub success: bool,
 }
 
-impl Default for COWriteRes {
+impl Default for COWriteResponse {
     fn default() -> Self {
-        COWriteRes {
+        COWriteResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for COWriteRes {}
+impl ros2_client::Message for COWriteResponse {}
 
 
 pub struct COWrite;
 impl ros2_client::Service for COWrite {
-    type Request = COWriteReq;
-    type Response = COWriteRes;
+    type Request = COWriteRequest;
+    type Response = COWriteResponse;
 
-    fn request_type_name(&self) -> &str { "COWriteReq" }
-    fn response_type_name(&self) -> &str { "COWriteRes" }
+    fn request_type_name(&self) -> &str { "COWriteRequest" }
+    fn response_type_name(&self) -> &str { "COWriteResponse" }
 }

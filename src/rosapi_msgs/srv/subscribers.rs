@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SubscribersReq {
+pub struct SubscribersRequest {
     pub topic: ::std::string::String,
 }
 
-impl Default for SubscribersReq {
+impl Default for SubscribersRequest {
     fn default() -> Self {
-        SubscribersReq {
+        SubscribersRequest {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SubscribersReq {}
+impl ros2_client::Message for SubscribersRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SubscribersRes {
+pub struct SubscribersResponse {
     pub subscribers: Vec<::std::string::String>,
 }
 
-impl Default for SubscribersRes {
+impl Default for SubscribersResponse {
     fn default() -> Self {
-        SubscribersRes {
+        SubscribersResponse {
             subscribers: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for SubscribersRes {}
+impl ros2_client::Message for SubscribersResponse {}
 
 
 pub struct Subscribers;
 impl ros2_client::Service for Subscribers {
-    type Request = SubscribersReq;
-    type Response = SubscribersRes;
+    type Request = SubscribersRequest;
+    type Response = SubscribersResponse;
 
-    fn request_type_name(&self) -> &str { "SubscribersReq" }
-    fn response_type_name(&self) -> &str { "SubscribersRes" }
+    fn request_type_name(&self) -> &str { "SubscribersRequest" }
+    fn response_type_name(&self) -> &str { "SubscribersResponse" }
 }

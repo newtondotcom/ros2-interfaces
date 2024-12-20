@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetParamReq {
+pub struct GetParamRequest {
     pub name: ::std::string::String,
     pub default_value: ::std::string::String,
 }
 
-impl Default for GetParamReq {
+impl Default for GetParamRequest {
     fn default() -> Self {
-        GetParamReq {
+        GetParamRequest {
             name: ::std::string::String::new(),
             default_value: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetParamReq {}
+impl ros2_client::Message for GetParamRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetParamRes {
+pub struct GetParamResponse {
     pub value: ::std::string::String,
 }
 
-impl Default for GetParamRes {
+impl Default for GetParamResponse {
     fn default() -> Self {
-        GetParamRes {
+        GetParamResponse {
             value: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetParamRes {}
+impl ros2_client::Message for GetParamResponse {}
 
 
 pub struct GetParam;
 impl ros2_client::Service for GetParam {
-    type Request = GetParamReq;
-    type Response = GetParamRes;
+    type Request = GetParamRequest;
+    type Response = GetParamResponse;
 
-    fn request_type_name(&self) -> &str { "GetParamReq" }
-    fn response_type_name(&self) -> &str { "GetParamRes" }
+    fn request_type_name(&self) -> &str { "GetParamRequest" }
+    fn response_type_name(&self) -> &str { "GetParamResponse" }
 }

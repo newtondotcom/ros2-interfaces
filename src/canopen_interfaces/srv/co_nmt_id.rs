@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CONmtIDReq {
+pub struct CONmtIDRequest {
     pub nmtcommand: u8,
     pub nodeid: u8,
 }
 
-impl Default for CONmtIDReq {
+impl Default for CONmtIDRequest {
     fn default() -> Self {
-        CONmtIDReq {
+        CONmtIDRequest {
             nmtcommand: 0,
             nodeid: 0,
         }
     }
 }
 
-impl ros2_client::Message for CONmtIDReq {}
+impl ros2_client::Message for CONmtIDRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CONmtIDRes {
+pub struct CONmtIDResponse {
     pub success: bool,
 }
 
-impl Default for CONmtIDRes {
+impl Default for CONmtIDResponse {
     fn default() -> Self {
-        CONmtIDRes {
+        CONmtIDResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for CONmtIDRes {}
+impl ros2_client::Message for CONmtIDResponse {}
 
 
 pub struct CONmtID;
 impl ros2_client::Service for CONmtID {
-    type Request = CONmtIDReq;
-    type Response = CONmtIDRes;
+    type Request = CONmtIDRequest;
+    type Response = CONmtIDResponse;
 
-    fn request_type_name(&self) -> &str { "CONmtIDReq" }
-    fn response_type_name(&self) -> &str { "CONmtIDRes" }
+    fn request_type_name(&self) -> &str { "CONmtIDRequest" }
+    fn response_type_name(&self) -> &str { "CONmtIDResponse" }
 }

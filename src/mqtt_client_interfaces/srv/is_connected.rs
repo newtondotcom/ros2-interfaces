@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IsConnectedReq {
+pub struct IsConnectedRequest {
 
 }
 
-impl Default for IsConnectedReq {
+impl Default for IsConnectedRequest {
     fn default() -> Self {
-        IsConnectedReq {
+        IsConnectedRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for IsConnectedReq {}
+impl ros2_client::Message for IsConnectedRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IsConnectedRes {
+pub struct IsConnectedResponse {
     pub connected: bool,
 }
 
-impl Default for IsConnectedRes {
+impl Default for IsConnectedResponse {
     fn default() -> Self {
-        IsConnectedRes {
+        IsConnectedResponse {
             connected: false,
         }
     }
 }
 
-impl ros2_client::Message for IsConnectedRes {}
+impl ros2_client::Message for IsConnectedResponse {}
 
 
 pub struct IsConnected;
 impl ros2_client::Service for IsConnected {
-    type Request = IsConnectedReq;
-    type Response = IsConnectedRes;
+    type Request = IsConnectedRequest;
+    type Response = IsConnectedResponse;
 
-    fn request_type_name(&self) -> &str { "IsConnectedReq" }
-    fn response_type_name(&self) -> &str { "IsConnectedRes" }
+    fn request_type_name(&self) -> &str { "IsConnectedRequest" }
+    fn response_type_name(&self) -> &str { "IsConnectedResponse" }
 }

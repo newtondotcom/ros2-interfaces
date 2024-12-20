@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ServicesReq {
+pub struct ServicesRequest {
 
 }
 
-impl Default for ServicesReq {
+impl Default for ServicesRequest {
     fn default() -> Self {
-        ServicesReq {
+        ServicesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ServicesReq {}
+impl ros2_client::Message for ServicesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ServicesRes {
+pub struct ServicesResponse {
     pub services: Vec<::std::string::String>,
 }
 
-impl Default for ServicesRes {
+impl Default for ServicesResponse {
     fn default() -> Self {
-        ServicesRes {
+        ServicesResponse {
             services: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ServicesRes {}
+impl ros2_client::Message for ServicesResponse {}
 
 
 pub struct Services;
 impl ros2_client::Service for Services {
-    type Request = ServicesReq;
-    type Response = ServicesRes;
+    type Request = ServicesRequest;
+    type Response = ServicesResponse;
 
-    fn request_type_name(&self) -> &str { "ServicesReq" }
-    fn response_type_name(&self) -> &str { "ServicesRes" }
+    fn request_type_name(&self) -> &str { "ServicesRequest" }
+    fn response_type_name(&self) -> &str { "ServicesResponse" }
 }

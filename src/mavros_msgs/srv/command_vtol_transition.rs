@@ -2,52 +2,52 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandVtolTransitionReq {
+pub struct CommandVtolTransitionRequest {
     pub header: crate::std_msgs::msg::Header,
     pub state: u8,
 }
 
-impl CommandVtolTransitionReq {
+impl CommandVtolTransitionRequest {
     pub const STATE_MC: u8 = 3;
     pub const STATE_FW: u8 = 4;
 }
 
-impl Default for CommandVtolTransitionReq {
+impl Default for CommandVtolTransitionRequest {
     fn default() -> Self {
-        CommandVtolTransitionReq {
+        CommandVtolTransitionRequest {
             header: crate::std_msgs::msg::Header::default(),
             state: 0,
         }
     }
 }
 
-impl ros2_client::Message for CommandVtolTransitionReq {}
+impl ros2_client::Message for CommandVtolTransitionRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandVtolTransitionRes {
+pub struct CommandVtolTransitionResponse {
     pub success: bool,
     pub result: u8,
 }
 
-impl Default for CommandVtolTransitionRes {
+impl Default for CommandVtolTransitionResponse {
     fn default() -> Self {
-        CommandVtolTransitionRes {
+        CommandVtolTransitionResponse {
             success: false,
             result: 0,
         }
     }
 }
 
-impl ros2_client::Message for CommandVtolTransitionRes {}
+impl ros2_client::Message for CommandVtolTransitionResponse {}
 
 
 pub struct CommandVtolTransition;
 impl ros2_client::Service for CommandVtolTransition {
-    type Request = CommandVtolTransitionReq;
-    type Response = CommandVtolTransitionRes;
+    type Request = CommandVtolTransitionRequest;
+    type Response = CommandVtolTransitionResponse;
 
-    fn request_type_name(&self) -> &str { "CommandVtolTransitionReq" }
-    fn response_type_name(&self) -> &str { "CommandVtolTransitionRes" }
+    fn request_type_name(&self) -> &str { "CommandVtolTransitionRequest" }
+    fn response_type_name(&self) -> &str { "CommandVtolTransitionResponse" }
 }

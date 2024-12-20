@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RelocalizeNearPoseReq {
+pub struct RelocalizeNearPoseRequest {
     pub pose: crate::geometry_msgs::msg::PoseWithCovarianceStamped,
 }
 
-impl Default for RelocalizeNearPoseReq {
+impl Default for RelocalizeNearPoseRequest {
     fn default() -> Self {
-        RelocalizeNearPoseReq {
+        RelocalizeNearPoseRequest {
             pose: crate::geometry_msgs::msg::PoseWithCovarianceStamped::default(),
         }
     }
 }
 
-impl ros2_client::Message for RelocalizeNearPoseReq {}
+impl ros2_client::Message for RelocalizeNearPoseRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RelocalizeNearPoseRes {
+pub struct RelocalizeNearPoseResponse {
     pub accepted: bool,
 }
 
-impl Default for RelocalizeNearPoseRes {
+impl Default for RelocalizeNearPoseResponse {
     fn default() -> Self {
-        RelocalizeNearPoseRes {
+        RelocalizeNearPoseResponse {
             accepted: false,
         }
     }
 }
 
-impl ros2_client::Message for RelocalizeNearPoseRes {}
+impl ros2_client::Message for RelocalizeNearPoseResponse {}
 
 
 pub struct RelocalizeNearPose;
 impl ros2_client::Service for RelocalizeNearPose {
-    type Request = RelocalizeNearPoseReq;
-    type Response = RelocalizeNearPoseRes;
+    type Request = RelocalizeNearPoseRequest;
+    type Response = RelocalizeNearPoseResponse;
 
-    fn request_type_name(&self) -> &str { "RelocalizeNearPoseReq" }
-    fn response_type_name(&self) -> &str { "RelocalizeNearPoseRes" }
+    fn request_type_name(&self) -> &str { "RelocalizeNearPoseRequest" }
+    fn response_type_name(&self) -> &str { "RelocalizeNearPoseResponse" }
 }

@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ResetPoseReq {
+pub struct ResetPoseRequest {
     pub pose: crate::geometry_msgs::msg::Pose,
 }
 
-impl Default for ResetPoseReq {
+impl Default for ResetPoseRequest {
     fn default() -> Self {
-        ResetPoseReq {
+        ResetPoseRequest {
             pose: crate::geometry_msgs::msg::Pose::default(),
         }
     }
 }
 
-impl ros2_client::Message for ResetPoseReq {}
+impl ros2_client::Message for ResetPoseRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ResetPoseRes {
+pub struct ResetPoseResponse {
 
 }
 
-impl Default for ResetPoseRes {
+impl Default for ResetPoseResponse {
     fn default() -> Self {
-        ResetPoseRes {
+        ResetPoseResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for ResetPoseRes {}
+impl ros2_client::Message for ResetPoseResponse {}
 
 
 pub struct ResetPose;
 impl ros2_client::Service for ResetPose {
-    type Request = ResetPoseReq;
-    type Response = ResetPoseRes;
+    type Request = ResetPoseRequest;
+    type Response = ResetPoseResponse;
 
-    fn request_type_name(&self) -> &str { "ResetPoseReq" }
-    fn response_type_name(&self) -> &str { "ResetPoseRes" }
+    fn request_type_name(&self) -> &str { "ResetPoseRequest" }
+    fn response_type_name(&self) -> &str { "ResetPoseResponse" }
 }

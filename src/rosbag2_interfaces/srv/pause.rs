@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct PauseReq {
+pub struct PauseRequest {
 
 }
 
-impl Default for PauseReq {
+impl Default for PauseRequest {
     fn default() -> Self {
-        PauseReq {
+        PauseRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for PauseReq {}
+impl ros2_client::Message for PauseRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct PauseRes {
+pub struct PauseResponse {
 
 }
 
-impl Default for PauseRes {
+impl Default for PauseResponse {
     fn default() -> Self {
-        PauseRes {
+        PauseResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for PauseRes {}
+impl ros2_client::Message for PauseResponse {}
 
 
 pub struct Pause;
 impl ros2_client::Service for Pause {
-    type Request = PauseReq;
-    type Response = PauseRes;
+    type Request = PauseRequest;
+    type Response = PauseResponse;
 
-    fn request_type_name(&self) -> &str { "PauseReq" }
-    fn response_type_name(&self) -> &str { "PauseRes" }
+    fn request_type_name(&self) -> &str { "PauseRequest" }
+    fn response_type_name(&self) -> &str { "PauseResponse" }
 }

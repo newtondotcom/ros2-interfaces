@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPenReq {
+pub struct SetPenRequest {
     pub r: u8,
     pub g: u8,
     pub b: u8,
@@ -10,9 +10,9 @@ pub struct SetPenReq {
     pub off: u8,
 }
 
-impl Default for SetPenReq {
+impl Default for SetPenRequest {
     fn default() -> Self {
-        SetPenReq {
+        SetPenRequest {
             r: 0,
             g: 0,
             b: 0,
@@ -22,31 +22,31 @@ impl Default for SetPenReq {
     }
 }
 
-impl ros2_client::Message for SetPenReq {}
+impl ros2_client::Message for SetPenRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPenRes {
+pub struct SetPenResponse {
 
 }
 
-impl Default for SetPenRes {
+impl Default for SetPenResponse {
     fn default() -> Self {
-        SetPenRes {
+        SetPenResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for SetPenRes {}
+impl ros2_client::Message for SetPenResponse {}
 
 
 pub struct SetPen;
 impl ros2_client::Service for SetPen {
-    type Request = SetPenReq;
-    type Response = SetPenRes;
+    type Request = SetPenRequest;
+    type Response = SetPenResponse;
 
-    fn request_type_name(&self) -> &str { "SetPenReq" }
-    fn response_type_name(&self) -> &str { "SetPenRes" }
+    fn request_type_name(&self) -> &str { "SetPenRequest" }
+    fn response_type_name(&self) -> &str { "SetPenResponse" }
 }

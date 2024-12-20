@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetMapReq {
+pub struct SetMapRequest {
     pub map: crate::nav_msgs::msg::OccupancyGrid,
     pub initial_pose: crate::geometry_msgs::msg::PoseWithCovarianceStamped,
 }
 
-impl Default for SetMapReq {
+impl Default for SetMapRequest {
     fn default() -> Self {
-        SetMapReq {
+        SetMapRequest {
             map: crate::nav_msgs::msg::OccupancyGrid::default(),
             initial_pose: crate::geometry_msgs::msg::PoseWithCovarianceStamped::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetMapReq {}
+impl ros2_client::Message for SetMapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetMapRes {
+pub struct SetMapResponse {
     pub success: bool,
 }
 
-impl Default for SetMapRes {
+impl Default for SetMapResponse {
     fn default() -> Self {
-        SetMapRes {
+        SetMapResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetMapRes {}
+impl ros2_client::Message for SetMapResponse {}
 
 
 pub struct SetMap;
 impl ros2_client::Service for SetMap {
-    type Request = SetMapReq;
-    type Response = SetMapRes;
+    type Request = SetMapRequest;
+    type Response = SetMapResponse;
 
-    fn request_type_name(&self) -> &str { "SetMapReq" }
-    fn response_type_name(&self) -> &str { "SetMapRes" }
+    fn request_type_name(&self) -> &str { "SetMapRequest" }
+    fn response_type_name(&self) -> &str { "SetMapResponse" }
 }

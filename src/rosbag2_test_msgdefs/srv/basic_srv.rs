@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BasicSrvReq {
+pub struct BasicSrvRequest {
     pub req: ::std::string::String,
 }
 
-impl Default for BasicSrvReq {
+impl Default for BasicSrvRequest {
     fn default() -> Self {
-        BasicSrvReq {
+        BasicSrvRequest {
             req: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for BasicSrvReq {}
+impl ros2_client::Message for BasicSrvRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BasicSrvRes {
+pub struct BasicSrvResponse {
     pub resp: ::std::string::String,
 }
 
-impl Default for BasicSrvRes {
+impl Default for BasicSrvResponse {
     fn default() -> Self {
-        BasicSrvRes {
+        BasicSrvResponse {
             resp: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for BasicSrvRes {}
+impl ros2_client::Message for BasicSrvResponse {}
 
 
 pub struct BasicSrv;
 impl ros2_client::Service for BasicSrv {
-    type Request = BasicSrvReq;
-    type Response = BasicSrvRes;
+    type Request = BasicSrvRequest;
+    type Response = BasicSrvResponse;
 
-    fn request_type_name(&self) -> &str { "BasicSrvReq" }
-    fn response_type_name(&self) -> &str { "BasicSrvRes" }
+    fn request_type_name(&self) -> &str { "BasicSrvRequest" }
+    fn response_type_name(&self) -> &str { "BasicSrvResponse" }
 }

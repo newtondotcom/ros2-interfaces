@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LogRequestListReq {
+pub struct LogRequestListRequest {
     pub start: u16,
     pub end: u16,
 }
 
-impl Default for LogRequestListReq {
+impl Default for LogRequestListRequest {
     fn default() -> Self {
-        LogRequestListReq {
+        LogRequestListRequest {
             start: 0,
             end: 0,
         }
     }
 }
 
-impl ros2_client::Message for LogRequestListReq {}
+impl ros2_client::Message for LogRequestListRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LogRequestListRes {
+pub struct LogRequestListResponse {
     pub success: bool,
 }
 
-impl Default for LogRequestListRes {
+impl Default for LogRequestListResponse {
     fn default() -> Self {
-        LogRequestListRes {
+        LogRequestListResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for LogRequestListRes {}
+impl ros2_client::Message for LogRequestListResponse {}
 
 
 pub struct LogRequestList;
 impl ros2_client::Service for LogRequestList {
-    type Request = LogRequestListReq;
-    type Response = LogRequestListRes;
+    type Request = LogRequestListRequest;
+    type Response = LogRequestListResponse;
 
-    fn request_type_name(&self) -> &str { "LogRequestListReq" }
-    fn response_type_name(&self) -> &str { "LogRequestListRes" }
+    fn request_type_name(&self) -> &str { "LogRequestListRequest" }
+    fn response_type_name(&self) -> &str { "LogRequestListResponse" }
 }

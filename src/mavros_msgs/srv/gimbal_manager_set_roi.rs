@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GimbalManagerSetRoiReq {
+pub struct GimbalManagerSetRoiRequest {
     pub mode: u8,
     pub gimbal_device_id: u8,
     pub latitude: f32,
@@ -14,16 +14,16 @@ pub struct GimbalManagerSetRoiReq {
     pub sysid: u8,
 }
 
-impl GimbalManagerSetRoiReq {
+impl GimbalManagerSetRoiRequest {
     pub const ROI_MODE_LOCATION: u8 = 0;
     pub const ROI_MODE_WP_NEXT_OFFSET: u8 = 1;
     pub const ROI_MODE_SYSID: u8 = 2;
     pub const ROI_MODE_NONE: u8 = 3;
 }
 
-impl Default for GimbalManagerSetRoiReq {
+impl Default for GimbalManagerSetRoiRequest {
     fn default() -> Self {
-        GimbalManagerSetRoiReq {
+        GimbalManagerSetRoiRequest {
             mode: 0,
             gimbal_device_id: 0,
             latitude: 0.0,
@@ -37,33 +37,33 @@ impl Default for GimbalManagerSetRoiReq {
     }
 }
 
-impl ros2_client::Message for GimbalManagerSetRoiReq {}
+impl ros2_client::Message for GimbalManagerSetRoiRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GimbalManagerSetRoiRes {
+pub struct GimbalManagerSetRoiResponse {
     pub success: bool,
     pub result: u8,
 }
 
-impl Default for GimbalManagerSetRoiRes {
+impl Default for GimbalManagerSetRoiResponse {
     fn default() -> Self {
-        GimbalManagerSetRoiRes {
+        GimbalManagerSetRoiResponse {
             success: false,
             result: 0,
         }
     }
 }
 
-impl ros2_client::Message for GimbalManagerSetRoiRes {}
+impl ros2_client::Message for GimbalManagerSetRoiResponse {}
 
 
 pub struct GimbalManagerSetRoi;
 impl ros2_client::Service for GimbalManagerSetRoi {
-    type Request = GimbalManagerSetRoiReq;
-    type Response = GimbalManagerSetRoiRes;
+    type Request = GimbalManagerSetRoiRequest;
+    type Response = GimbalManagerSetRoiResponse;
 
-    fn request_type_name(&self) -> &str { "GimbalManagerSetRoiReq" }
-    fn response_type_name(&self) -> &str { "GimbalManagerSetRoiRes" }
+    fn request_type_name(&self) -> &str { "GimbalManagerSetRoiRequest" }
+    fn response_type_name(&self) -> &str { "GimbalManagerSetRoiResponse" }
 }

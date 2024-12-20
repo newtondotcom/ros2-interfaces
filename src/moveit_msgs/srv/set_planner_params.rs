@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPlannerParamsReq {
+pub struct SetPlannerParamsRequest {
     pub pipeline_id: ::std::string::String,
     pub planner_config: ::std::string::String,
     pub group: ::std::string::String,
@@ -10,9 +10,9 @@ pub struct SetPlannerParamsReq {
     pub replace: bool,
 }
 
-impl Default for SetPlannerParamsReq {
+impl Default for SetPlannerParamsRequest {
     fn default() -> Self {
-        SetPlannerParamsReq {
+        SetPlannerParamsRequest {
             pipeline_id: ::std::string::String::new(),
             planner_config: ::std::string::String::new(),
             group: ::std::string::String::new(),
@@ -22,31 +22,31 @@ impl Default for SetPlannerParamsReq {
     }
 }
 
-impl ros2_client::Message for SetPlannerParamsReq {}
+impl ros2_client::Message for SetPlannerParamsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPlannerParamsRes {
+pub struct SetPlannerParamsResponse {
 
 }
 
-impl Default for SetPlannerParamsRes {
+impl Default for SetPlannerParamsResponse {
     fn default() -> Self {
-        SetPlannerParamsRes {
+        SetPlannerParamsResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for SetPlannerParamsRes {}
+impl ros2_client::Message for SetPlannerParamsResponse {}
 
 
 pub struct SetPlannerParams;
 impl ros2_client::Service for SetPlannerParams {
-    type Request = SetPlannerParamsReq;
-    type Response = SetPlannerParamsRes;
+    type Request = SetPlannerParamsRequest;
+    type Response = SetPlannerParamsResponse;
 
-    fn request_type_name(&self) -> &str { "SetPlannerParamsReq" }
-    fn response_type_name(&self) -> &str { "SetPlannerParamsRes" }
+    fn request_type_name(&self) -> &str { "SetPlannerParamsRequest" }
+    fn response_type_name(&self) -> &str { "SetPlannerParamsResponse" }
 }

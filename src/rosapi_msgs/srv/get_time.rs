@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetTimeReq {
+pub struct GetTimeRequest {
 
 }
 
-impl Default for GetTimeReq {
+impl Default for GetTimeRequest {
     fn default() -> Self {
-        GetTimeReq {
+        GetTimeRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetTimeReq {}
+impl ros2_client::Message for GetTimeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetTimeRes {
+pub struct GetTimeResponse {
     pub time: crate::builtin_interfaces::msg::Time,
 }
 
-impl Default for GetTimeRes {
+impl Default for GetTimeResponse {
     fn default() -> Self {
-        GetTimeRes {
+        GetTimeResponse {
             time: crate::builtin_interfaces::msg::Time::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetTimeRes {}
+impl ros2_client::Message for GetTimeResponse {}
 
 
 pub struct GetTime;
 impl ros2_client::Service for GetTime {
-    type Request = GetTimeReq;
-    type Response = GetTimeRes;
+    type Request = GetTimeRequest;
+    type Response = GetTimeResponse;
 
-    fn request_type_name(&self) -> &str { "GetTimeReq" }
-    fn response_type_name(&self) -> &str { "GetTimeRes" }
+    fn request_type_name(&self) -> &str { "GetTimeRequest" }
+    fn response_type_name(&self) -> &str { "GetTimeResponse" }
 }

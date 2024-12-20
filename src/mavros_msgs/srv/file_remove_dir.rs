@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileRemoveDirReq {
+pub struct FileRemoveDirRequest {
     pub dir_path: ::std::string::String,
 }
 
-impl Default for FileRemoveDirReq {
+impl Default for FileRemoveDirRequest {
     fn default() -> Self {
-        FileRemoveDirReq {
+        FileRemoveDirRequest {
             dir_path: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for FileRemoveDirReq {}
+impl ros2_client::Message for FileRemoveDirRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileRemoveDirRes {
+pub struct FileRemoveDirResponse {
     pub success: bool,
     pub r_errno: i32,
 }
 
-impl Default for FileRemoveDirRes {
+impl Default for FileRemoveDirResponse {
     fn default() -> Self {
-        FileRemoveDirRes {
+        FileRemoveDirResponse {
             success: false,
             r_errno: 0,
         }
     }
 }
 
-impl ros2_client::Message for FileRemoveDirRes {}
+impl ros2_client::Message for FileRemoveDirResponse {}
 
 
 pub struct FileRemoveDir;
 impl ros2_client::Service for FileRemoveDir {
-    type Request = FileRemoveDirReq;
-    type Response = FileRemoveDirRes;
+    type Request = FileRemoveDirRequest;
+    type Response = FileRemoveDirResponse;
 
-    fn request_type_name(&self) -> &str { "FileRemoveDirReq" }
-    fn response_type_name(&self) -> &str { "FileRemoveDirRes" }
+    fn request_type_name(&self) -> &str { "FileRemoveDirRequest" }
+    fn response_type_name(&self) -> &str { "FileRemoveDirResponse" }
 }

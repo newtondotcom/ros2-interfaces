@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct WaypointPullReq {
+pub struct WaypointPullRequest {
 
 }
 
-impl Default for WaypointPullReq {
+impl Default for WaypointPullRequest {
     fn default() -> Self {
-        WaypointPullReq {
+        WaypointPullRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for WaypointPullReq {}
+impl ros2_client::Message for WaypointPullRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct WaypointPullRes {
+pub struct WaypointPullResponse {
     pub success: bool,
     pub wp_received: u32,
 }
 
-impl Default for WaypointPullRes {
+impl Default for WaypointPullResponse {
     fn default() -> Self {
-        WaypointPullRes {
+        WaypointPullResponse {
             success: false,
             wp_received: 0,
         }
     }
 }
 
-impl ros2_client::Message for WaypointPullRes {}
+impl ros2_client::Message for WaypointPullResponse {}
 
 
 pub struct WaypointPull;
 impl ros2_client::Service for WaypointPull {
-    type Request = WaypointPullReq;
-    type Response = WaypointPullRes;
+    type Request = WaypointPullRequest;
+    type Response = WaypointPullResponse;
 
-    fn request_type_name(&self) -> &str { "WaypointPullReq" }
-    fn response_type_name(&self) -> &str { "WaypointPullRes" }
+    fn request_type_name(&self) -> &str { "WaypointPullRequest" }
+    fn response_type_name(&self) -> &str { "WaypointPullResponse" }
 }

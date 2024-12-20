@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReviveTaskReq {
+pub struct ReviveTaskRequest {
     pub requester: ::std::string::String,
     pub task_id: ::std::string::String,
 }
 
-impl Default for ReviveTaskReq {
+impl Default for ReviveTaskRequest {
     fn default() -> Self {
-        ReviveTaskReq {
+        ReviveTaskRequest {
             requester: ::std::string::String::new(),
             task_id: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ReviveTaskReq {}
+impl ros2_client::Message for ReviveTaskRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReviveTaskRes {
+pub struct ReviveTaskResponse {
     pub success: bool,
 }
 
-impl Default for ReviveTaskRes {
+impl Default for ReviveTaskResponse {
     fn default() -> Self {
-        ReviveTaskRes {
+        ReviveTaskResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for ReviveTaskRes {}
+impl ros2_client::Message for ReviveTaskResponse {}
 
 
 pub struct ReviveTask;
 impl ros2_client::Service for ReviveTask {
-    type Request = ReviveTaskReq;
-    type Response = ReviveTaskRes;
+    type Request = ReviveTaskRequest;
+    type Response = ReviveTaskResponse;
 
-    fn request_type_name(&self) -> &str { "ReviveTaskReq" }
-    fn response_type_name(&self) -> &str { "ReviveTaskRes" }
+    fn request_type_name(&self) -> &str { "ReviveTaskRequest" }
+    fn response_type_name(&self) -> &str { "ReviveTaskResponse" }
 }

@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetROSVersionReq {
+pub struct GetROSVersionRequest {
 
 }
 
-impl Default for GetROSVersionReq {
+impl Default for GetROSVersionRequest {
     fn default() -> Self {
-        GetROSVersionReq {
+        GetROSVersionRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetROSVersionReq {}
+impl ros2_client::Message for GetROSVersionRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetROSVersionRes {
+pub struct GetROSVersionResponse {
     pub version: u8,
     pub distro: ::std::string::String,
 }
 
-impl Default for GetROSVersionRes {
+impl Default for GetROSVersionResponse {
     fn default() -> Self {
-        GetROSVersionRes {
+        GetROSVersionResponse {
             version: 0,
             distro: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetROSVersionRes {}
+impl ros2_client::Message for GetROSVersionResponse {}
 
 
 pub struct GetROSVersion;
 impl ros2_client::Service for GetROSVersion {
-    type Request = GetROSVersionReq;
-    type Response = GetROSVersionRes;
+    type Request = GetROSVersionRequest;
+    type Response = GetROSVersionResponse;
 
-    fn request_type_name(&self) -> &str { "GetROSVersionReq" }
-    fn response_type_name(&self) -> &str { "GetROSVersionRes" }
+    fn request_type_name(&self) -> &str { "GetROSVersionRequest" }
+    fn response_type_name(&self) -> &str { "GetROSVersionResponse" }
 }

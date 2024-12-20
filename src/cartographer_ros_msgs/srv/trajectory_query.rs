@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TrajectoryQueryReq {
+pub struct TrajectoryQueryRequest {
     pub trajectory_id: i32,
 }
 
-impl Default for TrajectoryQueryReq {
+impl Default for TrajectoryQueryRequest {
     fn default() -> Self {
-        TrajectoryQueryReq {
+        TrajectoryQueryRequest {
             trajectory_id: 0,
         }
     }
 }
 
-impl ros2_client::Message for TrajectoryQueryReq {}
+impl ros2_client::Message for TrajectoryQueryRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TrajectoryQueryRes {
+pub struct TrajectoryQueryResponse {
     pub status: crate::cartographer_ros_msgs::msg::StatusResponse,
     pub trajectory: Vec<crate::geometry_msgs::msg::PoseStamped>,
 }
 
-impl Default for TrajectoryQueryRes {
+impl Default for TrajectoryQueryResponse {
     fn default() -> Self {
-        TrajectoryQueryRes {
+        TrajectoryQueryResponse {
             status: crate::cartographer_ros_msgs::msg::StatusResponse::default(),
             trajectory: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for TrajectoryQueryRes {}
+impl ros2_client::Message for TrajectoryQueryResponse {}
 
 
 pub struct TrajectoryQuery;
 impl ros2_client::Service for TrajectoryQuery {
-    type Request = TrajectoryQueryReq;
-    type Response = TrajectoryQueryRes;
+    type Request = TrajectoryQueryRequest;
+    type Response = TrajectoryQueryResponse;
 
-    fn request_type_name(&self) -> &str { "TrajectoryQueryReq" }
-    fn response_type_name(&self) -> &str { "TrajectoryQueryRes" }
+    fn request_type_name(&self) -> &str { "TrajectoryQueryRequest" }
+    fn response_type_name(&self) -> &str { "TrajectoryQueryResponse" }
 }

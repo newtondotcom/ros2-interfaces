@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPoseDeprecatedReq {
+pub struct SetPoseDeprecatedRequest {
     pub pose: crate::geometry_msgs::msg::PoseWithCovarianceStamped,
 }
 
-impl Default for SetPoseDeprecatedReq {
+impl Default for SetPoseDeprecatedRequest {
     fn default() -> Self {
-        SetPoseDeprecatedReq {
+        SetPoseDeprecatedRequest {
             pose: crate::geometry_msgs::msg::PoseWithCovarianceStamped::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetPoseDeprecatedReq {}
+impl ros2_client::Message for SetPoseDeprecatedRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPoseDeprecatedRes {
+pub struct SetPoseDeprecatedResponse {
 
 }
 
-impl Default for SetPoseDeprecatedRes {
+impl Default for SetPoseDeprecatedResponse {
     fn default() -> Self {
-        SetPoseDeprecatedRes {
+        SetPoseDeprecatedResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for SetPoseDeprecatedRes {}
+impl ros2_client::Message for SetPoseDeprecatedResponse {}
 
 
 pub struct SetPoseDeprecated;
 impl ros2_client::Service for SetPoseDeprecated {
-    type Request = SetPoseDeprecatedReq;
-    type Response = SetPoseDeprecatedRes;
+    type Request = SetPoseDeprecatedRequest;
+    type Response = SetPoseDeprecatedResponse;
 
-    fn request_type_name(&self) -> &str { "SetPoseDeprecatedReq" }
-    fn response_type_name(&self) -> &str { "SetPoseDeprecatedRes" }
+    fn request_type_name(&self) -> &str { "SetPoseDeprecatedRequest" }
+    fn response_type_name(&self) -> &str { "SetPoseDeprecatedResponse" }
 }

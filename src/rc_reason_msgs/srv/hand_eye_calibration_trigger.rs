@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HandEyeCalibrationTriggerReq {
+pub struct HandEyeCalibrationTriggerRequest {
 
 }
 
-impl Default for HandEyeCalibrationTriggerReq {
+impl Default for HandEyeCalibrationTriggerRequest {
     fn default() -> Self {
-        HandEyeCalibrationTriggerReq {
+        HandEyeCalibrationTriggerRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for HandEyeCalibrationTriggerReq {}
+impl ros2_client::Message for HandEyeCalibrationTriggerRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HandEyeCalibrationTriggerRes {
+pub struct HandEyeCalibrationTriggerResponse {
     pub success: bool,
     pub status: i32,
     pub message: ::std::string::String,
 }
 
-impl Default for HandEyeCalibrationTriggerRes {
+impl Default for HandEyeCalibrationTriggerResponse {
     fn default() -> Self {
-        HandEyeCalibrationTriggerRes {
+        HandEyeCalibrationTriggerResponse {
             success: false,
             status: 0,
             message: ::std::string::String::new(),
@@ -35,14 +35,14 @@ impl Default for HandEyeCalibrationTriggerRes {
     }
 }
 
-impl ros2_client::Message for HandEyeCalibrationTriggerRes {}
+impl ros2_client::Message for HandEyeCalibrationTriggerResponse {}
 
 
 pub struct HandEyeCalibrationTrigger;
 impl ros2_client::Service for HandEyeCalibrationTrigger {
-    type Request = HandEyeCalibrationTriggerReq;
-    type Response = HandEyeCalibrationTriggerRes;
+    type Request = HandEyeCalibrationTriggerRequest;
+    type Response = HandEyeCalibrationTriggerResponse;
 
-    fn request_type_name(&self) -> &str { "HandEyeCalibrationTriggerReq" }
-    fn response_type_name(&self) -> &str { "HandEyeCalibrationTriggerRes" }
+    fn request_type_name(&self) -> &str { "HandEyeCalibrationTriggerRequest" }
+    fn response_type_name(&self) -> &str { "HandEyeCalibrationTriggerResponse" }
 }

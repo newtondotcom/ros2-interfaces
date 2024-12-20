@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct EStopReq {
+pub struct EStopRequest {
     pub e_stop_on: bool,
 }
 
-impl Default for EStopReq {
+impl Default for EStopRequest {
     fn default() -> Self {
-        EStopReq {
+        EStopRequest {
             e_stop_on: false,
         }
     }
 }
 
-impl ros2_client::Message for EStopReq {}
+impl ros2_client::Message for EStopRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct EStopRes {
+pub struct EStopResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for EStopRes {
+impl Default for EStopResponse {
     fn default() -> Self {
-        EStopRes {
+        EStopResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for EStopRes {}
+impl ros2_client::Message for EStopResponse {}
 
 
 pub struct EStop;
 impl ros2_client::Service for EStop {
-    type Request = EStopReq;
-    type Response = EStopRes;
+    type Request = EStopRequest;
+    type Response = EStopResponse;
 
-    fn request_type_name(&self) -> &str { "EStopReq" }
-    fn response_type_name(&self) -> &str { "EStopRes" }
+    fn request_type_name(&self) -> &str { "EStopRequest" }
+    fn response_type_name(&self) -> &str { "EStopResponse" }
 }

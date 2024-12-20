@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TestEmptyReq {
+pub struct TestEmptyRequest {
 
 }
 
-impl Default for TestEmptyReq {
+impl Default for TestEmptyRequest {
     fn default() -> Self {
-        TestEmptyReq {
+        TestEmptyRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for TestEmptyReq {}
+impl ros2_client::Message for TestEmptyRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TestEmptyRes {
+pub struct TestEmptyResponse {
 
 }
 
-impl Default for TestEmptyRes {
+impl Default for TestEmptyResponse {
     fn default() -> Self {
-        TestEmptyRes {
+        TestEmptyResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for TestEmptyRes {}
+impl ros2_client::Message for TestEmptyResponse {}
 
 
 pub struct TestEmpty;
 impl ros2_client::Service for TestEmpty {
-    type Request = TestEmptyReq;
-    type Response = TestEmptyRes;
+    type Request = TestEmptyRequest;
+    type Response = TestEmptyResponse;
 
-    fn request_type_name(&self) -> &str { "TestEmptyReq" }
-    fn response_type_name(&self) -> &str { "TestEmptyRes" }
+    fn request_type_name(&self) -> &str { "TestEmptyRequest" }
+    fn response_type_name(&self) -> &str { "TestEmptyResponse" }
 }

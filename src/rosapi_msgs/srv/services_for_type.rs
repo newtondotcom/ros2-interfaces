@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ServicesForTypeReq {
+pub struct ServicesForTypeRequest {
     #[serde(rename = "type")]    pub type_: ::std::string::String,
 }
 
-impl Default for ServicesForTypeReq {
+impl Default for ServicesForTypeRequest {
     fn default() -> Self {
-        ServicesForTypeReq {
+        ServicesForTypeRequest {
             type_: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ServicesForTypeReq {}
+impl ros2_client::Message for ServicesForTypeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ServicesForTypeRes {
+pub struct ServicesForTypeResponse {
     pub services: Vec<::std::string::String>,
 }
 
-impl Default for ServicesForTypeRes {
+impl Default for ServicesForTypeResponse {
     fn default() -> Self {
-        ServicesForTypeRes {
+        ServicesForTypeResponse {
             services: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ServicesForTypeRes {}
+impl ros2_client::Message for ServicesForTypeResponse {}
 
 
 pub struct ServicesForType;
 impl ros2_client::Service for ServicesForType {
-    type Request = ServicesForTypeReq;
-    type Response = ServicesForTypeRes;
+    type Request = ServicesForTypeRequest;
+    type Response = ServicesForTypeResponse;
 
-    fn request_type_name(&self) -> &str { "ServicesForTypeReq" }
-    fn response_type_name(&self) -> &str { "ServicesForTypeRes" }
+    fn request_type_name(&self) -> &str { "ServicesForTypeRequest" }
+    fn response_type_name(&self) -> &str { "ServicesForTypeResponse" }
 }

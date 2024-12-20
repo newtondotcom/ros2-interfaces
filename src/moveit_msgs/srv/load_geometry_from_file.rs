@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LoadGeometryFromFileReq {
+pub struct LoadGeometryFromFileRequest {
     pub file_path_and_name: ::std::string::String,
 }
 
-impl Default for LoadGeometryFromFileReq {
+impl Default for LoadGeometryFromFileRequest {
     fn default() -> Self {
-        LoadGeometryFromFileReq {
+        LoadGeometryFromFileRequest {
             file_path_and_name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for LoadGeometryFromFileReq {}
+impl ros2_client::Message for LoadGeometryFromFileRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LoadGeometryFromFileRes {
+pub struct LoadGeometryFromFileResponse {
     pub success: bool,
 }
 
-impl Default for LoadGeometryFromFileRes {
+impl Default for LoadGeometryFromFileResponse {
     fn default() -> Self {
-        LoadGeometryFromFileRes {
+        LoadGeometryFromFileResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for LoadGeometryFromFileRes {}
+impl ros2_client::Message for LoadGeometryFromFileResponse {}
 
 
 pub struct LoadGeometryFromFile;
 impl ros2_client::Service for LoadGeometryFromFile {
-    type Request = LoadGeometryFromFileReq;
-    type Response = LoadGeometryFromFileRes;
+    type Request = LoadGeometryFromFileRequest;
+    type Response = LoadGeometryFromFileResponse;
 
-    fn request_type_name(&self) -> &str { "LoadGeometryFromFileReq" }
-    fn response_type_name(&self) -> &str { "LoadGeometryFromFileRes" }
+    fn request_type_name(&self) -> &str { "LoadGeometryFromFileRequest" }
+    fn response_type_name(&self) -> &str { "LoadGeometryFromFileResponse" }
 }

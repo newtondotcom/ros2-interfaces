@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxSelectReq {
+pub struct MuxSelectRequest {
     pub topic: ::std::string::String,
 }
 
-impl Default for MuxSelectReq {
+impl Default for MuxSelectRequest {
     fn default() -> Self {
-        MuxSelectReq {
+        MuxSelectRequest {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for MuxSelectReq {}
+impl ros2_client::Message for MuxSelectRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxSelectRes {
+pub struct MuxSelectResponse {
     pub prev_topic: ::std::string::String,
     pub success: bool,
 }
 
-impl Default for MuxSelectRes {
+impl Default for MuxSelectResponse {
     fn default() -> Self {
-        MuxSelectRes {
+        MuxSelectResponse {
             prev_topic: ::std::string::String::new(),
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for MuxSelectRes {}
+impl ros2_client::Message for MuxSelectResponse {}
 
 
 pub struct MuxSelect;
 impl ros2_client::Service for MuxSelect {
-    type Request = MuxSelectReq;
-    type Response = MuxSelectRes;
+    type Request = MuxSelectRequest;
+    type Response = MuxSelectResponse;
 
-    fn request_type_name(&self) -> &str { "MuxSelectReq" }
-    fn response_type_name(&self) -> &str { "MuxSelectRes" }
+    fn request_type_name(&self) -> &str { "MuxSelectRequest" }
+    fn response_type_name(&self) -> &str { "MuxSelectResponse" }
 }

@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DemuxSelectReq {
+pub struct DemuxSelectRequest {
     pub topic: ::std::string::String,
 }
 
-impl Default for DemuxSelectReq {
+impl Default for DemuxSelectRequest {
     fn default() -> Self {
-        DemuxSelectReq {
+        DemuxSelectRequest {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for DemuxSelectReq {}
+impl ros2_client::Message for DemuxSelectRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DemuxSelectRes {
+pub struct DemuxSelectResponse {
     pub prev_topic: ::std::string::String,
     pub success: bool,
 }
 
-impl Default for DemuxSelectRes {
+impl Default for DemuxSelectResponse {
     fn default() -> Self {
-        DemuxSelectRes {
+        DemuxSelectResponse {
             prev_topic: ::std::string::String::new(),
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for DemuxSelectRes {}
+impl ros2_client::Message for DemuxSelectResponse {}
 
 
 pub struct DemuxSelect;
 impl ros2_client::Service for DemuxSelect {
-    type Request = DemuxSelectReq;
-    type Response = DemuxSelectRes;
+    type Request = DemuxSelectRequest;
+    type Response = DemuxSelectResponse;
 
-    fn request_type_name(&self) -> &str { "DemuxSelectReq" }
-    fn response_type_name(&self) -> &str { "DemuxSelectRes" }
+    fn request_type_name(&self) -> &str { "DemuxSelectRequest" }
+    fn response_type_name(&self) -> &str { "DemuxSelectResponse" }
 }

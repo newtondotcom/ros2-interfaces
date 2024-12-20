@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BurstReq {
+pub struct BurstRequest {
     pub num_messages: u64,
 }
 
-impl Default for BurstReq {
+impl Default for BurstRequest {
     fn default() -> Self {
-        BurstReq {
+        BurstRequest {
             num_messages: 0,
         }
     }
 }
 
-impl ros2_client::Message for BurstReq {}
+impl ros2_client::Message for BurstRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BurstRes {
+pub struct BurstResponse {
     pub actually_burst: u64,
 }
 
-impl Default for BurstRes {
+impl Default for BurstResponse {
     fn default() -> Self {
-        BurstRes {
+        BurstResponse {
             actually_burst: 0,
         }
     }
 }
 
-impl ros2_client::Message for BurstRes {}
+impl ros2_client::Message for BurstResponse {}
 
 
 pub struct Burst;
 impl ros2_client::Service for Burst {
-    type Request = BurstReq;
-    type Response = BurstRes;
+    type Request = BurstRequest;
+    type Response = BurstResponse;
 
-    fn request_type_name(&self) -> &str { "BurstReq" }
-    fn response_type_name(&self) -> &str { "BurstRes" }
+    fn request_type_name(&self) -> &str { "BurstRequest" }
+    fn response_type_name(&self) -> &str { "BurstResponse" }
 }

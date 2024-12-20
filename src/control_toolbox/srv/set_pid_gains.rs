@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPidGainsReq {
+pub struct SetPidGainsRequest {
     pub p: f64,
     pub i: f64,
     pub d: f64,
@@ -10,9 +10,9 @@ pub struct SetPidGainsReq {
     pub antiwindup: bool,
 }
 
-impl Default for SetPidGainsReq {
+impl Default for SetPidGainsRequest {
     fn default() -> Self {
-        SetPidGainsReq {
+        SetPidGainsRequest {
             p: 0.0,
             i: 0.0,
             d: 0.0,
@@ -22,31 +22,31 @@ impl Default for SetPidGainsReq {
     }
 }
 
-impl ros2_client::Message for SetPidGainsReq {}
+impl ros2_client::Message for SetPidGainsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetPidGainsRes {
+pub struct SetPidGainsResponse {
 
 }
 
-impl Default for SetPidGainsRes {
+impl Default for SetPidGainsResponse {
     fn default() -> Self {
-        SetPidGainsRes {
+        SetPidGainsResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for SetPidGainsRes {}
+impl ros2_client::Message for SetPidGainsResponse {}
 
 
 pub struct SetPidGains;
 impl ros2_client::Service for SetPidGains {
-    type Request = SetPidGainsReq;
-    type Response = SetPidGainsRes;
+    type Request = SetPidGainsRequest;
+    type Response = SetPidGainsResponse;
 
-    fn request_type_name(&self) -> &str { "SetPidGainsReq" }
-    fn response_type_name(&self) -> &str { "SetPidGainsRes" }
+    fn request_type_name(&self) -> &str { "SetPidGainsRequest" }
+    fn response_type_name(&self) -> &str { "SetPidGainsResponse" }
 }

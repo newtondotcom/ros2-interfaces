@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReloadControllerLibrariesReq {
+pub struct ReloadControllerLibrariesRequest {
     pub force_kill: bool,
 }
 
-impl Default for ReloadControllerLibrariesReq {
+impl Default for ReloadControllerLibrariesRequest {
     fn default() -> Self {
-        ReloadControllerLibrariesReq {
+        ReloadControllerLibrariesRequest {
             force_kill: false,
         }
     }
 }
 
-impl ros2_client::Message for ReloadControllerLibrariesReq {}
+impl ros2_client::Message for ReloadControllerLibrariesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReloadControllerLibrariesRes {
+pub struct ReloadControllerLibrariesResponse {
     pub ok: bool,
 }
 
-impl Default for ReloadControllerLibrariesRes {
+impl Default for ReloadControllerLibrariesResponse {
     fn default() -> Self {
-        ReloadControllerLibrariesRes {
+        ReloadControllerLibrariesResponse {
             ok: false,
         }
     }
 }
 
-impl ros2_client::Message for ReloadControllerLibrariesRes {}
+impl ros2_client::Message for ReloadControllerLibrariesResponse {}
 
 
 pub struct ReloadControllerLibraries;
 impl ros2_client::Service for ReloadControllerLibraries {
-    type Request = ReloadControllerLibrariesReq;
-    type Response = ReloadControllerLibrariesRes;
+    type Request = ReloadControllerLibrariesRequest;
+    type Response = ReloadControllerLibrariesResponse;
 
-    fn request_type_name(&self) -> &str { "ReloadControllerLibrariesReq" }
-    fn response_type_name(&self) -> &str { "ReloadControllerLibrariesRes" }
+    fn request_type_name(&self) -> &str { "ReloadControllerLibrariesRequest" }
+    fn response_type_name(&self) -> &str { "ReloadControllerLibrariesResponse" }
 }

@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ProjectedMapsInfoReq {
+pub struct ProjectedMapsInfoRequest {
     pub projected_maps_info: Vec<crate::map_msgs::msg::ProjectedMapInfo>,
 }
 
-impl Default for ProjectedMapsInfoReq {
+impl Default for ProjectedMapsInfoRequest {
     fn default() -> Self {
-        ProjectedMapsInfoReq {
+        ProjectedMapsInfoRequest {
             projected_maps_info: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ProjectedMapsInfoReq {}
+impl ros2_client::Message for ProjectedMapsInfoRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ProjectedMapsInfoRes {
+pub struct ProjectedMapsInfoResponse {
 
 }
 
-impl Default for ProjectedMapsInfoRes {
+impl Default for ProjectedMapsInfoResponse {
     fn default() -> Self {
-        ProjectedMapsInfoRes {
+        ProjectedMapsInfoResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for ProjectedMapsInfoRes {}
+impl ros2_client::Message for ProjectedMapsInfoResponse {}
 
 
 pub struct ProjectedMapsInfo;
 impl ros2_client::Service for ProjectedMapsInfo {
-    type Request = ProjectedMapsInfoReq;
-    type Response = ProjectedMapsInfoRes;
+    type Request = ProjectedMapsInfoRequest;
+    type Response = ProjectedMapsInfoResponse;
 
-    fn request_type_name(&self) -> &str { "ProjectedMapsInfoReq" }
-    fn response_type_name(&self) -> &str { "ProjectedMapsInfoRes" }
+    fn request_type_name(&self) -> &str { "ProjectedMapsInfoRequest" }
+    fn response_type_name(&self) -> &str { "ProjectedMapsInfoResponse" }
 }

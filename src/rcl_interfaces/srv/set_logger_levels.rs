@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetLoggerLevelsReq {
+pub struct SetLoggerLevelsRequest {
     pub levels: Vec<crate::rcl_interfaces::msg::LoggerLevel>,
 }
 
-impl Default for SetLoggerLevelsReq {
+impl Default for SetLoggerLevelsRequest {
     fn default() -> Self {
-        SetLoggerLevelsReq {
+        SetLoggerLevelsRequest {
             levels: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetLoggerLevelsReq {}
+impl ros2_client::Message for SetLoggerLevelsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetLoggerLevelsRes {
+pub struct SetLoggerLevelsResponse {
     pub results: Vec<crate::rcl_interfaces::msg::SetLoggerLevelsResult>,
 }
 
-impl Default for SetLoggerLevelsRes {
+impl Default for SetLoggerLevelsResponse {
     fn default() -> Self {
-        SetLoggerLevelsRes {
+        SetLoggerLevelsResponse {
             results: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetLoggerLevelsRes {}
+impl ros2_client::Message for SetLoggerLevelsResponse {}
 
 
 pub struct SetLoggerLevels;
 impl ros2_client::Service for SetLoggerLevels {
-    type Request = SetLoggerLevelsReq;
-    type Response = SetLoggerLevelsRes;
+    type Request = SetLoggerLevelsRequest;
+    type Response = SetLoggerLevelsResponse;
 
-    fn request_type_name(&self) -> &str { "SetLoggerLevelsReq" }
-    fn response_type_name(&self) -> &str { "SetLoggerLevelsRes" }
+    fn request_type_name(&self) -> &str { "SetLoggerLevelsRequest" }
+    fn response_type_name(&self) -> &str { "SetLoggerLevelsResponse" }
 }

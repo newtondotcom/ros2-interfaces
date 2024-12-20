@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReconfigureSnapshotStreamReq {
+pub struct ReconfigureSnapshotStreamRequest {
     pub topic_name: ::std::string::String,
     pub parameters: crate::py_trees_ros_interfaces::msg::SnapshotStreamParameters,
 }
 
-impl Default for ReconfigureSnapshotStreamReq {
+impl Default for ReconfigureSnapshotStreamRequest {
     fn default() -> Self {
-        ReconfigureSnapshotStreamReq {
+        ReconfigureSnapshotStreamRequest {
             topic_name: ::std::string::String::new(),
             parameters: crate::py_trees_ros_interfaces::msg::SnapshotStreamParameters::default(),
         }
     }
 }
 
-impl ros2_client::Message for ReconfigureSnapshotStreamReq {}
+impl ros2_client::Message for ReconfigureSnapshotStreamRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ReconfigureSnapshotStreamRes {
+pub struct ReconfigureSnapshotStreamResponse {
     pub result: bool,
 }
 
-impl Default for ReconfigureSnapshotStreamRes {
+impl Default for ReconfigureSnapshotStreamResponse {
     fn default() -> Self {
-        ReconfigureSnapshotStreamRes {
+        ReconfigureSnapshotStreamResponse {
             result: false,
         }
     }
 }
 
-impl ros2_client::Message for ReconfigureSnapshotStreamRes {}
+impl ros2_client::Message for ReconfigureSnapshotStreamResponse {}
 
 
 pub struct ReconfigureSnapshotStream;
 impl ros2_client::Service for ReconfigureSnapshotStream {
-    type Request = ReconfigureSnapshotStreamReq;
-    type Response = ReconfigureSnapshotStreamRes;
+    type Request = ReconfigureSnapshotStreamRequest;
+    type Response = ReconfigureSnapshotStreamResponse;
 
-    fn request_type_name(&self) -> &str { "ReconfigureSnapshotStreamReq" }
-    fn response_type_name(&self) -> &str { "ReconfigureSnapshotStreamRes" }
+    fn request_type_name(&self) -> &str { "ReconfigureSnapshotStreamRequest" }
+    fn response_type_name(&self) -> &str { "ReconfigureSnapshotStreamResponse" }
 }

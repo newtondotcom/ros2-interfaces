@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListNodesReq {
+pub struct ListNodesRequest {
 
 }
 
-impl Default for ListNodesReq {
+impl Default for ListNodesRequest {
     fn default() -> Self {
-        ListNodesReq {
+        ListNodesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ListNodesReq {}
+impl ros2_client::Message for ListNodesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListNodesRes {
+pub struct ListNodesResponse {
     pub full_node_names: Vec<::std::string::String>,
     pub unique_ids: Vec<u64>,
 }
 
-impl Default for ListNodesRes {
+impl Default for ListNodesResponse {
     fn default() -> Self {
-        ListNodesRes {
+        ListNodesResponse {
             full_node_names: Vec::new(),
             unique_ids: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ListNodesRes {}
+impl ros2_client::Message for ListNodesResponse {}
 
 
 pub struct ListNodes;
 impl ros2_client::Service for ListNodes {
-    type Request = ListNodesReq;
-    type Response = ListNodesRes;
+    type Request = ListNodesRequest;
+    type Response = ListNodesResponse;
 
-    fn request_type_name(&self) -> &str { "ListNodesReq" }
-    fn response_type_name(&self) -> &str { "ListNodesRes" }
+    fn request_type_name(&self) -> &str { "ListNodesRequest" }
+    fn response_type_name(&self) -> &str { "ListNodesResponse" }
 }

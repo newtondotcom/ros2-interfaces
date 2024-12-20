@@ -2,47 +2,47 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetRouteReq {
+pub struct SetRouteRequest {
     pub guid: ::std::string::String,
     pub repeat: bool,
 }
 
-impl Default for SetRouteReq {
+impl Default for SetRouteRequest {
     fn default() -> Self {
-        SetRouteReq {
+        SetRouteRequest {
             guid: ::std::string::String::new(),
             repeat: false,
         }
     }
 }
 
-impl ros2_client::Message for SetRouteReq {}
+impl ros2_client::Message for SetRouteRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetRouteRes {
+pub struct SetRouteResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for SetRouteRes {
+impl Default for SetRouteResponse {
     fn default() -> Self {
-        SetRouteRes {
+        SetRouteResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetRouteRes {}
+impl ros2_client::Message for SetRouteResponse {}
 
 
 pub struct SetRoute;
 impl ros2_client::Service for SetRoute {
-    type Request = SetRouteReq;
-    type Response = SetRouteRes;
+    type Request = SetRouteRequest;
+    type Response = SetRouteResponse;
 
-    fn request_type_name(&self) -> &str { "SetRouteReq" }
-    fn response_type_name(&self) -> &str { "SetRouteRes" }
+    fn request_type_name(&self) -> &str { "SetRouteRequest" }
+    fn response_type_name(&self) -> &str { "SetRouteResponse" }
 }

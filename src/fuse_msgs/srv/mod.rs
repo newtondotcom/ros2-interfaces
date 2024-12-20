@@ -1,12 +1,12 @@
 mod set_graph;
 pub use set_graph::SetGraph;
-pub use set_graph::SetGraphReq;
-pub use set_graph::SetGraphRes;
+pub use set_graph::SetGraphRequest;
+pub use set_graph::SetGraphResponse;
 mod set_pose_deprecated;
 pub use set_pose_deprecated::SetPoseDeprecated;
-pub use set_pose_deprecated::SetPoseDeprecatedReq;
-pub use set_pose_deprecated::SetPoseDeprecatedRes;
+pub use set_pose_deprecated::SetPoseDeprecatedRequest;
+pub use set_pose_deprecated::SetPoseDeprecatedResponse;
 mod set_pose;
 pub use set_pose::SetPose;
-pub use set_pose::SetPoseReq;
-pub use set_pose::SetPoseRes;
+pub use set_pose::SetPoseRequest;
+pub use set_pose::SetPoseResponse;

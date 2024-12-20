@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ApiServiceReq {
+pub struct ApiServiceRequest {
     pub json_msg: ::std::string::String,
 }
 
-impl Default for ApiServiceReq {
+impl Default for ApiServiceRequest {
     fn default() -> Self {
-        ApiServiceReq {
+        ApiServiceRequest {
             json_msg: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ApiServiceReq {}
+impl ros2_client::Message for ApiServiceRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ApiServiceRes {
+pub struct ApiServiceResponse {
     pub json_msg: ::std::string::String,
 }
 
-impl Default for ApiServiceRes {
+impl Default for ApiServiceResponse {
     fn default() -> Self {
-        ApiServiceRes {
+        ApiServiceResponse {
             json_msg: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ApiServiceRes {}
+impl ros2_client::Message for ApiServiceResponse {}
 
 
 pub struct ApiService;
 impl ros2_client::Service for ApiService {
-    type Request = ApiServiceReq;
-    type Response = ApiServiceRes;
+    type Request = ApiServiceRequest;
+    type Response = ApiServiceResponse;
 
-    fn request_type_name(&self) -> &str { "ApiServiceReq" }
-    fn response_type_name(&self) -> &str { "ApiServiceRes" }
+    fn request_type_name(&self) -> &str { "ApiServiceRequest" }
+    fn response_type_name(&self) -> &str { "ApiServiceResponse" }
 }

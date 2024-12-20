@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HasParamReq {
+pub struct HasParamRequest {
     pub name: ::std::string::String,
 }
 
-impl Default for HasParamReq {
+impl Default for HasParamRequest {
     fn default() -> Self {
-        HasParamReq {
+        HasParamRequest {
             name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for HasParamReq {}
+impl ros2_client::Message for HasParamRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HasParamRes {
+pub struct HasParamResponse {
     pub exists: bool,
 }
 
-impl Default for HasParamRes {
+impl Default for HasParamResponse {
     fn default() -> Self {
-        HasParamRes {
+        HasParamResponse {
             exists: false,
         }
     }
 }
 
-impl ros2_client::Message for HasParamRes {}
+impl ros2_client::Message for HasParamResponse {}
 
 
 pub struct HasParam;
 impl ros2_client::Service for HasParam {
-    type Request = HasParamReq;
-    type Response = HasParamRes;
+    type Request = HasParamRequest;
+    type Response = HasParamResponse;
 
-    fn request_type_name(&self) -> &str { "HasParamReq" }
-    fn response_type_name(&self) -> &str { "HasParamRes" }
+    fn request_type_name(&self) -> &str { "HasParamRequest" }
+    fn response_type_name(&self) -> &str { "HasParamResponse" }
 }

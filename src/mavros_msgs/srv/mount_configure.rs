@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MountConfigureReq {
+pub struct MountConfigureRequest {
     pub header: crate::std_msgs::msg::Header,
     pub mode: u8,
     pub stabilize_roll: bool,
@@ -13,7 +13,7 @@ pub struct MountConfigureReq {
     pub yaw_input: u8,
 }
 
-impl MountConfigureReq {
+impl MountConfigureRequest {
     pub const MODE_RETRACT: u8 = 0;
     pub const MODE_NEUTRAL: u8 = 1;
     pub const MODE_MAVLINK_TARGETING: u8 = 2;
@@ -24,9 +24,9 @@ impl MountConfigureReq {
     pub const INPUT_ANGLE_ABSOLUTE_FRAME: u8 = 2;
 }
 
-impl Default for MountConfigureReq {
+impl Default for MountConfigureRequest {
     fn default() -> Self {
-        MountConfigureReq {
+        MountConfigureRequest {
             header: crate::std_msgs::msg::Header::default(),
             mode: 0,
             stabilize_roll: false,
@@ -39,33 +39,33 @@ impl Default for MountConfigureReq {
     }
 }
 
-impl ros2_client::Message for MountConfigureReq {}
+impl ros2_client::Message for MountConfigureRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MountConfigureRes {
+pub struct MountConfigureResponse {
     pub success: bool,
     pub result: u8,
 }
 
-impl Default for MountConfigureRes {
+impl Default for MountConfigureResponse {
     fn default() -> Self {
-        MountConfigureRes {
+        MountConfigureResponse {
             success: false,
             result: 0,
         }
     }
 }
 
-impl ros2_client::Message for MountConfigureRes {}
+impl ros2_client::Message for MountConfigureResponse {}
 
 
 pub struct MountConfigure;
 impl ros2_client::Service for MountConfigure {
-    type Request = MountConfigureReq;
-    type Response = MountConfigureRes;
+    type Request = MountConfigureRequest;
+    type Response = MountConfigureResponse;
 
-    fn request_type_name(&self) -> &str { "MountConfigureReq" }
-    fn response_type_name(&self) -> &str { "MountConfigureRes" }
+    fn request_type_name(&self) -> &str { "MountConfigureRequest" }
+    fn response_type_name(&self) -> &str { "MountConfigureResponse" }
 }

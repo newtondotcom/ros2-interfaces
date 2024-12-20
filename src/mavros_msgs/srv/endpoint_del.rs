@@ -2,21 +2,21 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct EndpointDelReq {
+pub struct EndpointDelRequest {
     pub id: u32,
     pub url: ::std::string::String,
     #[serde(rename = "type")]    pub type_: u8,
 }
 
-impl EndpointDelReq {
+impl EndpointDelRequest {
     pub const TYPE_FCU: u8 = 0;
     pub const TYPE_GCS: u8 = 1;
     pub const TYPE_UAS: u8 = 2;
 }
 
-impl Default for EndpointDelReq {
+impl Default for EndpointDelRequest {
     fn default() -> Self {
-        EndpointDelReq {
+        EndpointDelRequest {
             id: 0,
             url: ::std::string::String::new(),
             type_: 0,
@@ -24,31 +24,31 @@ impl Default for EndpointDelReq {
     }
 }
 
-impl ros2_client::Message for EndpointDelReq {}
+impl ros2_client::Message for EndpointDelRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct EndpointDelRes {
+pub struct EndpointDelResponse {
     pub successful: bool,
 }
 
-impl Default for EndpointDelRes {
+impl Default for EndpointDelResponse {
     fn default() -> Self {
-        EndpointDelRes {
+        EndpointDelResponse {
             successful: false,
         }
     }
 }
 
-impl ros2_client::Message for EndpointDelRes {}
+impl ros2_client::Message for EndpointDelResponse {}
 
 
 pub struct EndpointDel;
 impl ros2_client::Service for EndpointDel {
-    type Request = EndpointDelReq;
-    type Response = EndpointDelRes;
+    type Request = EndpointDelRequest;
+    type Response = EndpointDelResponse;
 
-    fn request_type_name(&self) -> &str { "EndpointDelReq" }
-    fn response_type_name(&self) -> &str { "EndpointDelRes" }
+    fn request_type_name(&self) -> &str { "EndpointDelRequest" }
+    fn response_type_name(&self) -> &str { "EndpointDelResponse" }
 }

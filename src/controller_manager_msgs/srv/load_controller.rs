@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LoadControllerReq {
+pub struct LoadControllerRequest {
     pub name: ::std::string::String,
 }
 
-impl Default for LoadControllerReq {
+impl Default for LoadControllerRequest {
     fn default() -> Self {
-        LoadControllerReq {
+        LoadControllerRequest {
             name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for LoadControllerReq {}
+impl ros2_client::Message for LoadControllerRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LoadControllerRes {
+pub struct LoadControllerResponse {
     pub ok: bool,
 }
 
-impl Default for LoadControllerRes {
+impl Default for LoadControllerResponse {
     fn default() -> Self {
-        LoadControllerRes {
+        LoadControllerResponse {
             ok: false,
         }
     }
 }
 
-impl ros2_client::Message for LoadControllerRes {}
+impl ros2_client::Message for LoadControllerResponse {}
 
 
 pub struct LoadController;
 impl ros2_client::Service for LoadController {
-    type Request = LoadControllerReq;
-    type Response = LoadControllerRes;
+    type Request = LoadControllerRequest;
+    type Response = LoadControllerResponse;
 
-    fn request_type_name(&self) -> &str { "LoadControllerReq" }
-    fn response_type_name(&self) -> &str { "LoadControllerRes" }
+    fn request_type_name(&self) -> &str { "LoadControllerRequest" }
+    fn response_type_name(&self) -> &str { "LoadControllerResponse" }
 }

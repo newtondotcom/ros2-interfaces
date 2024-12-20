@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SaveRobotStateToWarehouseReq {
+pub struct SaveRobotStateToWarehouseRequest {
     pub name: ::std::string::String,
     pub robot: ::std::string::String,
     pub state: crate::moveit_msgs::msg::RobotState,
 }
 
-impl Default for SaveRobotStateToWarehouseReq {
+impl Default for SaveRobotStateToWarehouseRequest {
     fn default() -> Self {
-        SaveRobotStateToWarehouseReq {
+        SaveRobotStateToWarehouseRequest {
             name: ::std::string::String::new(),
             robot: ::std::string::String::new(),
             state: crate::moveit_msgs::msg::RobotState::default(),
@@ -18,31 +18,31 @@ impl Default for SaveRobotStateToWarehouseReq {
     }
 }
 
-impl ros2_client::Message for SaveRobotStateToWarehouseReq {}
+impl ros2_client::Message for SaveRobotStateToWarehouseRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SaveRobotStateToWarehouseRes {
+pub struct SaveRobotStateToWarehouseResponse {
     pub success: bool,
 }
 
-impl Default for SaveRobotStateToWarehouseRes {
+impl Default for SaveRobotStateToWarehouseResponse {
     fn default() -> Self {
-        SaveRobotStateToWarehouseRes {
+        SaveRobotStateToWarehouseResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SaveRobotStateToWarehouseRes {}
+impl ros2_client::Message for SaveRobotStateToWarehouseResponse {}
 
 
 pub struct SaveRobotStateToWarehouse;
 impl ros2_client::Service for SaveRobotStateToWarehouse {
-    type Request = SaveRobotStateToWarehouseReq;
-    type Response = SaveRobotStateToWarehouseRes;
+    type Request = SaveRobotStateToWarehouseRequest;
+    type Response = SaveRobotStateToWarehouseResponse;
 
-    fn request_type_name(&self) -> &str { "SaveRobotStateToWarehouseReq" }
-    fn response_type_name(&self) -> &str { "SaveRobotStateToWarehouseRes" }
+    fn request_type_name(&self) -> &str { "SaveRobotStateToWarehouseRequest" }
+    fn response_type_name(&self) -> &str { "SaveRobotStateToWarehouseResponse" }
 }

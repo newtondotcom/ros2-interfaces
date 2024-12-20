@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IntrospectPublishersReq {
+pub struct IntrospectPublishersRequest {
 
 }
 
-impl Default for IntrospectPublishersReq {
+impl Default for IntrospectPublishersRequest {
     fn default() -> Self {
-        IntrospectPublishersReq {
+        IntrospectPublishersRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for IntrospectPublishersReq {}
+impl ros2_client::Message for IntrospectPublishersRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IntrospectPublishersRes {
+pub struct IntrospectPublishersResponse {
     pub publisher_details: Vec<crate::py_trees_ros_interfaces::msg::PublisherDetails>,
 }
 
-impl Default for IntrospectPublishersRes {
+impl Default for IntrospectPublishersResponse {
     fn default() -> Self {
-        IntrospectPublishersRes {
+        IntrospectPublishersResponse {
             publisher_details: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for IntrospectPublishersRes {}
+impl ros2_client::Message for IntrospectPublishersResponse {}
 
 
 pub struct IntrospectPublishers;
 impl ros2_client::Service for IntrospectPublishers {
-    type Request = IntrospectPublishersReq;
-    type Response = IntrospectPublishersRes;
+    type Request = IntrospectPublishersRequest;
+    type Response = IntrospectPublishersResponse;
 
-    fn request_type_name(&self) -> &str { "IntrospectPublishersReq" }
-    fn response_type_name(&self) -> &str { "IntrospectPublishersRes" }
+    fn request_type_name(&self) -> &str { "IntrospectPublishersRequest" }
+    fn response_type_name(&self) -> &str { "IntrospectPublishersResponse" }
 }

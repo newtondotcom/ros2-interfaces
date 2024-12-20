@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SwitchControllerReq {
+pub struct SwitchControllerRequest {
     pub activate_controllers: Vec<::std::string::String>,
     pub deactivate_controllers: Vec<::std::string::String>,
     pub strictness: i32,
@@ -10,14 +10,14 @@ pub struct SwitchControllerReq {
     pub timeout: crate::builtin_interfaces::msg::Duration,
 }
 
-impl SwitchControllerReq {
+impl SwitchControllerRequest {
     pub const BEST_EFFORT: i32 = 1;
     pub const STRICT: i32 = 2;
 }
 
-impl Default for SwitchControllerReq {
+impl Default for SwitchControllerRequest {
     fn default() -> Self {
-        SwitchControllerReq {
+        SwitchControllerRequest {
             activate_controllers: Vec::new(),
             deactivate_controllers: Vec::new(),
             strictness: 0,
@@ -27,31 +27,31 @@ impl Default for SwitchControllerReq {
     }
 }
 
-impl ros2_client::Message for SwitchControllerReq {}
+impl ros2_client::Message for SwitchControllerRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SwitchControllerRes {
+pub struct SwitchControllerResponse {
     pub ok: bool,
 }
 
-impl Default for SwitchControllerRes {
+impl Default for SwitchControllerResponse {
     fn default() -> Self {
-        SwitchControllerRes {
+        SwitchControllerResponse {
             ok: false,
         }
     }
 }
 
-impl ros2_client::Message for SwitchControllerRes {}
+impl ros2_client::Message for SwitchControllerResponse {}
 
 
 pub struct SwitchController;
 impl ros2_client::Service for SwitchController {
-    type Request = SwitchControllerReq;
-    type Response = SwitchControllerRes;
+    type Request = SwitchControllerRequest;
+    type Response = SwitchControllerResponse;
 
-    fn request_type_name(&self) -> &str { "SwitchControllerReq" }
-    fn response_type_name(&self) -> &str { "SwitchControllerRes" }
+    fn request_type_name(&self) -> &str { "SwitchControllerRequest" }
+    fn response_type_name(&self) -> &str { "SwitchControllerResponse" }
 }

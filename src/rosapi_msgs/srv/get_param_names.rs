@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetParamNamesReq {
+pub struct GetParamNamesRequest {
 
 }
 
-impl Default for GetParamNamesReq {
+impl Default for GetParamNamesRequest {
     fn default() -> Self {
-        GetParamNamesReq {
+        GetParamNamesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetParamNamesReq {}
+impl ros2_client::Message for GetParamNamesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetParamNamesRes {
+pub struct GetParamNamesResponse {
     pub names: Vec<::std::string::String>,
 }
 
-impl Default for GetParamNamesRes {
+impl Default for GetParamNamesResponse {
     fn default() -> Self {
-        GetParamNamesRes {
+        GetParamNamesResponse {
             names: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetParamNamesRes {}
+impl ros2_client::Message for GetParamNamesResponse {}
 
 
 pub struct GetParamNames;
 impl ros2_client::Service for GetParamNames {
-    type Request = GetParamNamesReq;
-    type Response = GetParamNamesRes;
+    type Request = GetParamNamesRequest;
+    type Response = GetParamNamesResponse;
 
-    fn request_type_name(&self) -> &str { "GetParamNamesReq" }
-    fn response_type_name(&self) -> &str { "GetParamNamesRes" }
+    fn request_type_name(&self) -> &str { "GetParamNamesRequest" }
+    fn response_type_name(&self) -> &str { "GetParamNamesResponse" }
 }

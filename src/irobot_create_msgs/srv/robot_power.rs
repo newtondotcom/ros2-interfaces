@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RobotPowerReq {
+pub struct RobotPowerRequest {
 
 }
 
-impl Default for RobotPowerReq {
+impl Default for RobotPowerRequest {
     fn default() -> Self {
-        RobotPowerReq {
+        RobotPowerRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for RobotPowerReq {}
+impl ros2_client::Message for RobotPowerRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RobotPowerRes {
+pub struct RobotPowerResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for RobotPowerRes {
+impl Default for RobotPowerResponse {
     fn default() -> Self {
-        RobotPowerRes {
+        RobotPowerResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for RobotPowerRes {}
+impl ros2_client::Message for RobotPowerResponse {}
 
 
 pub struct RobotPower;
 impl ros2_client::Service for RobotPower {
-    type Request = RobotPowerReq;
-    type Response = RobotPowerRes;
+    type Request = RobotPowerRequest;
+    type Response = RobotPowerResponse;
 
-    fn request_type_name(&self) -> &str { "RobotPowerReq" }
-    fn response_type_name(&self) -> &str { "RobotPowerRes" }
+    fn request_type_name(&self) -> &str { "RobotPowerRequest" }
+    fn response_type_name(&self) -> &str { "RobotPowerResponse" }
 }

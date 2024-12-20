@@ -1,6 +1,9 @@
 #[cfg(feature = "soccer_model_msgs")]
 pub mod soccer_model_msgs;
 
+#[cfg(feature = "tuw_nav_msgs")]
+pub mod tuw_nav_msgs;
+
 #[cfg(feature = "aruco_msgs")]
 pub mod aruco_msgs;
 
@@ -9,9 +12,6 @@ pub mod ros_babel_fish_test_msgs;
 
 #[cfg(feature = "marti_common_msgs")]
 pub mod marti_common_msgs;
-
-#[cfg(feature = "rcgcd_spl_14")]
-pub mod rcgcd_spl_14;
 
 #[cfg(feature = "ur_dashboard_msgs")]
 pub mod ur_dashboard_msgs;
@@ -24,9 +24,6 @@ pub mod flexbe_msgs;
 
 #[cfg(feature = "data_tamer_msgs")]
 pub mod data_tamer_msgs;
-
-#[cfg(feature = "rcgcrd_spl_4")]
-pub mod rcgcrd_spl_4;
 
 #[cfg(feature = "soccer_vision_2d_msgs")]
 pub mod soccer_vision_2d_msgs;
@@ -76,9 +73,6 @@ pub mod mobileye_560_660_msgs;
 #[cfg(feature = "std_msgs")]
 pub mod std_msgs;
 
-#[cfg(feature = "autoware_internal_msgs")]
-pub mod autoware_internal_msgs;
-
 #[cfg(feature = "automotive_navigation_msgs")]
 pub mod automotive_navigation_msgs;
 
@@ -99,9 +93,6 @@ pub mod ublox_ubx_interfaces;
 
 #[cfg(feature = "lifecycle_msgs")]
 pub mod lifecycle_msgs;
-
-#[cfg(feature = "smacc2_msgs")]
-pub mod smacc2_msgs;
 
 #[cfg(feature = "service_msgs")]
 pub mod service_msgs;
@@ -129,6 +120,12 @@ pub mod autoware_v2x_msgs;
 
 #[cfg(feature = "autoware_adapi_version_msgs")]
 pub mod autoware_adapi_version_msgs;
+
+#[cfg(feature = "yasmin_msgs")]
+pub mod yasmin_msgs;
+
+#[cfg(feature = "robot_localization")]
+pub mod robot_localization;
 
 #[cfg(feature = "rc_reason_msgs")]
 pub mod rc_reason_msgs;
@@ -202,6 +199,9 @@ pub mod rmf_fleet_msgs;
 #[cfg(feature = "soccer_vision_3d_msgs")]
 pub mod soccer_vision_3d_msgs;
 
+#[cfg(feature = "marker_msgs")]
+pub mod marker_msgs;
+
 #[cfg(feature = "tf2_msgs")]
 pub mod tf2_msgs;
 
@@ -253,6 +253,9 @@ pub mod autoware_common_msgs;
 #[cfg(feature = "geometry_msgs")]
 pub mod geometry_msgs;
 
+#[cfg(feature = "tuw_std_msgs")]
+pub mod tuw_std_msgs;
+
 #[cfg(feature = "sensor_msgs")]
 pub mod sensor_msgs;
 
@@ -295,8 +298,14 @@ pub mod radar_msgs;
 #[cfg(feature = "pendulum_msgs")]
 pub mod pendulum_msgs;
 
+#[cfg(feature = "tuw_multi_robot_msgs")]
+pub mod tuw_multi_robot_msgs;
+
 #[cfg(feature = "polygon_msgs")]
 pub mod polygon_msgs;
+
+#[cfg(feature = "tuw_object_map_msgs")]
+pub mod tuw_object_map_msgs;
 
 #[cfg(feature = "velodyne_msgs")]
 pub mod velodyne_msgs;
@@ -328,6 +337,9 @@ pub mod motion_capture_tracking_interfaces;
 #[cfg(feature = "autoware_control_msgs")]
 pub mod autoware_control_msgs;
 
+#[cfg(feature = "tuw_airskin_msgs")]
+pub mod tuw_airskin_msgs;
+
 #[cfg(feature = "rmf_site_map_msgs")]
 pub mod rmf_site_map_msgs;
 
@@ -339,6 +351,9 @@ pub mod mola_msgs;
 
 #[cfg(feature = "irobot_create_msgs")]
 pub mod irobot_create_msgs;
+
+#[cfg(feature = "tuw_graph_msgs")]
+pub mod tuw_graph_msgs;
 
 #[cfg(feature = "swri_roscpp")]
 pub mod swri_roscpp;
@@ -382,9 +397,6 @@ pub mod ackermann_msgs;
 #[cfg(feature = "rmf_workcell_msgs")]
 pub mod rmf_workcell_msgs;
 
-#[cfg(feature = "find_object_2d")]
-pub mod find_object_2d;
-
 #[cfg(feature = "cascade_lifecycle_msgs")]
 pub mod cascade_lifecycle_msgs;
 
@@ -421,6 +433,9 @@ pub mod pcl_msgs;
 #[cfg(feature = "autoware_system_msgs")]
 pub mod autoware_system_msgs;
 
+#[cfg(feature = "tuw_geometry_msgs")]
+pub mod tuw_geometry_msgs;
+
 #[cfg(feature = "nao_lola_sensor_msgs")]
 pub mod nao_lola_sensor_msgs;
 
@@ -451,6 +466,9 @@ pub mod turtlesim_msgs;
 #[cfg(feature = "cartographer_ros_msgs")]
 pub mod cartographer_ros_msgs;
 
+#[cfg(feature = "tuw_geo_msgs")]
+pub mod tuw_geo_msgs;
+
 #[cfg(feature = "micro_ros_msgs")]
 pub mod micro_ros_msgs;
 
@@ -459,9 +477,6 @@ pub mod can_msgs;
 
 #[cfg(feature = "rtcm_msgs")]
 pub mod rtcm_msgs;
-
-#[cfg(feature = "dynamixel_sdk_custom_interfaces")]
-pub mod dynamixel_sdk_custom_interfaces;
 
 #[cfg(feature = "autoware_map_msgs")]
 pub mod autoware_map_msgs;
@@ -519,9 +534,6 @@ pub mod builtin_interfaces;
 
 #[cfg(feature = "actuator_msgs")]
 pub mod actuator_msgs;
-
-#[cfg(feature = "gc_spl_interfaces")]
-pub mod gc_spl_interfaces;
 
 #[cfg(feature = "automotive_platform_msgs")]
 pub mod automotive_platform_msgs;

@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AddDiagnosticsReq {
+pub struct AddDiagnosticsRequest {
     pub load_namespace: ::std::string::String,
 }
 
-impl Default for AddDiagnosticsReq {
+impl Default for AddDiagnosticsRequest {
     fn default() -> Self {
-        AddDiagnosticsReq {
+        AddDiagnosticsRequest {
             load_namespace: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for AddDiagnosticsReq {}
+impl ros2_client::Message for AddDiagnosticsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct AddDiagnosticsRes {
+pub struct AddDiagnosticsResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for AddDiagnosticsRes {
+impl Default for AddDiagnosticsResponse {
     fn default() -> Self {
-        AddDiagnosticsRes {
+        AddDiagnosticsResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for AddDiagnosticsRes {}
+impl ros2_client::Message for AddDiagnosticsResponse {}
 
 
 pub struct AddDiagnostics;
 impl ros2_client::Service for AddDiagnostics {
-    type Request = AddDiagnosticsReq;
-    type Response = AddDiagnosticsRes;
+    type Request = AddDiagnosticsRequest;
+    type Response = AddDiagnosticsResponse;
 
-    fn request_type_name(&self) -> &str { "AddDiagnosticsReq" }
-    fn response_type_name(&self) -> &str { "AddDiagnosticsRes" }
+    fn request_type_name(&self) -> &str { "AddDiagnosticsRequest" }
+    fn response_type_name(&self) -> &str { "AddDiagnosticsResponse" }
 }

@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetRouteReq {
+pub struct GetRouteRequest {
     pub guid: ::std::string::String,
 }
 
-impl Default for GetRouteReq {
+impl Default for GetRouteRequest {
     fn default() -> Self {
-        GetRouteReq {
+        GetRouteRequest {
             guid: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetRouteReq {}
+impl ros2_client::Message for GetRouteRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetRouteRes {
+pub struct GetRouteResponse {
     pub route: crate::marti_nav_msgs::msg::Route,
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for GetRouteRes {
+impl Default for GetRouteResponse {
     fn default() -> Self {
-        GetRouteRes {
+        GetRouteResponse {
             route: crate::marti_nav_msgs::msg::Route::default(),
             success: false,
             message: ::std::string::String::new(),
@@ -35,14 +35,14 @@ impl Default for GetRouteRes {
     }
 }
 
-impl ros2_client::Message for GetRouteRes {}
+impl ros2_client::Message for GetRouteResponse {}
 
 
 pub struct GetRoute;
 impl ros2_client::Service for GetRoute {
-    type Request = GetRouteReq;
-    type Response = GetRouteRes;
+    type Request = GetRouteRequest;
+    type Response = GetRouteResponse;
 
-    fn request_type_name(&self) -> &str { "GetRouteReq" }
-    fn response_type_name(&self) -> &str { "GetRouteRes" }
+    fn request_type_name(&self) -> &str { "GetRouteRequest" }
+    fn response_type_name(&self) -> &str { "GetRouteResponse" }
 }

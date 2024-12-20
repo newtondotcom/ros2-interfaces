@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetOctomapReq {
+pub struct GetOctomapRequest {
 
 }
 
-impl Default for GetOctomapReq {
+impl Default for GetOctomapRequest {
     fn default() -> Self {
-        GetOctomapReq {
+        GetOctomapRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetOctomapReq {}
+impl ros2_client::Message for GetOctomapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetOctomapRes {
+pub struct GetOctomapResponse {
     pub map: crate::octomap_msgs::msg::Octomap,
 }
 
-impl Default for GetOctomapRes {
+impl Default for GetOctomapResponse {
     fn default() -> Self {
-        GetOctomapRes {
+        GetOctomapResponse {
             map: crate::octomap_msgs::msg::Octomap::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetOctomapRes {}
+impl ros2_client::Message for GetOctomapResponse {}
 
 
 pub struct GetOctomap;
 impl ros2_client::Service for GetOctomap {
-    type Request = GetOctomapReq;
-    type Response = GetOctomapRes;
+    type Request = GetOctomapRequest;
+    type Response = GetOctomapResponse;
 
-    fn request_type_name(&self) -> &str { "GetOctomapReq" }
-    fn response_type_name(&self) -> &str { "GetOctomapRes" }
+    fn request_type_name(&self) -> &str { "GetOctomapRequest" }
+    fn response_type_name(&self) -> &str { "GetOctomapResponse" }
 }

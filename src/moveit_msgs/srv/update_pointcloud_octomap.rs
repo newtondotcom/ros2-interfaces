@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UpdatePointcloudOctomapReq {
+pub struct UpdatePointcloudOctomapRequest {
     pub cloud: crate::sensor_msgs::msg::PointCloud2,
 }
 
-impl Default for UpdatePointcloudOctomapReq {
+impl Default for UpdatePointcloudOctomapRequest {
     fn default() -> Self {
-        UpdatePointcloudOctomapReq {
+        UpdatePointcloudOctomapRequest {
             cloud: crate::sensor_msgs::msg::PointCloud2::default(),
         }
     }
 }
 
-impl ros2_client::Message for UpdatePointcloudOctomapReq {}
+impl ros2_client::Message for UpdatePointcloudOctomapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UpdatePointcloudOctomapRes {
+pub struct UpdatePointcloudOctomapResponse {
     pub success: bool,
 }
 
-impl Default for UpdatePointcloudOctomapRes {
+impl Default for UpdatePointcloudOctomapResponse {
     fn default() -> Self {
-        UpdatePointcloudOctomapRes {
+        UpdatePointcloudOctomapResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for UpdatePointcloudOctomapRes {}
+impl ros2_client::Message for UpdatePointcloudOctomapResponse {}
 
 
 pub struct UpdatePointcloudOctomap;
 impl ros2_client::Service for UpdatePointcloudOctomap {
-    type Request = UpdatePointcloudOctomapReq;
-    type Response = UpdatePointcloudOctomapRes;
+    type Request = UpdatePointcloudOctomapRequest;
+    type Response = UpdatePointcloudOctomapResponse;
 
-    fn request_type_name(&self) -> &str { "UpdatePointcloudOctomapReq" }
-    fn response_type_name(&self) -> &str { "UpdatePointcloudOctomapRes" }
+    fn request_type_name(&self) -> &str { "UpdatePointcloudOctomapRequest" }
+    fn response_type_name(&self) -> &str { "UpdatePointcloudOctomapResponse" }
 }

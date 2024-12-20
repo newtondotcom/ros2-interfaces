@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct StopReq {
+pub struct StopRequest {
 
 }
 
-impl Default for StopReq {
+impl Default for StopRequest {
     fn default() -> Self {
-        StopReq {
+        StopRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for StopReq {}
+impl ros2_client::Message for StopRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct StopRes {
+pub struct StopResponse {
 
 }
 
-impl Default for StopRes {
+impl Default for StopResponse {
     fn default() -> Self {
-        StopRes {
+        StopResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for StopRes {}
+impl ros2_client::Message for StopResponse {}
 
 
 pub struct Stop;
 impl ros2_client::Service for Stop {
-    type Request = StopReq;
-    type Response = StopRes;
+    type Request = StopRequest;
+    type Response = StopResponse;
 
-    fn request_type_name(&self) -> &str { "StopReq" }
-    fn response_type_name(&self) -> &str { "StopRes" }
+    fn request_type_name(&self) -> &str { "StopRequest" }
+    fn response_type_name(&self) -> &str { "StopResponse" }
 }

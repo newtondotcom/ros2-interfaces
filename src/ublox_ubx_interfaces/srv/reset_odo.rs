@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ResetODOReq {
+pub struct ResetODORequest {
 
 }
 
-impl Default for ResetODOReq {
+impl Default for ResetODORequest {
     fn default() -> Self {
-        ResetODOReq {
+        ResetODORequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ResetODOReq {}
+impl ros2_client::Message for ResetODORequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ResetODORes {
+pub struct ResetODOResponse {
 
 }
 
-impl Default for ResetODORes {
+impl Default for ResetODOResponse {
     fn default() -> Self {
-        ResetODORes {
+        ResetODOResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for ResetODORes {}
+impl ros2_client::Message for ResetODOResponse {}
 
 
 pub struct ResetODO;
 impl ros2_client::Service for ResetODO {
-    type Request = ResetODOReq;
-    type Response = ResetODORes;
+    type Request = ResetODORequest;
+    type Response = ResetODOResponse;
 
-    fn request_type_name(&self) -> &str { "ResetODOReq" }
-    fn response_type_name(&self) -> &str { "ResetODORes" }
+    fn request_type_name(&self) -> &str { "ResetODORequest" }
+    fn response_type_name(&self) -> &str { "ResetODOResponse" }
 }

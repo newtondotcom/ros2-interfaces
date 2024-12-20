@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetAvailableModesReq {
+pub struct GetAvailableModesRequest {
 
 }
 
-impl Default for GetAvailableModesReq {
+impl Default for GetAvailableModesRequest {
     fn default() -> Self {
-        GetAvailableModesReq {
+        GetAvailableModesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetAvailableModesReq {}
+impl ros2_client::Message for GetAvailableModesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetAvailableModesRes {
+pub struct GetAvailableModesResponse {
     pub available_modes: Vec<::std::string::String>,
 }
 
-impl Default for GetAvailableModesRes {
+impl Default for GetAvailableModesResponse {
     fn default() -> Self {
-        GetAvailableModesRes {
+        GetAvailableModesResponse {
             available_modes: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetAvailableModesRes {}
+impl ros2_client::Message for GetAvailableModesResponse {}
 
 
 pub struct GetAvailableModes;
 impl ros2_client::Service for GetAvailableModes {
-    type Request = GetAvailableModesReq;
-    type Response = GetAvailableModesRes;
+    type Request = GetAvailableModesRequest;
+    type Response = GetAvailableModesResponse;
 
-    fn request_type_name(&self) -> &str { "GetAvailableModesReq" }
-    fn response_type_name(&self) -> &str { "GetAvailableModesRes" }
+    fn request_type_name(&self) -> &str { "GetAvailableModesRequest" }
+    fn response_type_name(&self) -> &str { "GetAvailableModesResponse" }
 }

@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetParametersReq {
+pub struct SetParametersRequest {
     pub parameters: Vec<crate::rcl_interfaces::msg::Parameter>,
 }
 
-impl Default for SetParametersReq {
+impl Default for SetParametersRequest {
     fn default() -> Self {
-        SetParametersReq {
+        SetParametersRequest {
             parameters: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetParametersReq {}
+impl ros2_client::Message for SetParametersRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetParametersRes {
+pub struct SetParametersResponse {
     pub results: Vec<crate::rcl_interfaces::msg::SetParametersResult>,
 }
 
-impl Default for SetParametersRes {
+impl Default for SetParametersResponse {
     fn default() -> Self {
-        SetParametersRes {
+        SetParametersResponse {
             results: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetParametersRes {}
+impl ros2_client::Message for SetParametersResponse {}
 
 
 pub struct SetParameters;
 impl ros2_client::Service for SetParameters {
-    type Request = SetParametersReq;
-    type Response = SetParametersRes;
+    type Request = SetParametersRequest;
+    type Response = SetParametersResponse;
 
-    fn request_type_name(&self) -> &str { "SetParametersReq" }
-    fn response_type_name(&self) -> &str { "SetParametersRes" }
+    fn request_type_name(&self) -> &str { "SetParametersRequest" }
+    fn response_type_name(&self) -> &str { "SetParametersResponse" }
 }

@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetTypeDescriptionReq {
+pub struct GetTypeDescriptionRequest {
     pub type_name: ::std::string::String,
     pub type_hash: ::std::string::String,
     pub include_type_sources: bool, // default: true
 }
 
-impl Default for GetTypeDescriptionReq {
+impl Default for GetTypeDescriptionRequest {
     fn default() -> Self {
-        GetTypeDescriptionReq {
+        GetTypeDescriptionRequest {
             type_name: ::std::string::String::new(),
             type_hash: ::std::string::String::new(),
             include_type_sources: true,
@@ -18,12 +18,12 @@ impl Default for GetTypeDescriptionReq {
     }
 }
 
-impl ros2_client::Message for GetTypeDescriptionReq {}
+impl ros2_client::Message for GetTypeDescriptionRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetTypeDescriptionRes {
+pub struct GetTypeDescriptionResponse {
     pub successful: bool,
     pub failure_reason: ::std::string::String,
     pub type_description: crate::type_description_interfaces::msg::TypeDescription,
@@ -31,9 +31,9 @@ pub struct GetTypeDescriptionRes {
     pub extra_information: Vec<crate::type_description_interfaces::msg::KeyValue>,
 }
 
-impl Default for GetTypeDescriptionRes {
+impl Default for GetTypeDescriptionResponse {
     fn default() -> Self {
-        GetTypeDescriptionRes {
+        GetTypeDescriptionResponse {
             successful: false,
             failure_reason: ::std::string::String::new(),
             type_description: crate::type_description_interfaces::msg::TypeDescription::default(),
@@ -43,14 +43,14 @@ impl Default for GetTypeDescriptionRes {
     }
 }
 
-impl ros2_client::Message for GetTypeDescriptionRes {}
+impl ros2_client::Message for GetTypeDescriptionResponse {}
 
 
 pub struct GetTypeDescription;
 impl ros2_client::Service for GetTypeDescription {
-    type Request = GetTypeDescriptionReq;
-    type Response = GetTypeDescriptionRes;
+    type Request = GetTypeDescriptionRequest;
+    type Response = GetTypeDescriptionResponse;
 
-    fn request_type_name(&self) -> &str { "GetTypeDescriptionReq" }
-    fn response_type_name(&self) -> &str { "GetTypeDescriptionRes" }
+    fn request_type_name(&self) -> &str { "GetTypeDescriptionRequest" }
+    fn response_type_name(&self) -> &str { "GetTypeDescriptionResponse" }
 }

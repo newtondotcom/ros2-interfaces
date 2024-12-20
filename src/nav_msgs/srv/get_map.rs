@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetMapReq {
+pub struct GetMapRequest {
 
 }
 
-impl Default for GetMapReq {
+impl Default for GetMapRequest {
     fn default() -> Self {
-        GetMapReq {
+        GetMapRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetMapReq {}
+impl ros2_client::Message for GetMapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetMapRes {
+pub struct GetMapResponse {
     pub map: crate::nav_msgs::msg::OccupancyGrid,
 }
 
-impl Default for GetMapRes {
+impl Default for GetMapResponse {
     fn default() -> Self {
-        GetMapRes {
+        GetMapResponse {
             map: crate::nav_msgs::msg::OccupancyGrid::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetMapRes {}
+impl ros2_client::Message for GetMapResponse {}
 
 
 pub struct GetMap;
 impl ros2_client::Service for GetMap {
-    type Request = GetMapReq;
-    type Response = GetMapRes;
+    type Request = GetMapRequest;
+    type Response = GetMapResponse;
 
-    fn request_type_name(&self) -> &str { "GetMapReq" }
-    fn response_type_name(&self) -> &str { "GetMapRes" }
+    fn request_type_name(&self) -> &str { "GetMapRequest" }
+    fn response_type_name(&self) -> &str { "GetMapResponse" }
 }

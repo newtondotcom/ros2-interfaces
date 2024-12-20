@@ -2,24 +2,24 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HandEyeCalibrationReq {
+pub struct HandEyeCalibrationRequest {
 
 }
 
-impl Default for HandEyeCalibrationReq {
+impl Default for HandEyeCalibrationRequest {
     fn default() -> Self {
-        HandEyeCalibrationReq {
+        HandEyeCalibrationRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for HandEyeCalibrationReq {}
+impl ros2_client::Message for HandEyeCalibrationRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HandEyeCalibrationRes {
+pub struct HandEyeCalibrationResponse {
     pub success: bool,
     pub status: i32,
     pub message: ::std::string::String,
@@ -30,9 +30,9 @@ pub struct HandEyeCalibrationRes {
     pub robot_mounted: bool,
 }
 
-impl Default for HandEyeCalibrationRes {
+impl Default for HandEyeCalibrationResponse {
     fn default() -> Self {
-        HandEyeCalibrationRes {
+        HandEyeCalibrationResponse {
             success: false,
             status: 0,
             message: ::std::string::String::new(),
@@ -45,14 +45,14 @@ impl Default for HandEyeCalibrationRes {
     }
 }
 
-impl ros2_client::Message for HandEyeCalibrationRes {}
+impl ros2_client::Message for HandEyeCalibrationResponse {}
 
 
 pub struct HandEyeCalibration;
 impl ros2_client::Service for HandEyeCalibration {
-    type Request = HandEyeCalibrationReq;
-    type Response = HandEyeCalibrationRes;
+    type Request = HandEyeCalibrationRequest;
+    type Response = HandEyeCalibrationResponse;
 
-    fn request_type_name(&self) -> &str { "HandEyeCalibrationReq" }
-    fn response_type_name(&self) -> &str { "HandEyeCalibrationRes" }
+    fn request_type_name(&self) -> &str { "HandEyeCalibrationRequest" }
+    fn response_type_name(&self) -> &str { "HandEyeCalibrationResponse" }
 }

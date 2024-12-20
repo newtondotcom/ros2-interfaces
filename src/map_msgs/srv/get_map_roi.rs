@@ -2,16 +2,16 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetMapROIReq {
+pub struct GetMapROIRequest {
     pub x: f64,
     pub y: f64,
     pub l_x: f64,
     pub l_y: f64,
 }
 
-impl Default for GetMapROIReq {
+impl Default for GetMapROIRequest {
     fn default() -> Self {
-        GetMapROIReq {
+        GetMapROIRequest {
             x: 0.0,
             y: 0.0,
             l_x: 0.0,
@@ -20,31 +20,31 @@ impl Default for GetMapROIReq {
     }
 }
 
-impl ros2_client::Message for GetMapROIReq {}
+impl ros2_client::Message for GetMapROIRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetMapROIRes {
+pub struct GetMapROIResponse {
     pub sub_map: crate::nav_msgs::msg::OccupancyGrid,
 }
 
-impl Default for GetMapROIRes {
+impl Default for GetMapROIResponse {
     fn default() -> Self {
-        GetMapROIRes {
+        GetMapROIResponse {
             sub_map: crate::nav_msgs::msg::OccupancyGrid::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetMapROIRes {}
+impl ros2_client::Message for GetMapROIResponse {}
 
 
 pub struct GetMapROI;
 impl ros2_client::Service for GetMapROI {
-    type Request = GetMapROIReq;
-    type Response = GetMapROIRes;
+    type Request = GetMapROIRequest;
+    type Response = GetMapROIResponse;
 
-    fn request_type_name(&self) -> &str { "GetMapROIReq" }
-    fn response_type_name(&self) -> &str { "GetMapROIRes" }
+    fn request_type_name(&self) -> &str { "GetMapROIRequest" }
+    fn response_type_name(&self) -> &str { "GetMapROIResponse" }
 }

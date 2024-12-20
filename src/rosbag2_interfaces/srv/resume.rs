@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ResumeReq {
+pub struct ResumeRequest {
 
 }
 
-impl Default for ResumeReq {
+impl Default for ResumeRequest {
     fn default() -> Self {
-        ResumeReq {
+        ResumeRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ResumeReq {}
+impl ros2_client::Message for ResumeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ResumeRes {
+pub struct ResumeResponse {
 
 }
 
-impl Default for ResumeRes {
+impl Default for ResumeResponse {
     fn default() -> Self {
-        ResumeRes {
+        ResumeResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for ResumeRes {}
+impl ros2_client::Message for ResumeResponse {}
 
 
 pub struct Resume;
 impl ros2_client::Service for Resume {
-    type Request = ResumeReq;
-    type Response = ResumeRes;
+    type Request = ResumeRequest;
+    type Response = ResumeResponse;
 
-    fn request_type_name(&self) -> &str { "ResumeReq" }
-    fn response_type_name(&self) -> &str { "ResumeRes" }
+    fn request_type_name(&self) -> &str { "ResumeRequest" }
+    fn response_type_name(&self) -> &str { "ResumeResponse" }
 }

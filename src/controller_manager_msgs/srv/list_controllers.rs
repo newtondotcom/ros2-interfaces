@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListControllersReq {
+pub struct ListControllersRequest {
 
 }
 
-impl Default for ListControllersReq {
+impl Default for ListControllersRequest {
     fn default() -> Self {
-        ListControllersReq {
+        ListControllersRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ListControllersReq {}
+impl ros2_client::Message for ListControllersRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListControllersRes {
+pub struct ListControllersResponse {
     pub controller: Vec<crate::controller_manager_msgs::msg::ControllerState>,
 }
 
-impl Default for ListControllersRes {
+impl Default for ListControllersResponse {
     fn default() -> Self {
-        ListControllersRes {
+        ListControllersResponse {
             controller: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ListControllersRes {}
+impl ros2_client::Message for ListControllersResponse {}
 
 
 pub struct ListControllers;
 impl ros2_client::Service for ListControllers {
-    type Request = ListControllersReq;
-    type Response = ListControllersRes;
+    type Request = ListControllersRequest;
+    type Response = ListControllersResponse;
 
-    fn request_type_name(&self) -> &str { "ListControllersReq" }
-    fn response_type_name(&self) -> &str { "ListControllersRes" }
+    fn request_type_name(&self) -> &str { "ListControllersRequest" }
+    fn response_type_name(&self) -> &str { "ListControllersResponse" }
 }

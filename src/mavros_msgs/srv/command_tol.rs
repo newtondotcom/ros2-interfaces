@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandTOLReq {
+pub struct CommandTOLRequest {
     pub min_pitch: f32,
     pub yaw: f32,
     pub latitude: f32,
@@ -10,9 +10,9 @@ pub struct CommandTOLReq {
     pub altitude: f32,
 }
 
-impl Default for CommandTOLReq {
+impl Default for CommandTOLRequest {
     fn default() -> Self {
-        CommandTOLReq {
+        CommandTOLRequest {
             min_pitch: 0.0,
             yaw: 0.0,
             latitude: 0.0,
@@ -22,33 +22,33 @@ impl Default for CommandTOLReq {
     }
 }
 
-impl ros2_client::Message for CommandTOLReq {}
+impl ros2_client::Message for CommandTOLRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandTOLRes {
+pub struct CommandTOLResponse {
     pub success: bool,
     pub result: u8,
 }
 
-impl Default for CommandTOLRes {
+impl Default for CommandTOLResponse {
     fn default() -> Self {
-        CommandTOLRes {
+        CommandTOLResponse {
             success: false,
             result: 0,
         }
     }
 }
 
-impl ros2_client::Message for CommandTOLRes {}
+impl ros2_client::Message for CommandTOLResponse {}
 
 
 pub struct CommandTOL;
 impl ros2_client::Service for CommandTOL {
-    type Request = CommandTOLReq;
-    type Response = CommandTOLRes;
+    type Request = CommandTOLRequest;
+    type Response = CommandTOLResponse;
 
-    fn request_type_name(&self) -> &str { "CommandTOLReq" }
-    fn response_type_name(&self) -> &str { "CommandTOLRes" }
+    fn request_type_name(&self) -> &str { "CommandTOLRequest" }
+    fn response_type_name(&self) -> &str { "CommandTOLResponse" }
 }

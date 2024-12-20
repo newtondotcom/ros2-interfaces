@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandLongReq {
+pub struct CommandLongRequest {
     pub broadcast: bool,
     pub command: u16,
     pub confirmation: u8,
@@ -15,9 +15,9 @@ pub struct CommandLongReq {
     pub param7: f32,
 }
 
-impl Default for CommandLongReq {
+impl Default for CommandLongRequest {
     fn default() -> Self {
-        CommandLongReq {
+        CommandLongRequest {
             broadcast: false,
             command: 0,
             confirmation: 0,
@@ -32,33 +32,33 @@ impl Default for CommandLongReq {
     }
 }
 
-impl ros2_client::Message for CommandLongReq {}
+impl ros2_client::Message for CommandLongRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandLongRes {
+pub struct CommandLongResponse {
     pub success: bool,
     pub result: u8,
 }
 
-impl Default for CommandLongRes {
+impl Default for CommandLongResponse {
     fn default() -> Self {
-        CommandLongRes {
+        CommandLongResponse {
             success: false,
             result: 0,
         }
     }
 }
 
-impl ros2_client::Message for CommandLongRes {}
+impl ros2_client::Message for CommandLongResponse {}
 
 
 pub struct CommandLong;
 impl ros2_client::Service for CommandLong {
-    type Request = CommandLongReq;
-    type Response = CommandLongRes;
+    type Request = CommandLongRequest;
+    type Response = CommandLongResponse;
 
-    fn request_type_name(&self) -> &str { "CommandLongReq" }
-    fn response_type_name(&self) -> &str { "CommandLongRes" }
+    fn request_type_name(&self) -> &str { "CommandLongRequest" }
+    fn response_type_name(&self) -> &str { "CommandLongResponse" }
 }

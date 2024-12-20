@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxListReq {
+pub struct MuxListRequest {
 
 }
 
-impl Default for MuxListReq {
+impl Default for MuxListRequest {
     fn default() -> Self {
-        MuxListReq {
+        MuxListRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for MuxListReq {}
+impl ros2_client::Message for MuxListRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxListRes {
+pub struct MuxListResponse {
     pub topics: Vec<::std::string::String>,
 }
 
-impl Default for MuxListRes {
+impl Default for MuxListResponse {
     fn default() -> Self {
-        MuxListRes {
+        MuxListResponse {
             topics: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for MuxListRes {}
+impl ros2_client::Message for MuxListResponse {}
 
 
 pub struct MuxList;
 impl ros2_client::Service for MuxList {
-    type Request = MuxListReq;
-    type Response = MuxListRes;
+    type Request = MuxListRequest;
+    type Response = MuxListResponse;
 
-    fn request_type_name(&self) -> &str { "MuxListReq" }
-    fn response_type_name(&self) -> &str { "MuxListRes" }
+    fn request_type_name(&self) -> &str { "MuxListRequest" }
+    fn response_type_name(&self) -> &str { "MuxListResponse" }
 }

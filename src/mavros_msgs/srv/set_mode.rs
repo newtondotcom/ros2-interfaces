@@ -2,12 +2,12 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetModeReq {
+pub struct SetModeRequest {
     pub base_mode: u8,
     pub custom_mode: ::std::string::String,
 }
 
-impl SetModeReq {
+impl SetModeRequest {
     pub const MAV_MODE_PREFLIGHT: u8 = 0;
     pub const MAV_MODE_STABILIZE_DISARMED: u8 = 80;
     pub const MAV_MODE_STABILIZE_ARMED: u8 = 208;
@@ -21,40 +21,40 @@ impl SetModeReq {
     pub const MAV_MODE_TEST_ARMED: u8 = 194;
 }
 
-impl Default for SetModeReq {
+impl Default for SetModeRequest {
     fn default() -> Self {
-        SetModeReq {
+        SetModeRequest {
             base_mode: 0,
             custom_mode: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetModeReq {}
+impl ros2_client::Message for SetModeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetModeRes {
+pub struct SetModeResponse {
     pub mode_sent: bool,
 }
 
-impl Default for SetModeRes {
+impl Default for SetModeResponse {
     fn default() -> Self {
-        SetModeRes {
+        SetModeResponse {
             mode_sent: false,
         }
     }
 }
 
-impl ros2_client::Message for SetModeRes {}
+impl ros2_client::Message for SetModeResponse {}
 
 
 pub struct SetMode;
 impl ros2_client::Service for SetMode {
-    type Request = SetModeReq;
-    type Response = SetModeRes;
+    type Request = SetModeRequest;
+    type Response = SetModeResponse;
 
-    fn request_type_name(&self) -> &str { "SetModeReq" }
-    fn response_type_name(&self) -> &str { "SetModeRes" }
+    fn request_type_name(&self) -> &str { "SetModeRequest" }
+    fn response_type_name(&self) -> &str { "SetModeResponse" }
 }

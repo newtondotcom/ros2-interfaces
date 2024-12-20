@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RawRequestReq {
+pub struct RawRequestRequest {
     pub query: ::std::string::String,
 }
 
-impl Default for RawRequestReq {
+impl Default for RawRequestRequest {
     fn default() -> Self {
-        RawRequestReq {
+        RawRequestRequest {
             query: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for RawRequestReq {}
+impl ros2_client::Message for RawRequestRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RawRequestRes {
+pub struct RawRequestResponse {
     pub answer: ::std::string::String,
 }
 
-impl Default for RawRequestRes {
+impl Default for RawRequestResponse {
     fn default() -> Self {
-        RawRequestRes {
+        RawRequestResponse {
             answer: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for RawRequestRes {}
+impl ros2_client::Message for RawRequestResponse {}
 
 
 pub struct RawRequest;
 impl ros2_client::Service for RawRequest {
-    type Request = RawRequestReq;
-    type Response = RawRequestRes;
+    type Request = RawRequestRequest;
+    type Response = RawRequestResponse;
 
-    fn request_type_name(&self) -> &str { "RawRequestReq" }
-    fn response_type_name(&self) -> &str { "RawRequestRes" }
+    fn request_type_name(&self) -> &str { "RawRequestRequest" }
+    fn response_type_name(&self) -> &str { "RawRequestResponse" }
 }

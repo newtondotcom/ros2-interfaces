@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MapLoadReq {
+pub struct MapLoadRequest {
     pub map_path: ::std::string::String,
 }
 
-impl Default for MapLoadReq {
+impl Default for MapLoadRequest {
     fn default() -> Self {
-        MapLoadReq {
+        MapLoadRequest {
             map_path: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for MapLoadReq {}
+impl ros2_client::Message for MapLoadRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MapLoadRes {
+pub struct MapLoadResponse {
     pub success: bool,
     pub error_message: ::std::string::String,
 }
 
-impl Default for MapLoadRes {
+impl Default for MapLoadResponse {
     fn default() -> Self {
-        MapLoadRes {
+        MapLoadResponse {
             success: false,
             error_message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for MapLoadRes {}
+impl ros2_client::Message for MapLoadResponse {}
 
 
 pub struct MapLoad;
 impl ros2_client::Service for MapLoad {
-    type Request = MapLoadReq;
-    type Response = MapLoadRes;
+    type Request = MapLoadRequest;
+    type Response = MapLoadResponse;
 
-    fn request_type_name(&self) -> &str { "MapLoadReq" }
-    fn response_type_name(&self) -> &str { "MapLoadRes" }
+    fn request_type_name(&self) -> &str { "MapLoadRequest" }
+    fn response_type_name(&self) -> &str { "MapLoadResponse" }
 }

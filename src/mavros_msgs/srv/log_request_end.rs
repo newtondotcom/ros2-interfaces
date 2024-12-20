@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LogRequestEndReq {
+pub struct LogRequestEndRequest {
 
 }
 
-impl Default for LogRequestEndReq {
+impl Default for LogRequestEndRequest {
     fn default() -> Self {
-        LogRequestEndReq {
+        LogRequestEndRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for LogRequestEndReq {}
+impl ros2_client::Message for LogRequestEndRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct LogRequestEndRes {
+pub struct LogRequestEndResponse {
     pub success: bool,
 }
 
-impl Default for LogRequestEndRes {
+impl Default for LogRequestEndResponse {
     fn default() -> Self {
-        LogRequestEndRes {
+        LogRequestEndResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for LogRequestEndRes {}
+impl ros2_client::Message for LogRequestEndResponse {}
 
 
 pub struct LogRequestEnd;
 impl ros2_client::Service for LogRequestEnd {
-    type Request = LogRequestEndReq;
-    type Response = LogRequestEndRes;
+    type Request = LogRequestEndRequest;
+    type Response = LogRequestEndResponse;
 
-    fn request_type_name(&self) -> &str { "LogRequestEndReq" }
-    fn response_type_name(&self) -> &str { "LogRequestEndRes" }
+    fn request_type_name(&self) -> &str { "LogRequestEndRequest" }
+    fn response_type_name(&self) -> &str { "LogRequestEndResponse" }
 }

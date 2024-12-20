@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetPointMapROIReq {
+pub struct GetPointMapROIRequest {
     pub x: f64,
     pub y: f64,
     pub z: f64,
@@ -12,9 +12,9 @@ pub struct GetPointMapROIReq {
     pub l_z: f64,
 }
 
-impl Default for GetPointMapROIReq {
+impl Default for GetPointMapROIRequest {
     fn default() -> Self {
-        GetPointMapROIReq {
+        GetPointMapROIRequest {
             x: 0.0,
             y: 0.0,
             z: 0.0,
@@ -26,31 +26,31 @@ impl Default for GetPointMapROIReq {
     }
 }
 
-impl ros2_client::Message for GetPointMapROIReq {}
+impl ros2_client::Message for GetPointMapROIRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetPointMapROIRes {
+pub struct GetPointMapROIResponse {
     pub sub_map: crate::sensor_msgs::msg::PointCloud2,
 }
 
-impl Default for GetPointMapROIRes {
+impl Default for GetPointMapROIResponse {
     fn default() -> Self {
-        GetPointMapROIRes {
+        GetPointMapROIResponse {
             sub_map: crate::sensor_msgs::msg::PointCloud2::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetPointMapROIRes {}
+impl ros2_client::Message for GetPointMapROIResponse {}
 
 
 pub struct GetPointMapROI;
 impl ros2_client::Service for GetPointMapROI {
-    type Request = GetPointMapROIReq;
-    type Response = GetPointMapROIRes;
+    type Request = GetPointMapROIRequest;
+    type Response = GetPointMapROIResponse;
 
-    fn request_type_name(&self) -> &str { "GetPointMapROIReq" }
-    fn response_type_name(&self) -> &str { "GetPointMapROIRes" }
+    fn request_type_name(&self) -> &str { "GetPointMapROIRequest" }
+    fn response_type_name(&self) -> &str { "GetPointMapROIResponse" }
 }

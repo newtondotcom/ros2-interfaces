@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetLoadedProgramReq {
+pub struct GetLoadedProgramRequest {
 
 }
 
-impl Default for GetLoadedProgramReq {
+impl Default for GetLoadedProgramRequest {
     fn default() -> Self {
-        GetLoadedProgramReq {
+        GetLoadedProgramRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetLoadedProgramReq {}
+impl ros2_client::Message for GetLoadedProgramRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetLoadedProgramRes {
+pub struct GetLoadedProgramResponse {
     pub answer: ::std::string::String,
     pub program_name: ::std::string::String,
     pub success: bool,
 }
 
-impl Default for GetLoadedProgramRes {
+impl Default for GetLoadedProgramResponse {
     fn default() -> Self {
-        GetLoadedProgramRes {
+        GetLoadedProgramResponse {
             answer: ::std::string::String::new(),
             program_name: ::std::string::String::new(),
             success: false,
@@ -35,14 +35,14 @@ impl Default for GetLoadedProgramRes {
     }
 }
 
-impl ros2_client::Message for GetLoadedProgramRes {}
+impl ros2_client::Message for GetLoadedProgramResponse {}
 
 
 pub struct GetLoadedProgram;
 impl ros2_client::Service for GetLoadedProgram {
-    type Request = GetLoadedProgramReq;
-    type Response = GetLoadedProgramRes;
+    type Request = GetLoadedProgramRequest;
+    type Response = GetLoadedProgramResponse;
 
-    fn request_type_name(&self) -> &str { "GetLoadedProgramReq" }
-    fn response_type_name(&self) -> &str { "GetLoadedProgramRes" }
+    fn request_type_name(&self) -> &str { "GetLoadedProgramRequest" }
+    fn response_type_name(&self) -> &str { "GetLoadedProgramResponse" }
 }

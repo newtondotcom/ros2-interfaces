@@ -2,11 +2,11 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ColdStartReq {
+pub struct ColdStartRequest {
     pub reset_type: u8,
 }
 
-impl ColdStartReq {
+impl ColdStartRequest {
     pub const HW_RESET_IMMEDIATELY: u8 = 0x00;
     pub const SW_RESET_CONTROLLED: u8 = 0x01;
     pub const SW_RESET_CONTROLLED_GNSS: u8 = 0x02;
@@ -15,39 +15,39 @@ impl ColdStartReq {
     pub const GNSS_START_CONTROLLED: u8 = 0x09;
 }
 
-impl Default for ColdStartReq {
+impl Default for ColdStartRequest {
     fn default() -> Self {
-        ColdStartReq {
+        ColdStartRequest {
             reset_type: 0,
         }
     }
 }
 
-impl ros2_client::Message for ColdStartReq {}
+impl ros2_client::Message for ColdStartRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ColdStartRes {
+pub struct ColdStartResponse {
 
 }
 
-impl Default for ColdStartRes {
+impl Default for ColdStartResponse {
     fn default() -> Self {
-        ColdStartRes {
+        ColdStartResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for ColdStartRes {}
+impl ros2_client::Message for ColdStartResponse {}
 
 
 pub struct ColdStart;
 impl ros2_client::Service for ColdStart {
-    type Request = ColdStartReq;
-    type Response = ColdStartRes;
+    type Request = ColdStartRequest;
+    type Response = ColdStartResponse;
 
-    fn request_type_name(&self) -> &str { "ColdStartReq" }
-    fn response_type_name(&self) -> &str { "ColdStartRes" }
+    fn request_type_name(&self) -> &str { "ColdStartRequest" }
+    fn response_type_name(&self) -> &str { "ColdStartResponse" }
 }

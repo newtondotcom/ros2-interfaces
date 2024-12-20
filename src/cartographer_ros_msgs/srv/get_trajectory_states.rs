@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetTrajectoryStatesReq {
+pub struct GetTrajectoryStatesRequest {
 
 }
 
-impl Default for GetTrajectoryStatesReq {
+impl Default for GetTrajectoryStatesRequest {
     fn default() -> Self {
-        GetTrajectoryStatesReq {
+        GetTrajectoryStatesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetTrajectoryStatesReq {}
+impl ros2_client::Message for GetTrajectoryStatesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetTrajectoryStatesRes {
+pub struct GetTrajectoryStatesResponse {
     pub status: crate::cartographer_ros_msgs::msg::StatusResponse,
     pub trajectory_states: crate::cartographer_ros_msgs::msg::TrajectoryStates,
 }
 
-impl Default for GetTrajectoryStatesRes {
+impl Default for GetTrajectoryStatesResponse {
     fn default() -> Self {
-        GetTrajectoryStatesRes {
+        GetTrajectoryStatesResponse {
             status: crate::cartographer_ros_msgs::msg::StatusResponse::default(),
             trajectory_states: crate::cartographer_ros_msgs::msg::TrajectoryStates::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetTrajectoryStatesRes {}
+impl ros2_client::Message for GetTrajectoryStatesResponse {}
 
 
 pub struct GetTrajectoryStates;
 impl ros2_client::Service for GetTrajectoryStates {
-    type Request = GetTrajectoryStatesReq;
-    type Response = GetTrajectoryStatesRes;
+    type Request = GetTrajectoryStatesRequest;
+    type Response = GetTrajectoryStatesResponse;
 
-    fn request_type_name(&self) -> &str { "GetTrajectoryStatesReq" }
-    fn response_type_name(&self) -> &str { "GetTrajectoryStatesRes" }
+    fn request_type_name(&self) -> &str { "GetTrajectoryStatesRequest" }
+    fn response_type_name(&self) -> &str { "GetTrajectoryStatesResponse" }
 }

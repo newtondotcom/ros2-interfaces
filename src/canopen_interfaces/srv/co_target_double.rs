@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct COTargetDoubleReq {
+pub struct COTargetDoubleRequest {
     pub target: f64,
 }
 
-impl Default for COTargetDoubleReq {
+impl Default for COTargetDoubleRequest {
     fn default() -> Self {
-        COTargetDoubleReq {
+        COTargetDoubleRequest {
             target: 0.0,
         }
     }
 }
 
-impl ros2_client::Message for COTargetDoubleReq {}
+impl ros2_client::Message for COTargetDoubleRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct COTargetDoubleRes {
+pub struct COTargetDoubleResponse {
     pub success: bool,
 }
 
-impl Default for COTargetDoubleRes {
+impl Default for COTargetDoubleResponse {
     fn default() -> Self {
-        COTargetDoubleRes {
+        COTargetDoubleResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for COTargetDoubleRes {}
+impl ros2_client::Message for COTargetDoubleResponse {}
 
 
 pub struct COTargetDouble;
 impl ros2_client::Service for COTargetDouble {
-    type Request = COTargetDoubleReq;
-    type Response = COTargetDoubleRes;
+    type Request = COTargetDoubleRequest;
+    type Response = COTargetDoubleResponse;
 
-    fn request_type_name(&self) -> &str { "COTargetDoubleReq" }
-    fn response_type_name(&self) -> &str { "COTargetDoubleRes" }
+    fn request_type_name(&self) -> &str { "COTargetDoubleRequest" }
+    fn response_type_name(&self) -> &str { "COTargetDoubleResponse" }
 }

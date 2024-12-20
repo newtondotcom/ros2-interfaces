@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SaveMapReq {
+pub struct SaveMapRequest {
     pub filename: ::std::string::String,
 }
 
-impl Default for SaveMapReq {
+impl Default for SaveMapRequest {
     fn default() -> Self {
-        SaveMapReq {
+        SaveMapRequest {
             filename: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SaveMapReq {}
+impl ros2_client::Message for SaveMapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SaveMapRes {
+pub struct SaveMapResponse {
     pub success: bool,
 }
 
-impl Default for SaveMapRes {
+impl Default for SaveMapResponse {
     fn default() -> Self {
-        SaveMapRes {
+        SaveMapResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SaveMapRes {}
+impl ros2_client::Message for SaveMapResponse {}
 
 
 pub struct SaveMap;
 impl ros2_client::Service for SaveMap {
-    type Request = SaveMapReq;
-    type Response = SaveMapRes;
+    type Request = SaveMapRequest;
+    type Response = SaveMapResponse;
 
-    fn request_type_name(&self) -> &str { "SaveMapReq" }
-    fn response_type_name(&self) -> &str { "SaveMapRes" }
+    fn request_type_name(&self) -> &str { "SaveMapRequest" }
+    fn response_type_name(&self) -> &str { "SaveMapResponse" }
 }

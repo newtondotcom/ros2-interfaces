@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandBoolReq {
+pub struct CommandBoolRequest {
     pub value: bool,
 }
 
-impl Default for CommandBoolReq {
+impl Default for CommandBoolRequest {
     fn default() -> Self {
-        CommandBoolReq {
+        CommandBoolRequest {
             value: false,
         }
     }
 }
 
-impl ros2_client::Message for CommandBoolReq {}
+impl ros2_client::Message for CommandBoolRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandBoolRes {
+pub struct CommandBoolResponse {
     pub success: bool,
     pub result: u8,
 }
 
-impl Default for CommandBoolRes {
+impl Default for CommandBoolResponse {
     fn default() -> Self {
-        CommandBoolRes {
+        CommandBoolResponse {
             success: false,
             result: 0,
         }
     }
 }
 
-impl ros2_client::Message for CommandBoolRes {}
+impl ros2_client::Message for CommandBoolResponse {}
 
 
 pub struct CommandBool;
 impl ros2_client::Service for CommandBool {
-    type Request = CommandBoolReq;
-    type Response = CommandBoolRes;
+    type Request = CommandBoolRequest;
+    type Response = CommandBoolResponse;
 
-    fn request_type_name(&self) -> &str { "CommandBoolReq" }
-    fn response_type_name(&self) -> &str { "CommandBoolRes" }
+    fn request_type_name(&self) -> &str { "CommandBoolRequest" }
+    fn response_type_name(&self) -> &str { "CommandBoolResponse" }
 }

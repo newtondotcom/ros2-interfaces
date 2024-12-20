@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct PopupReq {
+pub struct PopupRequest {
     pub message: ::std::string::String,
 }
 
-impl Default for PopupReq {
+impl Default for PopupRequest {
     fn default() -> Self {
-        PopupReq {
+        PopupRequest {
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for PopupReq {}
+impl ros2_client::Message for PopupRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct PopupRes {
+pub struct PopupResponse {
     pub answer: ::std::string::String,
     pub success: bool,
 }
 
-impl Default for PopupRes {
+impl Default for PopupResponse {
     fn default() -> Self {
-        PopupRes {
+        PopupResponse {
             answer: ::std::string::String::new(),
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for PopupRes {}
+impl ros2_client::Message for PopupResponse {}
 
 
 pub struct Popup;
 impl ros2_client::Service for Popup {
-    type Request = PopupReq;
-    type Response = PopupRes;
+    type Request = PopupRequest;
+    type Response = PopupResponse;
 
-    fn request_type_name(&self) -> &str { "PopupReq" }
-    fn response_type_name(&self) -> &str { "PopupRes" }
+    fn request_type_name(&self) -> &str { "PopupRequest" }
+    fn response_type_name(&self) -> &str { "PopupResponse" }
 }

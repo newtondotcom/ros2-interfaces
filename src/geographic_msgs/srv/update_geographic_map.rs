@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UpdateGeographicMapReq {
+pub struct UpdateGeographicMapRequest {
     pub updates: crate::geographic_msgs::msg::GeographicMapChanges,
 }
 
-impl Default for UpdateGeographicMapReq {
+impl Default for UpdateGeographicMapRequest {
     fn default() -> Self {
-        UpdateGeographicMapReq {
+        UpdateGeographicMapRequest {
             updates: crate::geographic_msgs::msg::GeographicMapChanges::default(),
         }
     }
 }
 
-impl ros2_client::Message for UpdateGeographicMapReq {}
+impl ros2_client::Message for UpdateGeographicMapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UpdateGeographicMapRes {
+pub struct UpdateGeographicMapResponse {
     pub success: bool,
     pub status: ::std::string::String,
 }
 
-impl Default for UpdateGeographicMapRes {
+impl Default for UpdateGeographicMapResponse {
     fn default() -> Self {
-        UpdateGeographicMapRes {
+        UpdateGeographicMapResponse {
             success: false,
             status: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for UpdateGeographicMapRes {}
+impl ros2_client::Message for UpdateGeographicMapResponse {}
 
 
 pub struct UpdateGeographicMap;
 impl ros2_client::Service for UpdateGeographicMap {
-    type Request = UpdateGeographicMapReq;
-    type Response = UpdateGeographicMapRes;
+    type Request = UpdateGeographicMapRequest;
+    type Response = UpdateGeographicMapResponse;
 
-    fn request_type_name(&self) -> &str { "UpdateGeographicMapReq" }
-    fn response_type_name(&self) -> &str { "UpdateGeographicMapRes" }
+    fn request_type_name(&self) -> &str { "UpdateGeographicMapRequest" }
+    fn response_type_name(&self) -> &str { "UpdateGeographicMapResponse" }
 }

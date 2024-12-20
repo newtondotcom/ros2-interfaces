@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TopicsForTypeReq {
+pub struct TopicsForTypeRequest {
     #[serde(rename = "type")]    pub type_: ::std::string::String,
 }
 
-impl Default for TopicsForTypeReq {
+impl Default for TopicsForTypeRequest {
     fn default() -> Self {
-        TopicsForTypeReq {
+        TopicsForTypeRequest {
             type_: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for TopicsForTypeReq {}
+impl ros2_client::Message for TopicsForTypeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TopicsForTypeRes {
+pub struct TopicsForTypeResponse {
     pub topics: Vec<::std::string::String>,
 }
 
-impl Default for TopicsForTypeRes {
+impl Default for TopicsForTypeResponse {
     fn default() -> Self {
-        TopicsForTypeRes {
+        TopicsForTypeResponse {
             topics: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for TopicsForTypeRes {}
+impl ros2_client::Message for TopicsForTypeResponse {}
 
 
 pub struct TopicsForType;
 impl ros2_client::Service for TopicsForType {
-    type Request = TopicsForTypeReq;
-    type Response = TopicsForTypeRes;
+    type Request = TopicsForTypeRequest;
+    type Response = TopicsForTypeResponse;
 
-    fn request_type_name(&self) -> &str { "TopicsForTypeReq" }
-    fn response_type_name(&self) -> &str { "TopicsForTypeRes" }
+    fn request_type_name(&self) -> &str { "TopicsForTypeRequest" }
+    fn response_type_name(&self) -> &str { "TopicsForTypeResponse" }
 }

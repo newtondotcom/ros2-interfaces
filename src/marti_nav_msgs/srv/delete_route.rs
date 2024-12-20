@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DeleteRouteReq {
+pub struct DeleteRouteRequest {
     pub guid: ::std::string::String,
 }
 
-impl Default for DeleteRouteReq {
+impl Default for DeleteRouteRequest {
     fn default() -> Self {
-        DeleteRouteReq {
+        DeleteRouteRequest {
             guid: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for DeleteRouteReq {}
+impl ros2_client::Message for DeleteRouteRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DeleteRouteRes {
+pub struct DeleteRouteResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for DeleteRouteRes {
+impl Default for DeleteRouteResponse {
     fn default() -> Self {
-        DeleteRouteRes {
+        DeleteRouteResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for DeleteRouteRes {}
+impl ros2_client::Message for DeleteRouteResponse {}
 
 
 pub struct DeleteRoute;
 impl ros2_client::Service for DeleteRoute {
-    type Request = DeleteRouteReq;
-    type Response = DeleteRouteRes;
+    type Request = DeleteRouteRequest;
+    type Response = DeleteRouteResponse;
 
-    fn request_type_name(&self) -> &str { "DeleteRouteReq" }
-    fn response_type_name(&self) -> &str { "DeleteRouteRes" }
+    fn request_type_name(&self) -> &str { "DeleteRouteRequest" }
+    fn response_type_name(&self) -> &str { "DeleteRouteResponse" }
 }

@@ -2,33 +2,33 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IsProgramSavedReq {
+pub struct IsProgramSavedRequest {
 
 }
 
-impl Default for IsProgramSavedReq {
+impl Default for IsProgramSavedRequest {
     fn default() -> Self {
-        IsProgramSavedReq {
+        IsProgramSavedRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for IsProgramSavedReq {}
+impl ros2_client::Message for IsProgramSavedRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IsProgramSavedRes {
+pub struct IsProgramSavedResponse {
     pub answer: ::std::string::String,
     pub program_name: ::std::string::String,
     pub program_saved: bool,
     pub success: bool,
 }
 
-impl Default for IsProgramSavedRes {
+impl Default for IsProgramSavedResponse {
     fn default() -> Self {
-        IsProgramSavedRes {
+        IsProgramSavedResponse {
             answer: ::std::string::String::new(),
             program_name: ::std::string::String::new(),
             program_saved: false,
@@ -37,14 +37,14 @@ impl Default for IsProgramSavedRes {
     }
 }
 
-impl ros2_client::Message for IsProgramSavedRes {}
+impl ros2_client::Message for IsProgramSavedResponse {}
 
 
 pub struct IsProgramSaved;
 impl ros2_client::Service for IsProgramSaved {
-    type Request = IsProgramSavedReq;
-    type Response = IsProgramSavedRes;
+    type Request = IsProgramSavedRequest;
+    type Response = IsProgramSavedResponse;
 
-    fn request_type_name(&self) -> &str { "IsProgramSavedReq" }
-    fn response_type_name(&self) -> &str { "IsProgramSavedRes" }
+    fn request_type_name(&self) -> &str { "IsProgramSavedRequest" }
+    fn response_type_name(&self) -> &str { "IsProgramSavedResponse" }
 }

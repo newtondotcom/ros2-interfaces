@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TestRequestAndResponseReq {
+pub struct TestRequestAndResponseRequest {
     pub data: i32,
 }
 
-impl Default for TestRequestAndResponseReq {
+impl Default for TestRequestAndResponseRequest {
     fn default() -> Self {
-        TestRequestAndResponseReq {
+        TestRequestAndResponseRequest {
             data: 0,
         }
     }
 }
 
-impl ros2_client::Message for TestRequestAndResponseReq {}
+impl ros2_client::Message for TestRequestAndResponseRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct TestRequestAndResponseRes {
+pub struct TestRequestAndResponseResponse {
     pub data: i32,
 }
 
-impl Default for TestRequestAndResponseRes {
+impl Default for TestRequestAndResponseResponse {
     fn default() -> Self {
-        TestRequestAndResponseRes {
+        TestRequestAndResponseResponse {
             data: 0,
         }
     }
 }
 
-impl ros2_client::Message for TestRequestAndResponseRes {}
+impl ros2_client::Message for TestRequestAndResponseResponse {}
 
 
 pub struct TestRequestAndResponse;
 impl ros2_client::Service for TestRequestAndResponse {
-    type Request = TestRequestAndResponseReq;
-    type Response = TestRequestAndResponseRes;
+    type Request = TestRequestAndResponseRequest;
+    type Response = TestRequestAndResponseResponse;
 
-    fn request_type_name(&self) -> &str { "TestRequestAndResponseReq" }
-    fn response_type_name(&self) -> &str { "TestRequestAndResponseRes" }
+    fn request_type_name(&self) -> &str { "TestRequestAndResponseRequest" }
+    fn response_type_name(&self) -> &str { "TestRequestAndResponseResponse" }
 }

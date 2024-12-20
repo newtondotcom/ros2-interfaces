@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct COWriteIDReq {
+pub struct COWriteIDRequest {
     pub nodeid: i8,
     pub index: u16,
     pub subindex: u8,
@@ -10,7 +10,7 @@ pub struct COWriteIDReq {
     pub canopen_datatype: u8,
 }
 
-impl COWriteIDReq {
+impl COWriteIDRequest {
     pub const CANOPEN_DATATYPE_INT8: u8 = 0x02;
     pub const CANOPEN_DATATYPE_INT16: u8 = 0x03;
     pub const CANOPEN_DATATYPE_INT32: u8 = 0x04;
@@ -19,9 +19,9 @@ impl COWriteIDReq {
     pub const CANOPEN_DATATYPE_UINT32: u8 = 0x07;
 }
 
-impl Default for COWriteIDReq {
+impl Default for COWriteIDRequest {
     fn default() -> Self {
-        COWriteIDReq {
+        COWriteIDRequest {
             nodeid: 0,
             index: 0,
             subindex: 0,
@@ -31,31 +31,31 @@ impl Default for COWriteIDReq {
     }
 }
 
-impl ros2_client::Message for COWriteIDReq {}
+impl ros2_client::Message for COWriteIDRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct COWriteIDRes {
+pub struct COWriteIDResponse {
     pub success: bool,
 }
 
-impl Default for COWriteIDRes {
+impl Default for COWriteIDResponse {
     fn default() -> Self {
-        COWriteIDRes {
+        COWriteIDResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for COWriteIDRes {}
+impl ros2_client::Message for COWriteIDResponse {}
 
 
 pub struct COWriteID;
 impl ros2_client::Service for COWriteID {
-    type Request = COWriteIDReq;
-    type Response = COWriteIDRes;
+    type Request = COWriteIDRequest;
+    type Response = COWriteIDResponse;
 
-    fn request_type_name(&self) -> &str { "COWriteIDReq" }
-    fn response_type_name(&self) -> &str { "COWriteIDRes" }
+    fn request_type_name(&self) -> &str { "COWriteIDRequest" }
+    fn response_type_name(&self) -> &str { "COWriteIDResponse" }
 }

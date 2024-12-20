@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileReadReq {
+pub struct FileReadRequest {
     pub file_path: ::std::string::String,
     pub offset: u64,
     pub size: u64,
 }
 
-impl Default for FileReadReq {
+impl Default for FileReadRequest {
     fn default() -> Self {
-        FileReadReq {
+        FileReadRequest {
             file_path: ::std::string::String::new(),
             offset: 0,
             size: 0,
@@ -18,20 +18,20 @@ impl Default for FileReadReq {
     }
 }
 
-impl ros2_client::Message for FileReadReq {}
+impl ros2_client::Message for FileReadRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileReadRes {
+pub struct FileReadResponse {
     pub data: Vec<u8>,
     pub success: bool,
     pub r_errno: i32,
 }
 
-impl Default for FileReadRes {
+impl Default for FileReadResponse {
     fn default() -> Self {
-        FileReadRes {
+        FileReadResponse {
             data: Vec::new(),
             success: false,
             r_errno: 0,
@@ -39,14 +39,14 @@ impl Default for FileReadRes {
     }
 }
 
-impl ros2_client::Message for FileReadRes {}
+impl ros2_client::Message for FileReadResponse {}
 
 
 pub struct FileRead;
 impl ros2_client::Service for FileRead {
-    type Request = FileReadReq;
-    type Response = FileReadRes;
+    type Request = FileReadRequest;
+    type Response = FileReadResponse;
 
-    fn request_type_name(&self) -> &str { "FileReadReq" }
-    fn response_type_name(&self) -> &str { "FileReadRes" }
+    fn request_type_name(&self) -> &str { "FileReadRequest" }
+    fn response_type_name(&self) -> &str { "FileReadResponse" }
 }

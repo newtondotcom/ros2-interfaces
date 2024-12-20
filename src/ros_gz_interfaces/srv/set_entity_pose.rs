@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetEntityPoseReq {
+pub struct SetEntityPoseRequest {
     pub entity: crate::ros_gz_interfaces::msg::Entity,
     pub pose: crate::geometry_msgs::msg::Pose,
 }
 
-impl Default for SetEntityPoseReq {
+impl Default for SetEntityPoseRequest {
     fn default() -> Self {
-        SetEntityPoseReq {
+        SetEntityPoseRequest {
             entity: crate::ros_gz_interfaces::msg::Entity::default(),
             pose: crate::geometry_msgs::msg::Pose::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetEntityPoseReq {}
+impl ros2_client::Message for SetEntityPoseRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetEntityPoseRes {
+pub struct SetEntityPoseResponse {
     pub success: bool,
 }
 
-impl Default for SetEntityPoseRes {
+impl Default for SetEntityPoseResponse {
     fn default() -> Self {
-        SetEntityPoseRes {
+        SetEntityPoseResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SetEntityPoseRes {}
+impl ros2_client::Message for SetEntityPoseResponse {}
 
 
 pub struct SetEntityPose;
 impl ros2_client::Service for SetEntityPose {
-    type Request = SetEntityPoseReq;
-    type Response = SetEntityPoseRes;
+    type Request = SetEntityPoseRequest;
+    type Response = SetEntityPoseResponse;
 
-    fn request_type_name(&self) -> &str { "SetEntityPoseReq" }
-    fn response_type_name(&self) -> &str { "SetEntityPoseRes" }
+    fn request_type_name(&self) -> &str { "SetEntityPoseRequest" }
+    fn response_type_name(&self) -> &str { "SetEntityPoseResponse" }
 }

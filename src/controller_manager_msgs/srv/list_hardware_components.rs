@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListHardwareComponentsReq {
+pub struct ListHardwareComponentsRequest {
 
 }
 
-impl Default for ListHardwareComponentsReq {
+impl Default for ListHardwareComponentsRequest {
     fn default() -> Self {
-        ListHardwareComponentsReq {
+        ListHardwareComponentsRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ListHardwareComponentsReq {}
+impl ros2_client::Message for ListHardwareComponentsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListHardwareComponentsRes {
+pub struct ListHardwareComponentsResponse {
     pub component: Vec<crate::controller_manager_msgs::msg::HardwareComponentState>,
 }
 
-impl Default for ListHardwareComponentsRes {
+impl Default for ListHardwareComponentsResponse {
     fn default() -> Self {
-        ListHardwareComponentsRes {
+        ListHardwareComponentsResponse {
             component: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ListHardwareComponentsRes {}
+impl ros2_client::Message for ListHardwareComponentsResponse {}
 
 
 pub struct ListHardwareComponents;
 impl ros2_client::Service for ListHardwareComponents {
-    type Request = ListHardwareComponentsReq;
-    type Response = ListHardwareComponentsRes;
+    type Request = ListHardwareComponentsRequest;
+    type Response = ListHardwareComponentsResponse;
 
-    fn request_type_name(&self) -> &str { "ListHardwareComponentsReq" }
-    fn response_type_name(&self) -> &str { "ListHardwareComponentsRes" }
+    fn request_type_name(&self) -> &str { "ListHardwareComponentsRequest" }
+    fn response_type_name(&self) -> &str { "ListHardwareComponentsResponse" }
 }

@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ConfigLoggerReq {
+pub struct ConfigLoggerRequest {
     pub logger_name: ::std::string::String,
     pub level: ::std::string::String,
 }
 
-impl Default for ConfigLoggerReq {
+impl Default for ConfigLoggerRequest {
     fn default() -> Self {
-        ConfigLoggerReq {
+        ConfigLoggerRequest {
             logger_name: ::std::string::String::new(),
             level: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ConfigLoggerReq {}
+impl ros2_client::Message for ConfigLoggerRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ConfigLoggerRes {
+pub struct ConfigLoggerResponse {
     pub success: bool,
 }
 
-impl Default for ConfigLoggerRes {
+impl Default for ConfigLoggerResponse {
     fn default() -> Self {
-        ConfigLoggerRes {
+        ConfigLoggerResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for ConfigLoggerRes {}
+impl ros2_client::Message for ConfigLoggerResponse {}
 
 
 pub struct ConfigLogger;
 impl ros2_client::Service for ConfigLogger {
-    type Request = ConfigLoggerReq;
-    type Response = ConfigLoggerRes;
+    type Request = ConfigLoggerRequest;
+    type Response = ConfigLoggerResponse;
 
-    fn request_type_name(&self) -> &str { "ConfigLoggerReq" }
-    fn response_type_name(&self) -> &str { "ConfigLoggerRes" }
+    fn request_type_name(&self) -> &str { "ConfigLoggerRequest" }
+    fn response_type_name(&self) -> &str { "ConfigLoggerResponse" }
 }

@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetMotionSequenceReq {
+pub struct GetMotionSequenceRequest {
     pub request: crate::moveit_msgs::msg::MotionSequenceRequest,
 }
 
-impl Default for GetMotionSequenceReq {
+impl Default for GetMotionSequenceRequest {
     fn default() -> Self {
-        GetMotionSequenceReq {
+        GetMotionSequenceRequest {
             request: crate::moveit_msgs::msg::MotionSequenceRequest::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetMotionSequenceReq {}
+impl ros2_client::Message for GetMotionSequenceRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetMotionSequenceRes {
+pub struct GetMotionSequenceResponse {
     pub response: crate::moveit_msgs::msg::MotionSequenceResponse,
 }
 
-impl Default for GetMotionSequenceRes {
+impl Default for GetMotionSequenceResponse {
     fn default() -> Self {
-        GetMotionSequenceRes {
+        GetMotionSequenceResponse {
             response: crate::moveit_msgs::msg::MotionSequenceResponse::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetMotionSequenceRes {}
+impl ros2_client::Message for GetMotionSequenceResponse {}
 
 
 pub struct GetMotionSequence;
 impl ros2_client::Service for GetMotionSequence {
-    type Request = GetMotionSequenceReq;
-    type Response = GetMotionSequenceRes;
+    type Request = GetMotionSequenceRequest;
+    type Response = GetMotionSequenceResponse;
 
-    fn request_type_name(&self) -> &str { "GetMotionSequenceReq" }
-    fn response_type_name(&self) -> &str { "GetMotionSequenceRes" }
+    fn request_type_name(&self) -> &str { "GetMotionSequenceRequest" }
+    fn response_type_name(&self) -> &str { "GetMotionSequenceResponse" }
 }

@@ -1,12 +1,12 @@
 mod change_mode;
 pub use change_mode::ChangeMode;
-pub use change_mode::ChangeModeReq;
-pub use change_mode::ChangeModeRes;
+pub use change_mode::ChangeModeRequest;
+pub use change_mode::ChangeModeResponse;
 mod get_available_modes;
 pub use get_available_modes::GetAvailableModes;
-pub use get_available_modes::GetAvailableModesReq;
-pub use get_available_modes::GetAvailableModesRes;
+pub use get_available_modes::GetAvailableModesRequest;
+pub use get_available_modes::GetAvailableModesResponse;
 mod get_mode;
 pub use get_mode::GetMode;
-pub use get_mode::GetModeReq;
-pub use get_mode::GetModeRes;
+pub use get_mode::GetModeRequest;
+pub use get_mode::GetModeResponse;

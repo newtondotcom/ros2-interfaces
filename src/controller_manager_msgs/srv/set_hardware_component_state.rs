@@ -2,47 +2,47 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetHardwareComponentStateReq {
+pub struct SetHardwareComponentStateRequest {
     pub name: ::std::string::String,
     pub target_state: crate::lifecycle_msgs::msg::State,
 }
 
-impl Default for SetHardwareComponentStateReq {
+impl Default for SetHardwareComponentStateRequest {
     fn default() -> Self {
-        SetHardwareComponentStateReq {
+        SetHardwareComponentStateRequest {
             name: ::std::string::String::new(),
             target_state: crate::lifecycle_msgs::msg::State::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetHardwareComponentStateReq {}
+impl ros2_client::Message for SetHardwareComponentStateRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetHardwareComponentStateRes {
+pub struct SetHardwareComponentStateResponse {
     pub ok: bool,
     pub state: crate::lifecycle_msgs::msg::State,
 }
 
-impl Default for SetHardwareComponentStateRes {
+impl Default for SetHardwareComponentStateResponse {
     fn default() -> Self {
-        SetHardwareComponentStateRes {
+        SetHardwareComponentStateResponse {
             ok: false,
             state: crate::lifecycle_msgs::msg::State::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetHardwareComponentStateRes {}
+impl ros2_client::Message for SetHardwareComponentStateResponse {}
 
 
 pub struct SetHardwareComponentState;
 impl ros2_client::Service for SetHardwareComponentState {
-    type Request = SetHardwareComponentStateReq;
-    type Response = SetHardwareComponentStateRes;
+    type Request = SetHardwareComponentStateRequest;
+    type Response = SetHardwareComponentStateResponse;
 
-    fn request_type_name(&self) -> &str { "SetHardwareComponentStateReq" }
-    fn response_type_name(&self) -> &str { "SetHardwareComponentStateRes" }
+    fn request_type_name(&self) -> &str { "SetHardwareComponentStateRequest" }
+    fn response_type_name(&self) -> &str { "SetHardwareComponentStateResponse" }
 }

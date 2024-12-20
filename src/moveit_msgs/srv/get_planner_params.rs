@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetPlannerParamsReq {
+pub struct GetPlannerParamsRequest {
     pub pipeline_id: ::std::string::String,
     pub planner_config: ::std::string::String,
     pub group: ::std::string::String,
 }
 
-impl Default for GetPlannerParamsReq {
+impl Default for GetPlannerParamsRequest {
     fn default() -> Self {
-        GetPlannerParamsReq {
+        GetPlannerParamsRequest {
             pipeline_id: ::std::string::String::new(),
             planner_config: ::std::string::String::new(),
             group: ::std::string::String::new(),
@@ -18,31 +18,31 @@ impl Default for GetPlannerParamsReq {
     }
 }
 
-impl ros2_client::Message for GetPlannerParamsReq {}
+impl ros2_client::Message for GetPlannerParamsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetPlannerParamsRes {
+pub struct GetPlannerParamsResponse {
     pub params: crate::moveit_msgs::msg::PlannerParams,
 }
 
-impl Default for GetPlannerParamsRes {
+impl Default for GetPlannerParamsResponse {
     fn default() -> Self {
-        GetPlannerParamsRes {
+        GetPlannerParamsResponse {
             params: crate::moveit_msgs::msg::PlannerParams::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetPlannerParamsRes {}
+impl ros2_client::Message for GetPlannerParamsResponse {}
 
 
 pub struct GetPlannerParams;
 impl ros2_client::Service for GetPlannerParams {
-    type Request = GetPlannerParamsReq;
-    type Response = GetPlannerParamsRes;
+    type Request = GetPlannerParamsRequest;
+    type Response = GetPlannerParamsResponse;
 
-    fn request_type_name(&self) -> &str { "GetPlannerParamsReq" }
-    fn response_type_name(&self) -> &str { "GetPlannerParamsRes" }
+    fn request_type_name(&self) -> &str { "GetPlannerParamsRequest" }
+    fn response_type_name(&self) -> &str { "GetPlannerParamsResponse" }
 }

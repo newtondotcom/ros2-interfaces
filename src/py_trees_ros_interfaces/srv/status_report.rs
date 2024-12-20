@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct StatusReportReq {
+pub struct StatusReportRequest {
 
 }
 
-impl Default for StatusReportReq {
+impl Default for StatusReportRequest {
     fn default() -> Self {
-        StatusReportReq {
+        StatusReportRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for StatusReportReq {}
+impl ros2_client::Message for StatusReportRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct StatusReportRes {
+pub struct StatusReportResponse {
     pub report: ::std::string::String,
 }
 
-impl Default for StatusReportRes {
+impl Default for StatusReportResponse {
     fn default() -> Self {
-        StatusReportRes {
+        StatusReportResponse {
             report: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for StatusReportRes {}
+impl ros2_client::Message for StatusReportResponse {}
 
 
 pub struct StatusReport;
 impl ros2_client::Service for StatusReport {
-    type Request = StatusReportReq;
-    type Response = StatusReportRes;
+    type Request = StatusReportRequest;
+    type Response = StatusReportResponse;
 
-    fn request_type_name(&self) -> &str { "StatusReportReq" }
-    fn response_type_name(&self) -> &str { "StatusReportRes" }
+    fn request_type_name(&self) -> &str { "StatusReportRequest" }
+    fn response_type_name(&self) -> &str { "StatusReportResponse" }
 }

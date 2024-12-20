@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DeleteParamReq {
+pub struct DeleteParamRequest {
     pub name: ::std::string::String,
 }
 
-impl Default for DeleteParamReq {
+impl Default for DeleteParamRequest {
     fn default() -> Self {
-        DeleteParamReq {
+        DeleteParamRequest {
             name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for DeleteParamReq {}
+impl ros2_client::Message for DeleteParamRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct DeleteParamRes {
+pub struct DeleteParamResponse {
 
 }
 
-impl Default for DeleteParamRes {
+impl Default for DeleteParamResponse {
     fn default() -> Self {
-        DeleteParamRes {
+        DeleteParamResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for DeleteParamRes {}
+impl ros2_client::Message for DeleteParamResponse {}
 
 
 pub struct DeleteParam;
 impl ros2_client::Service for DeleteParam {
-    type Request = DeleteParamReq;
-    type Response = DeleteParamRes;
+    type Request = DeleteParamRequest;
+    type Response = DeleteParamResponse;
 
-    fn request_type_name(&self) -> &str { "DeleteParamReq" }
-    fn response_type_name(&self) -> &str { "DeleteParamRes" }
+    fn request_type_name(&self) -> &str { "DeleteParamRequest" }
+    fn response_type_name(&self) -> &str { "DeleteParamResponse" }
 }

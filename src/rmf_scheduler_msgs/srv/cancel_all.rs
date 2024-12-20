@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CancelAllReq {
+pub struct CancelAllRequest {
     pub group: ::std::string::String,
 }
 
-impl Default for CancelAllReq {
+impl Default for CancelAllRequest {
     fn default() -> Self {
-        CancelAllReq {
+        CancelAllRequest {
             group: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for CancelAllReq {}
+impl ros2_client::Message for CancelAllRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CancelAllRes {
+pub struct CancelAllResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for CancelAllRes {
+impl Default for CancelAllResponse {
     fn default() -> Self {
-        CancelAllRes {
+        CancelAllResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for CancelAllRes {}
+impl ros2_client::Message for CancelAllResponse {}
 
 
 pub struct CancelAll;
 impl ros2_client::Service for CancelAll {
-    type Request = CancelAllReq;
-    type Response = CancelAllRes;
+    type Request = CancelAllRequest;
+    type Response = CancelAllResponse;
 
-    fn request_type_name(&self) -> &str { "CancelAllReq" }
-    fn response_type_name(&self) -> &str { "CancelAllRes" }
+    fn request_type_name(&self) -> &str { "CancelAllRequest" }
+    fn response_type_name(&self) -> &str { "CancelAllResponse" }
 }

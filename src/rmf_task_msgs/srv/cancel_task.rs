@@ -2,47 +2,47 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CancelTaskReq {
+pub struct CancelTaskRequest {
     pub requester: ::std::string::String,
     pub task_id: ::std::string::String,
 }
 
-impl Default for CancelTaskReq {
+impl Default for CancelTaskRequest {
     fn default() -> Self {
-        CancelTaskReq {
+        CancelTaskRequest {
             requester: ::std::string::String::new(),
             task_id: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for CancelTaskReq {}
+impl ros2_client::Message for CancelTaskRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CancelTaskRes {
+pub struct CancelTaskResponse {
     pub success: bool,
     pub message: ::std::string::String,
 }
 
-impl Default for CancelTaskRes {
+impl Default for CancelTaskResponse {
     fn default() -> Self {
-        CancelTaskRes {
+        CancelTaskResponse {
             success: false,
             message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for CancelTaskRes {}
+impl ros2_client::Message for CancelTaskResponse {}
 
 
 pub struct CancelTask;
 impl ros2_client::Service for CancelTask {
-    type Request = CancelTaskReq;
-    type Response = CancelTaskRes;
+    type Request = CancelTaskRequest;
+    type Response = CancelTaskResponse;
 
-    fn request_type_name(&self) -> &str { "CancelTaskReq" }
-    fn response_type_name(&self) -> &str { "CancelTaskRes" }
+    fn request_type_name(&self) -> &str { "CancelTaskRequest" }
+    fn response_type_name(&self) -> &str { "CancelTaskResponse" }
 }

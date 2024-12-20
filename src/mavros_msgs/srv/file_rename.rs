@@ -2,47 +2,47 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileRenameReq {
+pub struct FileRenameRequest {
     pub old_path: ::std::string::String,
     pub new_path: ::std::string::String,
 }
 
-impl Default for FileRenameReq {
+impl Default for FileRenameRequest {
     fn default() -> Self {
-        FileRenameReq {
+        FileRenameRequest {
             old_path: ::std::string::String::new(),
             new_path: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for FileRenameReq {}
+impl ros2_client::Message for FileRenameRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileRenameRes {
+pub struct FileRenameResponse {
     pub success: bool,
     pub r_errno: i32,
 }
 
-impl Default for FileRenameRes {
+impl Default for FileRenameResponse {
     fn default() -> Self {
-        FileRenameRes {
+        FileRenameResponse {
             success: false,
             r_errno: 0,
         }
     }
 }
 
-impl ros2_client::Message for FileRenameRes {}
+impl ros2_client::Message for FileRenameResponse {}
 
 
 pub struct FileRename;
 impl ros2_client::Service for FileRename {
-    type Request = FileRenameReq;
-    type Response = FileRenameRes;
+    type Request = FileRenameRequest;
+    type Response = FileRenameResponse;
 
-    fn request_type_name(&self) -> &str { "FileRenameReq" }
-    fn response_type_name(&self) -> &str { "FileRenameRes" }
+    fn request_type_name(&self) -> &str { "FileRenameRequest" }
+    fn response_type_name(&self) -> &str { "FileRenameResponse" }
 }

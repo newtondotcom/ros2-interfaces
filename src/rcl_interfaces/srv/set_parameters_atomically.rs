@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetParametersAtomicallyReq {
+pub struct SetParametersAtomicallyRequest {
     pub parameters: Vec<crate::rcl_interfaces::msg::Parameter>,
 }
 
-impl Default for SetParametersAtomicallyReq {
+impl Default for SetParametersAtomicallyRequest {
     fn default() -> Self {
-        SetParametersAtomicallyReq {
+        SetParametersAtomicallyRequest {
             parameters: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetParametersAtomicallyReq {}
+impl ros2_client::Message for SetParametersAtomicallyRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetParametersAtomicallyRes {
+pub struct SetParametersAtomicallyResponse {
     pub result: crate::rcl_interfaces::msg::SetParametersResult,
 }
 
-impl Default for SetParametersAtomicallyRes {
+impl Default for SetParametersAtomicallyResponse {
     fn default() -> Self {
-        SetParametersAtomicallyRes {
+        SetParametersAtomicallyResponse {
             result: crate::rcl_interfaces::msg::SetParametersResult::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetParametersAtomicallyRes {}
+impl ros2_client::Message for SetParametersAtomicallyResponse {}
 
 
 pub struct SetParametersAtomically;
 impl ros2_client::Service for SetParametersAtomically {
-    type Request = SetParametersAtomicallyReq;
-    type Response = SetParametersAtomicallyRes;
+    type Request = SetParametersAtomicallyRequest;
+    type Response = SetParametersAtomicallyResponse;
 
-    fn request_type_name(&self) -> &str { "SetParametersAtomicallyReq" }
-    fn response_type_name(&self) -> &str { "SetParametersAtomicallyRes" }
+    fn request_type_name(&self) -> &str { "SetParametersAtomicallyRequest" }
+    fn response_type_name(&self) -> &str { "SetParametersAtomicallyResponse" }
 }

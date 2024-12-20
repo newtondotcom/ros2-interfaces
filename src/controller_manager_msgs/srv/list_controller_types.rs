@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListControllerTypesReq {
+pub struct ListControllerTypesRequest {
 
 }
 
-impl Default for ListControllerTypesReq {
+impl Default for ListControllerTypesRequest {
     fn default() -> Self {
-        ListControllerTypesReq {
+        ListControllerTypesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for ListControllerTypesReq {}
+impl ros2_client::Message for ListControllerTypesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ListControllerTypesRes {
+pub struct ListControllerTypesResponse {
     pub types: Vec<::std::string::String>,
     pub base_classes: Vec<::std::string::String>,
 }
 
-impl Default for ListControllerTypesRes {
+impl Default for ListControllerTypesResponse {
     fn default() -> Self {
-        ListControllerTypesRes {
+        ListControllerTypesResponse {
             types: Vec::new(),
             base_classes: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for ListControllerTypesRes {}
+impl ros2_client::Message for ListControllerTypesResponse {}
 
 
 pub struct ListControllerTypes;
 impl ros2_client::Service for ListControllerTypes {
-    type Request = ListControllerTypesReq;
-    type Response = ListControllerTypesRes;
+    type Request = ListControllerTypesRequest;
+    type Response = ListControllerTypesResponse;
 
-    fn request_type_name(&self) -> &str { "ListControllerTypesReq" }
-    fn response_type_name(&self) -> &str { "ListControllerTypesRes" }
+    fn request_type_name(&self) -> &str { "ListControllerTypesRequest" }
+    fn response_type_name(&self) -> &str { "ListControllerTypesResponse" }
 }

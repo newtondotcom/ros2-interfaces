@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct OpenSnapshotStreamReq {
+pub struct OpenSnapshotStreamRequest {
     pub topic_name: ::std::string::String,
     pub parameters: crate::py_trees_ros_interfaces::msg::SnapshotStreamParameters,
 }
 
-impl Default for OpenSnapshotStreamReq {
+impl Default for OpenSnapshotStreamRequest {
     fn default() -> Self {
-        OpenSnapshotStreamReq {
+        OpenSnapshotStreamRequest {
             topic_name: ::std::string::String::new(),
             parameters: crate::py_trees_ros_interfaces::msg::SnapshotStreamParameters::default(),
         }
     }
 }
 
-impl ros2_client::Message for OpenSnapshotStreamReq {}
+impl ros2_client::Message for OpenSnapshotStreamRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct OpenSnapshotStreamRes {
+pub struct OpenSnapshotStreamResponse {
     pub topic_name: ::std::string::String,
 }
 
-impl Default for OpenSnapshotStreamRes {
+impl Default for OpenSnapshotStreamResponse {
     fn default() -> Self {
-        OpenSnapshotStreamRes {
+        OpenSnapshotStreamResponse {
             topic_name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for OpenSnapshotStreamRes {}
+impl ros2_client::Message for OpenSnapshotStreamResponse {}
 
 
 pub struct OpenSnapshotStream;
 impl ros2_client::Service for OpenSnapshotStream {
-    type Request = OpenSnapshotStreamReq;
-    type Response = OpenSnapshotStreamRes;
+    type Request = OpenSnapshotStreamRequest;
+    type Response = OpenSnapshotStreamResponse;
 
-    fn request_type_name(&self) -> &str { "OpenSnapshotStreamReq" }
-    fn response_type_name(&self) -> &str { "OpenSnapshotStreamRes" }
+    fn request_type_name(&self) -> &str { "OpenSnapshotStreamRequest" }
+    fn response_type_name(&self) -> &str { "OpenSnapshotStreamResponse" }
 }

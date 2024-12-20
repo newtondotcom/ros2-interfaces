@@ -2,47 +2,47 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetExposureReq {
+pub struct SetExposureRequest {
     pub auto_exposure: bool,
     pub time: i64,
 }
 
-impl Default for SetExposureReq {
+impl Default for SetExposureRequest {
     fn default() -> Self {
-        SetExposureReq {
+        SetExposureRequest {
             auto_exposure: false,
             time: 0,
         }
     }
 }
 
-impl ros2_client::Message for SetExposureReq {}
+impl ros2_client::Message for SetExposureRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetExposureRes {
+pub struct SetExposureResponse {
     pub auto_exposure: bool,
     pub time: i64,
 }
 
-impl Default for SetExposureRes {
+impl Default for SetExposureResponse {
     fn default() -> Self {
-        SetExposureRes {
+        SetExposureResponse {
             auto_exposure: false,
             time: 0,
         }
     }
 }
 
-impl ros2_client::Message for SetExposureRes {}
+impl ros2_client::Message for SetExposureResponse {}
 
 
 pub struct SetExposure;
 impl ros2_client::Service for SetExposure {
-    type Request = SetExposureReq;
-    type Response = SetExposureRes;
+    type Request = SetExposureRequest;
+    type Response = SetExposureResponse;
 
-    fn request_type_name(&self) -> &str { "SetExposureReq" }
-    fn response_type_name(&self) -> &str { "SetExposureRes" }
+    fn request_type_name(&self) -> &str { "SetExposureRequest" }
+    fn response_type_name(&self) -> &str { "SetExposureResponse" }
 }

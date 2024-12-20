@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RegisterQueryReq {
+pub struct RegisterQueryRequest {
     pub query: crate::rmf_traffic_msgs::msg::ScheduleQuery,
 }
 
-impl Default for RegisterQueryReq {
+impl Default for RegisterQueryRequest {
     fn default() -> Self {
-        RegisterQueryReq {
+        RegisterQueryRequest {
             query: crate::rmf_traffic_msgs::msg::ScheduleQuery::default(),
         }
     }
 }
 
-impl ros2_client::Message for RegisterQueryReq {}
+impl ros2_client::Message for RegisterQueryRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RegisterQueryRes {
+pub struct RegisterQueryResponse {
     pub node_id: crate::rmf_traffic_msgs::msg::ScheduleIdentity,
     pub query_id: u64,
     pub error: ::std::string::String,
 }
 
-impl Default for RegisterQueryRes {
+impl Default for RegisterQueryResponse {
     fn default() -> Self {
-        RegisterQueryRes {
+        RegisterQueryResponse {
             node_id: crate::rmf_traffic_msgs::msg::ScheduleIdentity::default(),
             query_id: 0,
             error: ::std::string::String::new(),
@@ -35,14 +35,14 @@ impl Default for RegisterQueryRes {
     }
 }
 
-impl ros2_client::Message for RegisterQueryRes {}
+impl ros2_client::Message for RegisterQueryResponse {}
 
 
 pub struct RegisterQuery;
 impl ros2_client::Service for RegisterQuery {
-    type Request = RegisterQueryReq;
-    type Response = RegisterQueryRes;
+    type Request = RegisterQueryRequest;
+    type Response = RegisterQueryResponse;
 
-    fn request_type_name(&self) -> &str { "RegisterQueryReq" }
-    fn response_type_name(&self) -> &str { "RegisterQueryRes" }
+    fn request_type_name(&self) -> &str { "RegisterQueryRequest" }
+    fn response_type_name(&self) -> &str { "RegisterQueryResponse" }
 }

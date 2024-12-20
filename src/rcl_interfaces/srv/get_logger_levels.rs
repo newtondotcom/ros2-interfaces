@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetLoggerLevelsReq {
+pub struct GetLoggerLevelsRequest {
     pub names: Vec<::std::string::String>,
 }
 
-impl Default for GetLoggerLevelsReq {
+impl Default for GetLoggerLevelsRequest {
     fn default() -> Self {
-        GetLoggerLevelsReq {
+        GetLoggerLevelsRequest {
             names: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetLoggerLevelsReq {}
+impl ros2_client::Message for GetLoggerLevelsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetLoggerLevelsRes {
+pub struct GetLoggerLevelsResponse {
     pub levels: Vec<crate::rcl_interfaces::msg::LoggerLevel>,
 }
 
-impl Default for GetLoggerLevelsRes {
+impl Default for GetLoggerLevelsResponse {
     fn default() -> Self {
-        GetLoggerLevelsRes {
+        GetLoggerLevelsResponse {
             levels: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetLoggerLevelsRes {}
+impl ros2_client::Message for GetLoggerLevelsResponse {}
 
 
 pub struct GetLoggerLevels;
 impl ros2_client::Service for GetLoggerLevels {
-    type Request = GetLoggerLevelsReq;
-    type Response = GetLoggerLevelsRes;
+    type Request = GetLoggerLevelsRequest;
+    type Response = GetLoggerLevelsResponse;
 
-    fn request_type_name(&self) -> &str { "GetLoggerLevelsReq" }
-    fn response_type_name(&self) -> &str { "GetLoggerLevelsRes" }
+    fn request_type_name(&self) -> &str { "GetLoggerLevelsRequest" }
+    fn response_type_name(&self) -> &str { "GetLoggerLevelsResponse" }
 }

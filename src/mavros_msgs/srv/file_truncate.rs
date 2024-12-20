@@ -2,47 +2,47 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileTruncateReq {
+pub struct FileTruncateRequest {
     pub file_path: ::std::string::String,
     pub length: u64,
 }
 
-impl Default for FileTruncateReq {
+impl Default for FileTruncateRequest {
     fn default() -> Self {
-        FileTruncateReq {
+        FileTruncateRequest {
             file_path: ::std::string::String::new(),
             length: 0,
         }
     }
 }
 
-impl ros2_client::Message for FileTruncateReq {}
+impl ros2_client::Message for FileTruncateRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct FileTruncateRes {
+pub struct FileTruncateResponse {
     pub success: bool,
     pub r_errno: i32,
 }
 
-impl Default for FileTruncateRes {
+impl Default for FileTruncateResponse {
     fn default() -> Self {
-        FileTruncateRes {
+        FileTruncateResponse {
             success: false,
             r_errno: 0,
         }
     }
 }
 
-impl ros2_client::Message for FileTruncateRes {}
+impl ros2_client::Message for FileTruncateResponse {}
 
 
 pub struct FileTruncate;
 impl ros2_client::Service for FileTruncate {
-    type Request = FileTruncateReq;
-    type Response = FileTruncateRes;
+    type Request = FileTruncateRequest;
+    type Response = FileTruncateResponse;
 
-    fn request_type_name(&self) -> &str { "FileTruncateReq" }
-    fn response_type_name(&self) -> &str { "FileTruncateRes" }
+    fn request_type_name(&self) -> &str { "FileTruncateRequest" }
+    fn response_type_name(&self) -> &str { "FileTruncateResponse" }
 }

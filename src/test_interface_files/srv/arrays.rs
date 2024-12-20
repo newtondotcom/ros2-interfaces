@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ArraysReq {
+pub struct ArraysRequest {
     pub bool_values: [bool; 3],
     pub byte_values: [u8; 3],
     pub char_values: [i8; 3],
@@ -36,9 +36,9 @@ pub struct ArraysReq {
     pub string_values_default: [::std::string::String; 3], // default: ["", "max value", "min value"]
 }
 
-impl Default for ArraysReq {
+impl Default for ArraysRequest {
     fn default() -> Self {
-        ArraysReq {
+        ArraysRequest {
             bool_values: [false; 3],
             byte_values: [0; 3],
             char_values: [0; 3],
@@ -74,12 +74,12 @@ impl Default for ArraysReq {
     }
 }
 
-impl ros2_client::Message for ArraysReq {}
+impl ros2_client::Message for ArraysRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ArraysRes {
+pub struct ArraysResponse {
     pub bool_values: [bool; 3],
     pub byte_values: [u8; 3],
     pub char_values: [i8; 3],
@@ -113,9 +113,9 @@ pub struct ArraysRes {
     pub string_values_default: [::std::string::String; 3], // default: ["", "max value", "min value"]
 }
 
-impl Default for ArraysRes {
+impl Default for ArraysResponse {
     fn default() -> Self {
-        ArraysRes {
+        ArraysResponse {
             bool_values: [false; 3],
             byte_values: [0; 3],
             char_values: [0; 3],
@@ -151,14 +151,14 @@ impl Default for ArraysRes {
     }
 }
 
-impl ros2_client::Message for ArraysRes {}
+impl ros2_client::Message for ArraysResponse {}
 
 
 pub struct Arrays;
 impl ros2_client::Service for Arrays {
-    type Request = ArraysReq;
-    type Response = ArraysRes;
+    type Request = ArraysRequest;
+    type Response = ArraysResponse;
 
-    fn request_type_name(&self) -> &str { "ArraysReq" }
-    fn response_type_name(&self) -> &str { "ArraysRes" }
+    fn request_type_name(&self) -> &str { "ArraysRequest" }
+    fn response_type_name(&self) -> &str { "ArraysResponse" }
 }

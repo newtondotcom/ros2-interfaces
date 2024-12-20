@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct KillReq {
+pub struct KillRequest {
     pub name: ::std::string::String,
 }
 
-impl Default for KillReq {
+impl Default for KillRequest {
     fn default() -> Self {
-        KillReq {
+        KillRequest {
             name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for KillReq {}
+impl ros2_client::Message for KillRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct KillRes {
+pub struct KillResponse {
 
 }
 
-impl Default for KillRes {
+impl Default for KillResponse {
     fn default() -> Self {
-        KillRes {
+        KillResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for KillRes {}
+impl ros2_client::Message for KillResponse {}
 
 
 pub struct Kill;
 impl ros2_client::Service for Kill {
-    type Request = KillReq;
-    type Response = KillRes;
+    type Request = KillRequest;
+    type Response = KillResponse;
 
-    fn request_type_name(&self) -> &str { "KillReq" }
-    fn response_type_name(&self) -> &str { "KillRes" }
+    fn request_type_name(&self) -> &str { "KillRequest" }
+    fn response_type_name(&self) -> &str { "KillResponse" }
 }

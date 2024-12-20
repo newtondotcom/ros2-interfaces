@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetCameraInfoReq {
+pub struct SetCameraInfoRequest {
     pub camera_info: crate::sensor_msgs::msg::CameraInfo,
 }
 
-impl Default for SetCameraInfoReq {
+impl Default for SetCameraInfoRequest {
     fn default() -> Self {
-        SetCameraInfoReq {
+        SetCameraInfoRequest {
             camera_info: crate::sensor_msgs::msg::CameraInfo::default(),
         }
     }
 }
 
-impl ros2_client::Message for SetCameraInfoReq {}
+impl ros2_client::Message for SetCameraInfoRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetCameraInfoRes {
+pub struct SetCameraInfoResponse {
     pub success: bool,
     pub status_message: ::std::string::String,
 }
 
-impl Default for SetCameraInfoRes {
+impl Default for SetCameraInfoResponse {
     fn default() -> Self {
-        SetCameraInfoRes {
+        SetCameraInfoResponse {
             success: false,
             status_message: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetCameraInfoRes {}
+impl ros2_client::Message for SetCameraInfoResponse {}
 
 
 pub struct SetCameraInfo;
 impl ros2_client::Service for SetCameraInfo {
-    type Request = SetCameraInfoReq;
-    type Response = SetCameraInfoRes;
+    type Request = SetCameraInfoRequest;
+    type Response = SetCameraInfoResponse;
 
-    fn request_type_name(&self) -> &str { "SetCameraInfoReq" }
-    fn response_type_name(&self) -> &str { "SetCameraInfoRes" }
+    fn request_type_name(&self) -> &str { "SetCameraInfoRequest" }
+    fn response_type_name(&self) -> &str { "SetCameraInfoResponse" }
 }

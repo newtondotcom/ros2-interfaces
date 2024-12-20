@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetCMGraphReq {
+pub struct GetCMGraphRequest {
     pub node_ids: Vec<u64>,
 }
 
-impl Default for GetCMGraphReq {
+impl Default for GetCMGraphRequest {
     fn default() -> Self {
-        GetCMGraphReq {
+        GetCMGraphRequest {
             node_ids: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetCMGraphReq {}
+impl ros2_client::Message for GetCMGraphRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetCMGraphRes {
+pub struct GetCMGraphResponse {
     pub cm_graph: crate::mrpt_msgs::msg::NetworkOfPoses,
 }
 
-impl Default for GetCMGraphRes {
+impl Default for GetCMGraphResponse {
     fn default() -> Self {
-        GetCMGraphRes {
+        GetCMGraphResponse {
             cm_graph: crate::mrpt_msgs::msg::NetworkOfPoses::default(),
         }
     }
 }
 
-impl ros2_client::Message for GetCMGraphRes {}
+impl ros2_client::Message for GetCMGraphResponse {}
 
 
 pub struct GetCMGraph;
 impl ros2_client::Service for GetCMGraph {
-    type Request = GetCMGraphReq;
-    type Response = GetCMGraphRes;
+    type Request = GetCMGraphRequest;
+    type Response = GetCMGraphResponse;
 
-    fn request_type_name(&self) -> &str { "GetCMGraphReq" }
-    fn response_type_name(&self) -> &str { "GetCMGraphRes" }
+    fn request_type_name(&self) -> &str { "GetCMGraphRequest" }
+    fn response_type_name(&self) -> &str { "GetCMGraphResponse" }
 }

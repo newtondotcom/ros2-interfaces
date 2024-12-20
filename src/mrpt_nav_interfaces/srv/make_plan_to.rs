@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MakePlanToReq {
+pub struct MakePlanToRequest {
     pub target: crate::geometry_msgs::msg::PoseStamped,
 }
 
-impl Default for MakePlanToReq {
+impl Default for MakePlanToRequest {
     fn default() -> Self {
-        MakePlanToReq {
+        MakePlanToRequest {
             target: crate::geometry_msgs::msg::PoseStamped::default(),
         }
     }
 }
 
-impl ros2_client::Message for MakePlanToReq {}
+impl ros2_client::Message for MakePlanToRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MakePlanToRes {
+pub struct MakePlanToResponse {
     pub valid_path_found: bool,
     pub waypoints: crate::mrpt_msgs::msg::WaypointSequence,
 }
 
-impl Default for MakePlanToRes {
+impl Default for MakePlanToResponse {
     fn default() -> Self {
-        MakePlanToRes {
+        MakePlanToResponse {
             valid_path_found: false,
             waypoints: crate::mrpt_msgs::msg::WaypointSequence::default(),
         }
     }
 }
 
-impl ros2_client::Message for MakePlanToRes {}
+impl ros2_client::Message for MakePlanToResponse {}
 
 
 pub struct MakePlanTo;
 impl ros2_client::Service for MakePlanTo {
-    type Request = MakePlanToReq;
-    type Response = MakePlanToRes;
+    type Request = MakePlanToRequest;
+    type Response = MakePlanToResponse;
 
-    fn request_type_name(&self) -> &str { "MakePlanToReq" }
-    fn response_type_name(&self) -> &str { "MakePlanToRes" }
+    fn request_type_name(&self) -> &str { "MakePlanToRequest" }
+    fn response_type_name(&self) -> &str { "MakePlanToResponse" }
 }

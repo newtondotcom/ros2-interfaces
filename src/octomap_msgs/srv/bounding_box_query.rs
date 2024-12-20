@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BoundingBoxQueryReq {
+pub struct BoundingBoxQueryRequest {
     pub min: crate::geometry_msgs::msg::Point,
     pub max: crate::geometry_msgs::msg::Point,
 }
 
-impl Default for BoundingBoxQueryReq {
+impl Default for BoundingBoxQueryRequest {
     fn default() -> Self {
-        BoundingBoxQueryReq {
+        BoundingBoxQueryRequest {
             min: crate::geometry_msgs::msg::Point::default(),
             max: crate::geometry_msgs::msg::Point::default(),
         }
     }
 }
 
-impl ros2_client::Message for BoundingBoxQueryReq {}
+impl ros2_client::Message for BoundingBoxQueryRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct BoundingBoxQueryRes {
+pub struct BoundingBoxQueryResponse {
 
 }
 
-impl Default for BoundingBoxQueryRes {
+impl Default for BoundingBoxQueryResponse {
     fn default() -> Self {
-        BoundingBoxQueryRes {
+        BoundingBoxQueryResponse {
 
         }
     }
 }
 
-impl ros2_client::Message for BoundingBoxQueryRes {}
+impl ros2_client::Message for BoundingBoxQueryResponse {}
 
 
 pub struct BoundingBoxQuery;
 impl ros2_client::Service for BoundingBoxQuery {
-    type Request = BoundingBoxQueryReq;
-    type Response = BoundingBoxQueryRes;
+    type Request = BoundingBoxQueryRequest;
+    type Response = BoundingBoxQueryResponse;
 
-    fn request_type_name(&self) -> &str { "BoundingBoxQueryReq" }
-    fn response_type_name(&self) -> &str { "BoundingBoxQueryRes" }
+    fn request_type_name(&self) -> &str { "BoundingBoxQueryRequest" }
+    fn response_type_name(&self) -> &str { "BoundingBoxQueryResponse" }
 }

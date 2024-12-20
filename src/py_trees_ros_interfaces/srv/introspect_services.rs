@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IntrospectServicesReq {
+pub struct IntrospectServicesRequest {
 
 }
 
-impl Default for IntrospectServicesReq {
+impl Default for IntrospectServicesRequest {
     fn default() -> Self {
-        IntrospectServicesReq {
+        IntrospectServicesRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for IntrospectServicesReq {}
+impl ros2_client::Message for IntrospectServicesRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct IntrospectServicesRes {
+pub struct IntrospectServicesResponse {
     pub service_details: Vec<crate::py_trees_ros_interfaces::msg::ServiceDetails>,
 }
 
-impl Default for IntrospectServicesRes {
+impl Default for IntrospectServicesResponse {
     fn default() -> Self {
-        IntrospectServicesRes {
+        IntrospectServicesResponse {
             service_details: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for IntrospectServicesRes {}
+impl ros2_client::Message for IntrospectServicesResponse {}
 
 
 pub struct IntrospectServices;
 impl ros2_client::Service for IntrospectServices {
-    type Request = IntrospectServicesReq;
-    type Response = IntrospectServicesRes;
+    type Request = IntrospectServicesRequest;
+    type Response = IntrospectServicesResponse;
 
-    fn request_type_name(&self) -> &str { "IntrospectServicesReq" }
-    fn response_type_name(&self) -> &str { "IntrospectServicesRes" }
+    fn request_type_name(&self) -> &str { "IntrospectServicesRequest" }
+    fn response_type_name(&self) -> &str { "IntrospectServicesResponse" }
 }

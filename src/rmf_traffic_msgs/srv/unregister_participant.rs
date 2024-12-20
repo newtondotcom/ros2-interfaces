@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UnregisterParticipantReq {
+pub struct UnregisterParticipantRequest {
     pub participant_id: u64,
 }
 
-impl Default for UnregisterParticipantReq {
+impl Default for UnregisterParticipantRequest {
     fn default() -> Self {
-        UnregisterParticipantReq {
+        UnregisterParticipantRequest {
             participant_id: 0,
         }
     }
 }
 
-impl ros2_client::Message for UnregisterParticipantReq {}
+impl ros2_client::Message for UnregisterParticipantRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct UnregisterParticipantRes {
+pub struct UnregisterParticipantResponse {
     pub confirmation: bool,
     pub error: ::std::string::String,
 }
 
-impl Default for UnregisterParticipantRes {
+impl Default for UnregisterParticipantResponse {
     fn default() -> Self {
-        UnregisterParticipantRes {
+        UnregisterParticipantResponse {
             confirmation: false,
             error: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for UnregisterParticipantRes {}
+impl ros2_client::Message for UnregisterParticipantResponse {}
 
 
 pub struct UnregisterParticipant;
 impl ros2_client::Service for UnregisterParticipant {
-    type Request = UnregisterParticipantReq;
-    type Response = UnregisterParticipantRes;
+    type Request = UnregisterParticipantRequest;
+    type Response = UnregisterParticipantResponse;
 
-    fn request_type_name(&self) -> &str { "UnregisterParticipantReq" }
-    fn response_type_name(&self) -> &str { "UnregisterParticipantRes" }
+    fn request_type_name(&self) -> &str { "UnregisterParticipantRequest" }
+    fn response_type_name(&self) -> &str { "UnregisterParticipantResponse" }
 }

@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct NewMqtt2RosBridgeReq {
+pub struct NewMqtt2RosBridgeRequest {
     pub ros_topic: ::std::string::String,
     pub mqtt_topic: ::std::string::String,
     pub primitive: bool, // default: false
@@ -11,9 +11,9 @@ pub struct NewMqtt2RosBridgeReq {
     pub ros_latched: bool, // default: false
 }
 
-impl Default for NewMqtt2RosBridgeReq {
+impl Default for NewMqtt2RosBridgeRequest {
     fn default() -> Self {
-        NewMqtt2RosBridgeReq {
+        NewMqtt2RosBridgeRequest {
             ros_topic: ::std::string::String::new(),
             mqtt_topic: ::std::string::String::new(),
             primitive: false,
@@ -24,31 +24,31 @@ impl Default for NewMqtt2RosBridgeReq {
     }
 }
 
-impl ros2_client::Message for NewMqtt2RosBridgeReq {}
+impl ros2_client::Message for NewMqtt2RosBridgeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct NewMqtt2RosBridgeRes {
+pub struct NewMqtt2RosBridgeResponse {
     pub success: bool,
 }
 
-impl Default for NewMqtt2RosBridgeRes {
+impl Default for NewMqtt2RosBridgeResponse {
     fn default() -> Self {
-        NewMqtt2RosBridgeRes {
+        NewMqtt2RosBridgeResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for NewMqtt2RosBridgeRes {}
+impl ros2_client::Message for NewMqtt2RosBridgeResponse {}
 
 
 pub struct NewMqtt2RosBridge;
 impl ros2_client::Service for NewMqtt2RosBridge {
-    type Request = NewMqtt2RosBridgeReq;
-    type Response = NewMqtt2RosBridgeRes;
+    type Request = NewMqtt2RosBridgeRequest;
+    type Response = NewMqtt2RosBridgeResponse;
 
-    fn request_type_name(&self) -> &str { "NewMqtt2RosBridgeReq" }
-    fn response_type_name(&self) -> &str { "NewMqtt2RosBridgeRes" }
+    fn request_type_name(&self) -> &str { "NewMqtt2RosBridgeRequest" }
+    fn response_type_name(&self) -> &str { "NewMqtt2RosBridgeResponse" }
 }

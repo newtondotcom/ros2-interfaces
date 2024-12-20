@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct PublishersReq {
+pub struct PublishersRequest {
     pub topic: ::std::string::String,
 }
 
-impl Default for PublishersReq {
+impl Default for PublishersRequest {
     fn default() -> Self {
-        PublishersReq {
+        PublishersRequest {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for PublishersReq {}
+impl ros2_client::Message for PublishersRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct PublishersRes {
+pub struct PublishersResponse {
     pub publishers: Vec<::std::string::String>,
 }
 
-impl Default for PublishersRes {
+impl Default for PublishersResponse {
     fn default() -> Self {
-        PublishersRes {
+        PublishersResponse {
             publishers: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for PublishersRes {}
+impl ros2_client::Message for PublishersResponse {}
 
 
 pub struct Publishers;
 impl ros2_client::Service for Publishers {
-    type Request = PublishersReq;
-    type Response = PublishersRes;
+    type Request = PublishersRequest;
+    type Response = PublishersResponse;
 
-    fn request_type_name(&self) -> &str { "PublishersReq" }
-    fn response_type_name(&self) -> &str { "PublishersRes" }
+    fn request_type_name(&self) -> &str { "PublishersRequest" }
+    fn response_type_name(&self) -> &str { "PublishersResponse" }
 }

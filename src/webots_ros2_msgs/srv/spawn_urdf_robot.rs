@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SpawnUrdfRobotReq {
+pub struct SpawnUrdfRobotRequest {
     pub robot: crate::webots_ros2_msgs::msg::UrdfRobot,
 }
 
-impl Default for SpawnUrdfRobotReq {
+impl Default for SpawnUrdfRobotRequest {
     fn default() -> Self {
-        SpawnUrdfRobotReq {
+        SpawnUrdfRobotRequest {
             robot: crate::webots_ros2_msgs::msg::UrdfRobot::default(),
         }
     }
 }
 
-impl ros2_client::Message for SpawnUrdfRobotReq {}
+impl ros2_client::Message for SpawnUrdfRobotRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SpawnUrdfRobotRes {
+pub struct SpawnUrdfRobotResponse {
     pub success: bool,
 }
 
-impl Default for SpawnUrdfRobotRes {
+impl Default for SpawnUrdfRobotResponse {
     fn default() -> Self {
-        SpawnUrdfRobotRes {
+        SpawnUrdfRobotResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for SpawnUrdfRobotRes {}
+impl ros2_client::Message for SpawnUrdfRobotResponse {}
 
 
 pub struct SpawnUrdfRobot;
 impl ros2_client::Service for SpawnUrdfRobot {
-    type Request = SpawnUrdfRobotReq;
-    type Response = SpawnUrdfRobotRes;
+    type Request = SpawnUrdfRobotRequest;
+    type Response = SpawnUrdfRobotResponse;
 
-    fn request_type_name(&self) -> &str { "SpawnUrdfRobotReq" }
-    fn response_type_name(&self) -> &str { "SpawnUrdfRobotRes" }
+    fn request_type_name(&self) -> &str { "SpawnUrdfRobotRequest" }
+    fn response_type_name(&self) -> &str { "SpawnUrdfRobotResponse" }
 }

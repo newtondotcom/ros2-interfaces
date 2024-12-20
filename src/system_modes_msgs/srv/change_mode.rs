@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ChangeModeReq {
+pub struct ChangeModeRequest {
     pub mode_name: ::std::string::String,
 }
 
-impl Default for ChangeModeReq {
+impl Default for ChangeModeRequest {
     fn default() -> Self {
-        ChangeModeReq {
+        ChangeModeRequest {
             mode_name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for ChangeModeReq {}
+impl ros2_client::Message for ChangeModeRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ChangeModeRes {
+pub struct ChangeModeResponse {
     pub success: bool,
 }
 
-impl Default for ChangeModeRes {
+impl Default for ChangeModeResponse {
     fn default() -> Self {
-        ChangeModeRes {
+        ChangeModeResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for ChangeModeRes {}
+impl ros2_client::Message for ChangeModeResponse {}
 
 
 pub struct ChangeMode;
 impl ros2_client::Service for ChangeMode {
-    type Request = ChangeModeReq;
-    type Response = ChangeModeRes;
+    type Request = ChangeModeRequest;
+    type Response = ChangeModeResponse;
 
-    fn request_type_name(&self) -> &str { "ChangeModeReq" }
-    fn response_type_name(&self) -> &str { "ChangeModeRes" }
+    fn request_type_name(&self) -> &str { "ChangeModeRequest" }
+    fn response_type_name(&self) -> &str { "ChangeModeResponse" }
 }

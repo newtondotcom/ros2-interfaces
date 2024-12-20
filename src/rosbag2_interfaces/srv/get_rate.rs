@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetRateReq {
+pub struct GetRateRequest {
 
 }
 
-impl Default for GetRateReq {
+impl Default for GetRateRequest {
     fn default() -> Self {
-        GetRateReq {
+        GetRateRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for GetRateReq {}
+impl ros2_client::Message for GetRateRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetRateRes {
+pub struct GetRateResponse {
     pub rate: f64,
 }
 
-impl Default for GetRateRes {
+impl Default for GetRateResponse {
     fn default() -> Self {
-        GetRateRes {
+        GetRateResponse {
             rate: 0.0,
         }
     }
 }
 
-impl ros2_client::Message for GetRateRes {}
+impl ros2_client::Message for GetRateResponse {}
 
 
 pub struct GetRate;
 impl ros2_client::Service for GetRate {
-    type Request = GetRateReq;
-    type Response = GetRateRes;
+    type Request = GetRateRequest;
+    type Response = GetRateResponse;
 
-    fn request_type_name(&self) -> &str { "GetRateReq" }
-    fn response_type_name(&self) -> &str { "GetRateRes" }
+    fn request_type_name(&self) -> &str { "GetRateRequest" }
+    fn response_type_name(&self) -> &str { "GetRateResponse" }
 }

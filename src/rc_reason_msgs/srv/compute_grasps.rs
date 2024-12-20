@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ComputeGraspsReq {
+pub struct ComputeGraspsRequest {
     pub pose_frame: ::std::string::String,
     pub region_of_interest_id: ::std::string::String,
     pub load_carrier_id: ::std::string::String,
@@ -14,9 +14,9 @@ pub struct ComputeGraspsReq {
     pub collision_detection: crate::rc_reason_msgs::msg::CollisionDetection,
 }
 
-impl Default for ComputeGraspsReq {
+impl Default for ComputeGraspsRequest {
     fn default() -> Self {
-        ComputeGraspsReq {
+        ComputeGraspsRequest {
             pose_frame: ::std::string::String::new(),
             region_of_interest_id: ::std::string::String::new(),
             load_carrier_id: ::std::string::String::new(),
@@ -30,12 +30,12 @@ impl Default for ComputeGraspsReq {
     }
 }
 
-impl ros2_client::Message for ComputeGraspsReq {}
+impl ros2_client::Message for ComputeGraspsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct ComputeGraspsRes {
+pub struct ComputeGraspsResponse {
     pub timestamp: crate::builtin_interfaces::msg::Time,
     pub items: Vec<crate::rc_reason_msgs::msg::Item>,
     pub load_carriers: Vec<crate::rc_reason_msgs::msg::LoadCarrier>,
@@ -43,9 +43,9 @@ pub struct ComputeGraspsRes {
     pub return_code: crate::rc_common_msgs::msg::ReturnCode,
 }
 
-impl Default for ComputeGraspsRes {
+impl Default for ComputeGraspsResponse {
     fn default() -> Self {
-        ComputeGraspsRes {
+        ComputeGraspsResponse {
             timestamp: crate::builtin_interfaces::msg::Time::default(),
             items: Vec::new(),
             load_carriers: Vec::new(),
@@ -55,14 +55,14 @@ impl Default for ComputeGraspsRes {
     }
 }
 
-impl ros2_client::Message for ComputeGraspsRes {}
+impl ros2_client::Message for ComputeGraspsResponse {}
 
 
 pub struct ComputeGrasps;
 impl ros2_client::Service for ComputeGrasps {
-    type Request = ComputeGraspsReq;
-    type Response = ComputeGraspsRes;
+    type Request = ComputeGraspsRequest;
+    type Response = ComputeGraspsResponse;
 
-    fn request_type_name(&self) -> &str { "ComputeGraspsReq" }
-    fn response_type_name(&self) -> &str { "ComputeGraspsRes" }
+    fn request_type_name(&self) -> &str { "ComputeGraspsRequest" }
+    fn response_type_name(&self) -> &str { "ComputeGraspsResponse" }
 }

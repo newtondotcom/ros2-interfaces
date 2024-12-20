@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CloseSnapshotStreamReq {
+pub struct CloseSnapshotStreamRequest {
     pub topic_name: ::std::string::String,
 }
 
-impl Default for CloseSnapshotStreamReq {
+impl Default for CloseSnapshotStreamRequest {
     fn default() -> Self {
-        CloseSnapshotStreamReq {
+        CloseSnapshotStreamRequest {
             topic_name: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for CloseSnapshotStreamReq {}
+impl ros2_client::Message for CloseSnapshotStreamRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CloseSnapshotStreamRes {
+pub struct CloseSnapshotStreamResponse {
     pub result: bool,
 }
 
-impl Default for CloseSnapshotStreamRes {
+impl Default for CloseSnapshotStreamResponse {
     fn default() -> Self {
-        CloseSnapshotStreamRes {
+        CloseSnapshotStreamResponse {
             result: false,
         }
     }
 }
 
-impl ros2_client::Message for CloseSnapshotStreamRes {}
+impl ros2_client::Message for CloseSnapshotStreamResponse {}
 
 
 pub struct CloseSnapshotStream;
 impl ros2_client::Service for CloseSnapshotStream {
-    type Request = CloseSnapshotStreamReq;
-    type Response = CloseSnapshotStreamRes;
+    type Request = CloseSnapshotStreamRequest;
+    type Response = CloseSnapshotStreamResponse;
 
-    fn request_type_name(&self) -> &str { "CloseSnapshotStreamReq" }
-    fn response_type_name(&self) -> &str { "CloseSnapshotStreamRes" }
+    fn request_type_name(&self) -> &str { "CloseSnapshotStreamRequest" }
+    fn response_type_name(&self) -> &str { "CloseSnapshotStreamResponse" }
 }

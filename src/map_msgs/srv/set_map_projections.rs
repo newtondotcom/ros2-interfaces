@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetMapProjectionsReq {
+pub struct SetMapProjectionsRequest {
 
 }
 
-impl Default for SetMapProjectionsReq {
+impl Default for SetMapProjectionsRequest {
     fn default() -> Self {
-        SetMapProjectionsReq {
+        SetMapProjectionsRequest {
 
         }
     }
 }
 
-impl ros2_client::Message for SetMapProjectionsReq {}
+impl ros2_client::Message for SetMapProjectionsRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SetMapProjectionsRes {
+pub struct SetMapProjectionsResponse {
     pub projected_maps_info: Vec<crate::map_msgs::msg::ProjectedMapInfo>,
 }
 
-impl Default for SetMapProjectionsRes {
+impl Default for SetMapProjectionsResponse {
     fn default() -> Self {
-        SetMapProjectionsRes {
+        SetMapProjectionsResponse {
             projected_maps_info: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for SetMapProjectionsRes {}
+impl ros2_client::Message for SetMapProjectionsResponse {}
 
 
 pub struct SetMapProjections;
 impl ros2_client::Service for SetMapProjections {
-    type Request = SetMapProjectionsReq;
-    type Response = SetMapProjectionsRes;
+    type Request = SetMapProjectionsRequest;
+    type Response = SetMapProjectionsResponse;
 
-    fn request_type_name(&self) -> &str { "SetMapProjectionsReq" }
-    fn response_type_name(&self) -> &str { "SetMapProjectionsRes" }
+    fn request_type_name(&self) -> &str { "SetMapProjectionsRequest" }
+    fn response_type_name(&self) -> &str { "SetMapProjectionsResponse" }
 }

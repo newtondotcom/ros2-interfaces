@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GraspPlanningReq {
+pub struct GraspPlanningRequest {
     pub group_name: ::std::string::String,
     pub target: crate::moveit_msgs::msg::CollisionObject,
     pub support_surfaces: Vec<::std::string::String>,
@@ -10,9 +10,9 @@ pub struct GraspPlanningReq {
     pub movable_obstacles: Vec<crate::moveit_msgs::msg::CollisionObject>,
 }
 
-impl Default for GraspPlanningReq {
+impl Default for GraspPlanningRequest {
     fn default() -> Self {
-        GraspPlanningReq {
+        GraspPlanningRequest {
             group_name: ::std::string::String::new(),
             target: crate::moveit_msgs::msg::CollisionObject::default(),
             support_surfaces: Vec::new(),
@@ -22,33 +22,33 @@ impl Default for GraspPlanningReq {
     }
 }
 
-impl ros2_client::Message for GraspPlanningReq {}
+impl ros2_client::Message for GraspPlanningRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GraspPlanningRes {
+pub struct GraspPlanningResponse {
     pub grasps: Vec<crate::moveit_msgs::msg::Grasp>,
     pub error_code: crate::moveit_msgs::msg::MoveItErrorCodes,
 }
 
-impl Default for GraspPlanningRes {
+impl Default for GraspPlanningResponse {
     fn default() -> Self {
-        GraspPlanningRes {
+        GraspPlanningResponse {
             grasps: Vec::new(),
             error_code: crate::moveit_msgs::msg::MoveItErrorCodes::default(),
         }
     }
 }
 
-impl ros2_client::Message for GraspPlanningRes {}
+impl ros2_client::Message for GraspPlanningResponse {}
 
 
 pub struct GraspPlanning;
 impl ros2_client::Service for GraspPlanning {
-    type Request = GraspPlanningReq;
-    type Response = GraspPlanningRes;
+    type Request = GraspPlanningRequest;
+    type Response = GraspPlanningResponse;
 
-    fn request_type_name(&self) -> &str { "GraspPlanningReq" }
-    fn response_type_name(&self) -> &str { "GraspPlanningRes" }
+    fn request_type_name(&self) -> &str { "GraspPlanningRequest" }
+    fn response_type_name(&self) -> &str { "GraspPlanningResponse" }
 }

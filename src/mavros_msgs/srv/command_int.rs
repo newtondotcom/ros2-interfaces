@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandIntReq {
+pub struct CommandIntRequest {
     pub broadcast: bool,
     pub frame: u8,
     pub command: u16,
@@ -17,9 +17,9 @@ pub struct CommandIntReq {
     pub z: f32,
 }
 
-impl Default for CommandIntReq {
+impl Default for CommandIntRequest {
     fn default() -> Self {
-        CommandIntReq {
+        CommandIntRequest {
             broadcast: false,
             frame: 0,
             command: 0,
@@ -36,31 +36,31 @@ impl Default for CommandIntReq {
     }
 }
 
-impl ros2_client::Message for CommandIntReq {}
+impl ros2_client::Message for CommandIntRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct CommandIntRes {
+pub struct CommandIntResponse {
     pub success: bool,
 }
 
-impl Default for CommandIntRes {
+impl Default for CommandIntResponse {
     fn default() -> Self {
-        CommandIntRes {
+        CommandIntResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for CommandIntRes {}
+impl ros2_client::Message for CommandIntResponse {}
 
 
 pub struct CommandInt;
 impl ros2_client::Service for CommandInt {
-    type Request = CommandIntReq;
-    type Response = CommandIntRes;
+    type Request = CommandIntRequest;
+    type Response = CommandIntResponse;
 
-    fn request_type_name(&self) -> &str { "CommandIntReq" }
-    fn response_type_name(&self) -> &str { "CommandIntRes" }
+    fn request_type_name(&self) -> &str { "CommandIntRequest" }
+    fn response_type_name(&self) -> &str { "CommandIntResponse" }
 }

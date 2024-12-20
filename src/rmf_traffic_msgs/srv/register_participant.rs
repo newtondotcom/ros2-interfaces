@@ -2,24 +2,24 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RegisterParticipantReq {
+pub struct RegisterParticipantRequest {
     pub description: crate::rmf_traffic_msgs::msg::ParticipantDescription,
 }
 
-impl Default for RegisterParticipantReq {
+impl Default for RegisterParticipantRequest {
     fn default() -> Self {
-        RegisterParticipantReq {
+        RegisterParticipantRequest {
             description: crate::rmf_traffic_msgs::msg::ParticipantDescription::default(),
         }
     }
 }
 
-impl ros2_client::Message for RegisterParticipantReq {}
+impl ros2_client::Message for RegisterParticipantRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct RegisterParticipantRes {
+pub struct RegisterParticipantResponse {
     pub participant_id: u64,
     pub last_itinerary_version: u64,
     pub last_plan_id: u64,
@@ -27,9 +27,9 @@ pub struct RegisterParticipantRes {
     pub error: ::std::string::String,
 }
 
-impl Default for RegisterParticipantRes {
+impl Default for RegisterParticipantResponse {
     fn default() -> Self {
-        RegisterParticipantRes {
+        RegisterParticipantResponse {
             participant_id: 0,
             last_itinerary_version: 0,
             last_plan_id: 0,
@@ -39,14 +39,14 @@ impl Default for RegisterParticipantRes {
     }
 }
 
-impl ros2_client::Message for RegisterParticipantRes {}
+impl ros2_client::Message for RegisterParticipantResponse {}
 
 
 pub struct RegisterParticipant;
 impl ros2_client::Service for RegisterParticipant {
-    type Request = RegisterParticipantReq;
-    type Response = RegisterParticipantRes;
+    type Request = RegisterParticipantRequest;
+    type Response = RegisterParticipantResponse;
 
-    fn request_type_name(&self) -> &str { "RegisterParticipantReq" }
-    fn response_type_name(&self) -> &str { "RegisterParticipantRes" }
+    fn request_type_name(&self) -> &str { "RegisterParticipantRequest" }
+    fn response_type_name(&self) -> &str { "RegisterParticipantResponse" }
 }

@@ -2,43 +2,43 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxDeleteReq {
+pub struct MuxDeleteRequest {
     pub topic: ::std::string::String,
 }
 
-impl Default for MuxDeleteReq {
+impl Default for MuxDeleteRequest {
     fn default() -> Self {
-        MuxDeleteReq {
+        MuxDeleteRequest {
             topic: ::std::string::String::new(),
         }
     }
 }
 
-impl ros2_client::Message for MuxDeleteReq {}
+impl ros2_client::Message for MuxDeleteRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct MuxDeleteRes {
+pub struct MuxDeleteResponse {
     pub success: bool,
 }
 
-impl Default for MuxDeleteRes {
+impl Default for MuxDeleteResponse {
     fn default() -> Self {
-        MuxDeleteRes {
+        MuxDeleteResponse {
             success: false,
         }
     }
 }
 
-impl ros2_client::Message for MuxDeleteRes {}
+impl ros2_client::Message for MuxDeleteResponse {}
 
 
 pub struct MuxDelete;
 impl ros2_client::Service for MuxDelete {
-    type Request = MuxDeleteReq;
-    type Response = MuxDeleteRes;
+    type Request = MuxDeleteRequest;
+    type Response = MuxDeleteResponse;
 
-    fn request_type_name(&self) -> &str { "MuxDeleteReq" }
-    fn response_type_name(&self) -> &str { "MuxDeleteRes" }
+    fn request_type_name(&self) -> &str { "MuxDeleteRequest" }
+    fn response_type_name(&self) -> &str { "MuxDeleteResponse" }
 }

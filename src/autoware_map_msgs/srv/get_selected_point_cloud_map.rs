@@ -2,45 +2,45 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetSelectedPointCloudMapReq {
+pub struct GetSelectedPointCloudMapRequest {
     pub cell_ids: Vec<::std::string::String>,
 }
 
-impl Default for GetSelectedPointCloudMapReq {
+impl Default for GetSelectedPointCloudMapRequest {
     fn default() -> Self {
-        GetSelectedPointCloudMapReq {
+        GetSelectedPointCloudMapRequest {
             cell_ids: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetSelectedPointCloudMapReq {}
+impl ros2_client::Message for GetSelectedPointCloudMapRequest {}
 
 
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct GetSelectedPointCloudMapRes {
+pub struct GetSelectedPointCloudMapResponse {
     pub header: crate::std_msgs::msg::Header,
     pub new_pointcloud_with_ids: Vec<crate::autoware_map_msgs::msg::PointCloudMapCellWithID>,
 }
 
-impl Default for GetSelectedPointCloudMapRes {
+impl Default for GetSelectedPointCloudMapResponse {
     fn default() -> Self {
-        GetSelectedPointCloudMapRes {
+        GetSelectedPointCloudMapResponse {
             header: crate::std_msgs::msg::Header::default(),
             new_pointcloud_with_ids: Vec::new(),
         }
     }
 }
 
-impl ros2_client::Message for GetSelectedPointCloudMapRes {}
+impl ros2_client::Message for GetSelectedPointCloudMapResponse {}
 
 
 pub struct GetSelectedPointCloudMap;
 impl ros2_client::Service for GetSelectedPointCloudMap {
-    type Request = GetSelectedPointCloudMapReq;
-    type Response = GetSelectedPointCloudMapRes;
+    type Request = GetSelectedPointCloudMapRequest;
+    type Response = GetSelectedPointCloudMapResponse;
 
-    fn request_type_name(&self) -> &str { "GetSelectedPointCloudMapReq" }
-    fn response_type_name(&self) -> &str { "GetSelectedPointCloudMapRes" }
+    fn request_type_name(&self) -> &str { "GetSelectedPointCloudMapRequest" }
+    fn response_type_name(&self) -> &str { "GetSelectedPointCloudMapResponse" }
 }
