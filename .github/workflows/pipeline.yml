@@ -1,0 +1,111 @@
+name: Crates building pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      distro:
+        description: 'ROS2 Distribution (leave empty for all)'
+        required: false
+        type: choice
+        options:
+          - rolling
+          - jazzy
+          - humble
+          - iron
+  push:
+    branches:
+      - main
+
+jobs:
+  pipeline:
+    name: Build ${{ matrix.distro }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        distro: ${{ github.event.inputs.distro && fromJSON(format('["{0}"]', github.event.inputs.distro)) || fromJSON('["rolling", "jazzy", "humble", "iron"]') }}peux 
+    env:
+     TMP_DIR: /tmp/ros2-interfaces
+     DISTRO: ${{ matrix.distro }}
+     VERSION: ${{ github.run_number }}
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Create required folders
+        run: mkdir -p ${{ env.TMP_DIR }}
+
+      - name: Copy required files
+        run: | 
+          cp Cargo.toml ${{ env.TMP_DIR }}/
+          cp TEMPLATE_README.md ${{ env.TMP_DIR }}/README.md
+
+      - name: Get ${{ env.DISTRO }} repos
+        run: uv run scripts/query_repos.py --distro ${{ env.DISTRO }} --output ${{ env.TMP_DIR }}/list
+
+      - name: Clone ${{ env.DISTRO }} repos
+        run: uv run scripts/clone_repos.py --json-file ${{ env.TMP_DIR }}/list --output-dir ${{ env.TMP_DIR }}/cloned
+
+      - name: Extract interfaces
+        run: uv run scripts/extract_interfaces.py --distro ${{ env.DISTRO }} --json-file ${{ env.TMP_DIR }}/list --cloned-dir ${{ env.TMP_DIR }}/cloned --output-dir ${{ env.TMP_DIR }}/extracted
+
+      - name: Convert to rust structs
+        run: uv run scripts/convert_to_structs.py ${{ env.TMP_DIR }}/extracted/${{ env.DISTRO }} ${{ env.TMP_DIR }} ${{ env.DISTRO }} ${{ env.VERSION }}
+
+      - name: Check compilation
+        working-directory: ${{ env.TMP_DIR }}
+        run: cargo check --all-features
+
+      - name: Test std_msgs publisher
+        working-directory: ${{ env.TMP_DIR }}
+        run: cargo test --test test_publisher --features std_msgs -- --nocapture
+
+      - name: Checkout or create distro branch
+        run: |
+          git fetch origin ${{ env.DISTRO }} || true
+          git checkout ${{ env.DISTRO }} 2>/dev/null || git checkout -b ${{ env.DISTRO }}
+
+      - name: Copy generated files
+        run: |
+          cp -rf ${{ env.TMP_DIR }}/src .
+          cp -f ${{ env.TMP_DIR }}/Cargo.toml .
+          cp -f ${{ env.TMP_DIR }}/README.md .
+
+      - name: Clean the temp directory
+        run: rm -rf ${{ env.TMP_DIR }}
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src Cargo.toml README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update generated structs for ${{ env.DISTRO }}: v0.0.${{ env.VERSION }}"
+            git push origin ${{ env.DISTRO }}
+          fi
+
+      - name: Set up Rust
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.82.0
+          override: true
+
+      - name: Publish to crates.io
+        if: github.event_name == 'workflow_dispatch'
+        uses: katyo/publish-crates@v2
+        with:
+          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          dry-run: false
+          path: .
+          args: '--allow-dirty'
