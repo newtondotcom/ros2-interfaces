@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: ${{ github.event.inputs.distro && fromJSON(format('["{0}"]', github.event.inputs.distro)) || fromJSON('["rolling", "jazzy", "humble", "iron"]') }}peux 
+        distro: ${{ github.event.inputs.distro && fromJSON(format('["{0}"]', github.event.inputs.distro)) || fromJSON('["rolling", "jazzy", "humble", "iron"]') }}
     env:
      TMP_DIR: /tmp/ros2-interfaces
      DISTRO: ${{ matrix.distro }}
