@@ -822,6 +822,9 @@ def update_cargo_toml(cargo_toml_path: Path, readme_path: Path, packages: List[s
                 new_cargo_toml_lines.append(f'name = "ros2-interfaces-{distro}"\n')
             elif line.strip().startswith("version ="):
                 new_cargo_toml_lines.append(f'version = "{version}"\n')
+            elif line.strip().startswith("description ="):
+                new_description = line.split("=", 1)[1].strip().strip('"').replace("DISTRO", distro)
+                new_cargo_toml_lines.append(f'description = "{new_description}"\n')
             elif line.strip().startswith("["):
                 in_package_section = False
                 new_cargo_toml_lines.append(line)
