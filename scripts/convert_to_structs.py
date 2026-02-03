@@ -76,7 +76,7 @@ COPY_TRAIT_TYPES = {
 }
 
 
-def main(packages_dir: Path, crate_dir: Path):
+def main(packages_dir: Path, crate_dir: Path, distro: str, version: str):
     assert crate_dir.is_dir() and crate_dir.exists(), f"Invalid or non-existing crate directory: {crate_dir}"
 
     ignore_list = ["tuw_object_msgs", "social_nav_msgs"]
@@ -103,7 +103,7 @@ def main(packages_dir: Path, crate_dir: Path):
 
     # Generate lib.rs and Cargo.toml using only processed packages
     generate_lib_rs(src_dir, processed_packages)
-    update_cargo_toml(crate_dir / "Cargo.toml", processed_packages, package_dependencies)
+    update_cargo_toml(crate_dir / "Cargo.toml", crate_dir / "README.md", processed_packages, package_dependencies)
 
 
 @dataclass
@@ -798,10 +798,37 @@ def generate_lib_rs(output_dir: Path, packages: List[str]):
     print(f"Generated {lib_rs_path}")
 
 
-def update_cargo_toml(cargo_toml_path: Path, packages: List[str], package_dependencies: dict):
+def update_cargo_toml(cargo_toml_path: Path, readme_path: Path, packages: List[str], package_dependencies: dict, distro: str, version: str):
+    with open(readme_path, "r") as f:
+        readme_content = f.read()
+    readme_content = readme_content.replace("DISTRO", distro).replace("{{ version }}", version)
+    with open(readme_path, "w") as f:
+        f.write(readme_content)
+
     # Read existing Cargo.toml content
     with open(cargo_toml_path, "r") as f:
         cargo_toml_lines = f.readlines()
+
+    # Update the [package] name and version
+    new_cargo_toml_lines = []
+    in_package_section = False
+    for line in cargo_toml_lines:
+        if line.strip().startswith("[package]"):
+            in_package_section = True
+            new_cargo_toml_lines.append(line)
+            continue
+        if in_package_section:
+            if line.strip().startswith("name ="):
+                new_cargo_toml_lines.append(f'name = "ros2-interfaces-{distro}"\n')
+            elif line.strip().startswith("version ="):
+                new_cargo_toml_lines.append(f'version = "{version}"\n')
+            elif line.strip().startswith("["):
+                in_package_section = False
+                new_cargo_toml_lines.append(line)
+            else:
+                new_cargo_toml_lines.append(line)
+        else:
+            new_cargo_toml_lines.append(line)
 
     # Remove existing [features] section
     new_cargo_toml_lines = []
@@ -854,8 +881,8 @@ def to_snake_case(name: str) -> str:
 
 # Example usage
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python script.py <packages_dir> <crate_dir>")
+    if len(sys.argv) < 5:
+        print("Usage: python script.py <packages_dir> <crate_dir> <distro> <version>")
         sys.exit(1)
 
-    main(packages_dir=Path(sys.argv[1]), crate_dir=Path(sys.argv[2]))
+    main(packages_dir=Path(sys.argv[1]), crate_dir=Path(sys.argv[2]), distro=sys.argv[3], version=sys.argv[4])
