@@ -43,7 +43,12 @@ def main():
     results = {"repositories": []}
     for name, data in repos.items():
         amend_missing_sources(name, data)
-        if "release" in data and "source" in data and "url" in data["source"] and "version" in data["source"]:
+        if (
+            "release" in data
+            and "source" in data
+            and "url" in data["source"]
+            and "version" in data["source"]
+        ):
             git_url = data["source"]["url"]
             branch = data["source"]["version"]
             # Identify packages
@@ -51,7 +56,14 @@ def main():
             # Otherwise, it's empty list
             release_data = data["release"]
             packages = release_data.get("packages", [])
-            results["repositories"].append({"name": name, "git_url": git_url, "branch": branch, "packages": packages})
+            results["repositories"].append(
+                {
+                    "name": name,
+                    "git_url": git_url,
+                    "branch": branch,
+                    "packages": packages,
+                }
+            )
 
     with open(args.output, "w") as f:
         json.dump(results, f, indent=2)

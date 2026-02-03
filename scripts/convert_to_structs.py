@@ -77,12 +77,18 @@ COPY_TRAIT_TYPES = {
 
 
 def main(packages_dir: Path, crate_dir: Path, distro: str, version: str):
-    assert crate_dir.is_dir() and crate_dir.exists(), f"Invalid or non-existing crate directory: {crate_dir}"
+    assert crate_dir.is_dir() and crate_dir.exists(), (
+        f"Invalid or non-existing crate directory: {crate_dir}"
+    )
 
     ignore_list = ["tuw_object_msgs", "social_nav_msgs"]
 
     # Collect all packages (directories) in the packages_dir
-    all_packages = [d.stem for d in packages_dir.iterdir() if d.is_dir() and d.stem not in ignore_list]
+    all_packages = [
+        d.stem
+        for d in packages_dir.iterdir()
+        if d.is_dir() and d.stem not in ignore_list
+    ]
     available_packages = set(all_packages)  # Set of all available package names
 
     # Keep track of package dependencies
@@ -94,16 +100,25 @@ def main(packages_dir: Path, crate_dir: Path, distro: str, version: str):
 
     for package in all_packages:
         package_path = packages_dir / package
-        dependencies, has_msgs_or_srvs = process_package(package_path, src_dir, available_packages)
+        dependencies, has_msgs_or_srvs = process_package(
+            package_path, src_dir, available_packages
+        )
         if has_msgs_or_srvs:
             package_dependencies[package] = dependencies
             processed_packages.append(package)
         else:
-            print(f"Package '{package}' has no .msg or .srv files. Excluding from lib.rs.")
+            print(
+                f"Package '{package}' has no .msg or .srv files. Excluding from lib.rs."
+            )
 
     # Generate lib.rs and Cargo.toml using only processed packages
     generate_lib_rs(src_dir, processed_packages)
-    update_cargo_toml(crate_dir / "Cargo.toml", crate_dir / "README.md", processed_packages, package_dependencies)
+    update_cargo_toml(
+        crate_dir / "Cargo.toml",
+        crate_dir / "README.md",
+        processed_packages,
+        package_dependencies,
+    )
 
 
 @dataclass
@@ -154,14 +169,20 @@ def parse_msg_from_lines(lines: List[str]) -> MessageSpec:
         const_match = re.match(r"^(\w[\w/<>]*)\s+([A-Z][A-Z0-9_]*)\s*=\s*(.+)$", line)
         if const_match:
             type_str, name, value = const_match.groups()
-            message_spec.constants.append(Constant(type=type_str.strip(), name=name.strip(), value=value.strip()))
+            message_spec.constants.append(
+                Constant(type=type_str.strip(), name=name.strip(), value=value.strip())
+            )
             continue
 
         # Check for field definitions with optional default values
         field_match = re.match(r"^(\w[\w/<>[\]=]*)\s+(\w+)(?:\s+(.+))?$", line)
         if field_match:
             type_str, name, default_value = field_match.groups()
-            field = parse_field(type_str.strip(), name.strip(), default_value.strip() if default_value else None)
+            field = parse_field(
+                type_str.strip(),
+                name.strip(),
+                default_value.strip() if default_value else None,
+            )
             message_spec.fields.append(field)
             continue
 
@@ -182,7 +203,9 @@ def parse_srv_file(file_path: str) -> Tuple[MessageSpec, MessageSpec]:
             break
 
     if separator_index is None:
-        raise ValueError(f"Service file {file_path} does not contain a '---' separator line.")
+        raise ValueError(
+            f"Service file {file_path} does not contain a '---' separator line."
+        )
 
     # Split into request and response parts based on the found separator line
     request_lines = [ll for ll in lines[:separator_index]]
@@ -256,7 +279,9 @@ def parse_field(type_str: str, name: str, default_value: Optional[str]) -> Field
     return Field(type=type_str, name=name, default_value=default_value)
 
 
-def process_package(package_path: Path, output_dir: Path, available_packages: Set[str]) -> Tuple[List[str], bool]:
+def process_package(
+    package_path: Path, output_dir: Path, available_packages: Set[str]
+) -> Tuple[List[str], bool]:
     """
     Process all .msg and .srv files in the given package directory.
     Generates Rust modules reflecting the package's directory structure.
@@ -269,7 +294,9 @@ def process_package(package_path: Path, output_dir: Path, available_packages: Se
     package_output_dir.mkdir(exist_ok=True)
 
     if not msg_dir.is_dir() and not srv_dir.is_dir():
-        print(f"No 'msg' or 'srv' directory found in package '{package_name}'. Skipping.")
+        print(
+            f"No 'msg' or 'srv' directory found in package '{package_name}'. Skipping."
+        )
         return [], False
 
     dependencies = set()
@@ -308,7 +335,9 @@ def process_package(package_path: Path, output_dir: Path, available_packages: Se
 
                 # Update the mod.rs file in msg/
                 msg_mod_lines.append(f"mod {to_snake_case(struct_name)};")
-                msg_mod_lines.append(f"pub use {to_snake_case(struct_name)}::{struct_name};")
+                msg_mod_lines.append(
+                    f"pub use {to_snake_case(struct_name)}::{struct_name};"
+                )
 
             # Write mod.rs in msg/
             with open(msg_output_dir / "mod.rs", "w") as f:
@@ -331,12 +360,18 @@ def process_package(package_path: Path, output_dir: Path, available_packages: Se
             for filename in srv_files:
                 srv_file_path = filename
                 service_name = filename.stem
-                print(f"Processing service '{service_name}' in package '{package_name}'")
+                print(
+                    f"Processing service '{service_name}' in package '{package_name}'"
+                )
                 request_spec, response_spec = parse_srv_file(srv_file_path)
 
                 # Generate code for the service
                 rust_service_code, srv_dependencies = generate_rust_service_code(
-                    service_name, request_spec, response_spec, package_name, dependencies
+                    service_name,
+                    request_spec,
+                    response_spec,
+                    package_name,
+                    dependencies,
                 )
                 dependencies.update(srv_dependencies)
 
@@ -348,9 +383,15 @@ def process_package(package_path: Path, output_dir: Path, available_packages: Se
 
                 # Update the mod.rs file in srv/
                 srv_mod_lines.append(f"mod {to_snake_case(service_name)};")
-                srv_mod_lines.append(f"pub use {to_snake_case(service_name)}::{service_name};")
-                srv_mod_lines.append(f"pub use {to_snake_case(service_name)}::{service_name}Request;")
-                srv_mod_lines.append(f"pub use {to_snake_case(service_name)}::{service_name}Response;")
+                srv_mod_lines.append(
+                    f"pub use {to_snake_case(service_name)}::{service_name};"
+                )
+                srv_mod_lines.append(
+                    f"pub use {to_snake_case(service_name)}::{service_name}Request;"
+                )
+                srv_mod_lines.append(
+                    f"pub use {to_snake_case(service_name)}::{service_name}Response;"
+                )
 
             # Write mod.rs in srv/
             with open(srv_output_dir / "mod.rs", "w") as f:
@@ -367,7 +408,9 @@ def process_package(package_path: Path, output_dir: Path, available_packages: Se
     # Sanity check: ensure all dependencies are in available_packages
     missing_dependencies = dependencies - available_packages
     if missing_dependencies:
-        print(f"Error: Package '{package_name}' depends on missing packages: {', '.join(missing_dependencies)}")
+        print(
+            f"Error: Package '{package_name}' depends on missing packages: {', '.join(missing_dependencies)}"
+        )
         sys.exit(1)
 
     # Write the package's mod.rs
@@ -403,7 +446,9 @@ def generate_rust_struct_code(
 
         # Handle bounded strings
         if field.is_bounded_string:
-            rust_type = "::std::string::String"  # Use fully qualified standard library String
+            rust_type = (
+                "::std::string::String"  # Use fully qualified standard library String
+            )
 
         # Handle arrays
         field_attrs = ""  # Initialize field attributes
@@ -429,7 +474,9 @@ def generate_rust_struct_code(
             field_definition += f"{field_attrs}"
 
         if field.default_value is not None:
-            field_definition += f"    pub {field_name}: {rust_type}, // default: {field.default_value}"
+            field_definition += (
+                f"    pub {field_name}: {rust_type}, // default: {field.default_value}"
+            )
         else:
             field_definition += f"    pub {field_name}: {rust_type},"
 
@@ -493,7 +540,11 @@ def generate_rust_service_code(
     # Generate code for request struct
     request_struct_name = f"{service_name}Request"
     rust_request_code, req_dependencies = generate_rust_struct_code(
-        request_spec, request_struct_name, current_package, dependencies, include_serde_import=False
+        request_spec,
+        request_struct_name,
+        current_package,
+        dependencies,
+        include_serde_import=False,
     )
     service_dependencies.update(req_dependencies)
     code_parts.append(rust_request_code)
@@ -501,7 +552,11 @@ def generate_rust_service_code(
     # Generate code for response struct
     response_struct_name = f"{service_name}Response"
     rust_response_code, res_dependencies = generate_rust_struct_code(
-        response_spec, response_struct_name, current_package, dependencies, include_serde_import=False
+        response_spec,
+        response_struct_name,
+        current_package,
+        dependencies,
+        include_serde_import=False,
     )
     service_dependencies.update(res_dependencies)
     code_parts.append(rust_response_code)
@@ -511,8 +566,12 @@ def generate_rust_service_code(
     service_struct_code += f"impl ros2_client::Service for {service_name} {{\n"
     service_struct_code += f"    type Request = {request_struct_name};\n"
     service_struct_code += f"    type Response = {response_struct_name};\n\n"
-    service_struct_code += f'    fn request_type_name(&self) -> &str {{ "{request_struct_name}" }}\n'
-    service_struct_code += f'    fn response_type_name(&self) -> &str {{ "{response_struct_name}" }}\n'
+    service_struct_code += (
+        f'    fn request_type_name(&self) -> &str {{ "{request_struct_name}" }}\n'
+    )
+    service_struct_code += (
+        f'    fn response_type_name(&self) -> &str {{ "{response_struct_name}" }}\n'
+    )
     service_struct_code += "}\n"
     code_parts.append(service_struct_code)
 
@@ -602,7 +661,9 @@ def format_constant_value(rust_type: str, value: str) -> str:
         return value
 
 
-def generate_default_impl(struct_name: str, message_spec: MessageSpec, current_package: str) -> str:
+def generate_default_impl(
+    struct_name: str, message_spec: MessageSpec, current_package: str
+) -> str:
     default_fields = []
     for field in message_spec.fields:
         field_name = field.name
@@ -614,7 +675,9 @@ def generate_default_impl(struct_name: str, message_spec: MessageSpec, current_p
 
         # Determine the default value
         if default_value is not None:
-            rust_default_value = map_default_value(field, default_value, current_package, struct_name)
+            rust_default_value = map_default_value(
+                field, default_value, current_package, struct_name
+            )
         else:
             # Use the default value for the type
             rust_default_value = default_value_for_type(field, current_package)
@@ -632,7 +695,9 @@ def generate_default_impl(struct_name: str, message_spec: MessageSpec, current_p
     return default_impl
 
 
-def map_default_value(field: Field, default_value: str, current_package: str, struct_name: str) -> str:
+def map_default_value(
+    field: Field, default_value: str, current_package: str, struct_name: str
+) -> str:
     rust_type, _ = get_rust_field_type(field.type, current_package)
 
     # Handle arrays
@@ -640,14 +705,16 @@ def map_default_value(field: Field, default_value: str, current_package: str, st
         # Parse array default values
         array_values = default_value.strip("[]").split(",")
         element_rust_type, _ = get_rust_field_type(field.type, current_package)
-        rust_values = [map_scalar_value(element_rust_type, v.strip()) for v in array_values]
+        rust_values = [
+            map_scalar_value(element_rust_type, v.strip()) for v in array_values
+        ]
 
         if field.array_size is not None:
             # Fixed-size array
-            return f'[{", ".join(rust_values)}]'
+            return f"[{', '.join(rust_values)}]"
         else:
             # Variable-size array
-            return f'vec![{", ".join(rust_values)}]'
+            return f"vec![{', '.join(rust_values)}]"
 
     # Handle strings
     if rust_type == "::std::string::String":
@@ -798,10 +865,19 @@ def generate_lib_rs(output_dir: Path, packages: List[str]):
     print(f"Generated {lib_rs_path}")
 
 
-def update_cargo_toml(cargo_toml_path: Path, readme_path: Path, packages: List[str], package_dependencies: dict, distro: str, version: str):
+def update_cargo_toml(
+    cargo_toml_path: Path,
+    readme_path: Path,
+    packages: List[str],
+    package_dependencies: dict,
+    distro: str,
+    version: str,
+):
     with open(readme_path, "r") as f:
         readme_content = f.read()
-    readme_content = readme_content.replace("DISTRO", distro).replace("{{ version }}", version)
+    readme_content = readme_content.replace("DISTRO", distro).replace(
+        "{{ version }}", version
+    )
     with open(readme_path, "w") as f:
         f.write(readme_content)
 
@@ -823,7 +899,9 @@ def update_cargo_toml(cargo_toml_path: Path, readme_path: Path, packages: List[s
             elif line.strip().startswith("version ="):
                 new_cargo_toml_lines.append(f'version = "{version}"\n')
             elif line.strip().startswith("description ="):
-                new_description = line.split("=", 1)[1].strip().strip('"').replace("DISTRO", distro)
+                new_description = (
+                    line.split("=", 1)[1].strip().strip('"').replace("DISTRO", distro)
+                )
                 new_cargo_toml_lines.append(f'description = "{new_description}"\n')
             elif line.strip().startswith("["):
                 in_package_section = False
@@ -888,4 +966,9 @@ if __name__ == "__main__":
         print("Usage: python script.py <packages_dir> <crate_dir> <distro> <version>")
         sys.exit(1)
 
-    main(packages_dir=Path(sys.argv[1]), crate_dir=Path(sys.argv[2]), distro=sys.argv[3], version=sys.argv[4])
+    main(
+        packages_dir=Path(sys.argv[1]),
+        crate_dir=Path(sys.argv[2]),
+        distro=sys.argv[3],
+        version=sys.argv[4],
+    )

@@ -8,7 +8,9 @@ from glob import glob
 
 def find_interface_files(package_path: Path, interface_type: str):
     files = glob(f"{package_path}/{interface_type}/*.{interface_type}")
-    files_sub = glob(f"{package_path}/{interface_type}/**/*.{interface_type}", recursive=True)
+    files_sub = glob(
+        f"{package_path}/{interface_type}/**/*.{interface_type}", recursive=True
+    )
     # Deduplicate
     return list(set(files + files_sub))
 
