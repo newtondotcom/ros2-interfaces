@@ -46,7 +46,7 @@ jobs:
       - name: Copy required files
         run: | 
           cp Cargo.toml ${{ env.TMP_DIR }}/
-          cp TEMPLATE_README.md ${{ env.TMP_DIR }}/README.md
+          cp README_TEMPLATE.md ${{ env.TMP_DIR }}/README.md
 
       - name: Get ${{ env.DISTRO }} repos
         run: uv run scripts/query_repos.py --distro ${{ env.DISTRO }} --output ${{ env.TMP_DIR }}/list
