@@ -945,8 +945,8 @@ def to_snake_case(name: str) -> str:
 
 # Example usage
 if __name__ == "__main__":
-    if len(sys.argv) < 5:
-        print("Usage: python script.py <packages_dir> <crate_dir> <distro> <version>")
+    if len(sys.argv) < 4:
+        print("Usage: python script.py <packages_dir> <crate_dir> <version>")
         sys.exit(1)
 
     main(
