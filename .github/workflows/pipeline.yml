@@ -50,7 +50,9 @@ jobs:
 
       - name: Copy required file
         working-directory: ros2-interfaces-${{ env.DISTRO }}
-        run: cp Cargo.toml ${{ env.TMP_DIR }}/
+        run: |
+          cp Cargo.toml ${{ env.TMP_DIR }}/
+          cp -rf tests ${{ env.TMP_DIR }}/
 
       - name: Get ${{ env.DISTRO }} repos
         working-directory: scripts
