@@ -23,10 +23,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: ${{ github.event.inputs.distro && fromJSON(format('["{0}"]', github.event.inputs.distro)) || fromJSON('["rolling", "jazzy", "humble", "iron"]') }}
+        distro: ${{ github.event_name == 'push' && fromJSON('["rolling"]') || (github.event.inputs.distro && fromJSON(format('["{0}"]', github.event.inputs.distro)) || fromJSON('["rolling", "jazzy", "humble", "iron"]')) }}
     env:
      TMP_DIR: /tmp/ros2-interfaces
-     DISTRO: ${{ matrix.distro || 'rolling' }}
+     DISTRO: ${{ matrix.distro }}
      VERSION: ${{ github.run_number }}
 
     steps:
@@ -39,6 +39,9 @@ jobs:
 
       - name: Set up Python
         run: uv python install
+
+      - name: Install the project
+        run: uv sync --locked --all-extras --dev
 
       - name: Create required folders
         run: mkdir -p ${{ env.TMP_DIR }}
