@@ -955,3 +955,5 @@ if __name__ == "__main__":
         distro=sys.argv[3],
         version=sys.argv[4],
     )
+
+    sys.exit(0)

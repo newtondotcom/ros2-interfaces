@@ -52,6 +52,12 @@ def main():
         required=True,
         help="Directory where repositories will be cloned",
     )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Limit the number of repositories to clone (for dev purposes)",
+    )
     args = parser.parse_args()
 
     json_file = Path(args.json_file)
@@ -72,6 +78,10 @@ def main():
     if not repositories:
         print("No repositories found in JSON file", file=sys.stderr)
         sys.exit(1)
+
+    # Apply limit if specified
+    if args.limit is not None and args.limit > 0:
+        repositories = repositories[:args.limit]
 
     print(f"Found {len(repositories)} repositories to clone")
     print(f"Target directory: {output_dir.absolute()}\n")
