@@ -1,0 +1,16 @@
+[package]
+name = "ros2-interfaces-iron"
+version = "0.0.0"
+authors = ["Nisse Knudsen <nisse@make87.com>", "Phillip Thomas <phillip@make87.com>", "Robin Augereau <https://www.linkedin.com/in/robin-augereau/>]
+description = "Structs for Messages and Services listed by ROS Index for ROS2 iron. Built around the `ros2-client` crate."
+homepage = "https://www.make87.com"
+edition = "2024"
+license = "MIT"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[dependencies]
+serde_with = "3.11.0"
+serde = { version = "1.0.215", features = ["derive"] }
+ros2-client = "0.8.2"
