@@ -5,5 +5,6 @@ description = "small scripts to generate Rust interfaces package for various dis
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pyyaml>=6.0.3",
     "requests>=2.32.5",
 ]
