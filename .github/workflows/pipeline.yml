@@ -26,7 +26,7 @@ jobs:
         distro: ${{ github.event.inputs.distro && fromJSON(format('["{0}"]', github.event.inputs.distro)) || fromJSON('["rolling", "jazzy", "humble", "iron"]') }}
     env:
      TMP_DIR: /tmp/ros2-interfaces
-     DISTRO: ${{ matrix.distro }}
+     DISTRO: ${{ matrix.distro || "rolling" }}
      VERSION: ${{ github.run_number }}
 
     steps:
@@ -81,7 +81,7 @@ jobs:
             git commit -m "Update ros2-interfaces-${{ env.DISTRO }} package: v0.0.${{ env.VERSION }}"
             git push origin main
           fi
-          
+
       - name: Publish to crates.io
         if: github.event_name == 'workflow_dispatch'
         uses: katyo/publish-crates@v2
