@@ -1,0 +1,8 @@
+mod change_autoware_control;
+pub use change_autoware_control::ChangeAutowareControl;
+pub use change_autoware_control::ChangeAutowareControlRequest;
+pub use change_autoware_control::ChangeAutowareControlResponse;
+mod change_operation_mode;
+pub use change_operation_mode::ChangeOperationMode;
+pub use change_operation_mode::ChangeOperationModeRequest;
+pub use change_operation_mode::ChangeOperationModeResponse;
