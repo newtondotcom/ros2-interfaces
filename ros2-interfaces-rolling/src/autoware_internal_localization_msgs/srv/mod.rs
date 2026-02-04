@@ -1,8 +1,0 @@
-mod initialize_localization;
-pub use initialize_localization::InitializeLocalization;
-pub use initialize_localization::InitializeLocalizationRequest;
-pub use initialize_localization::InitializeLocalizationResponse;
-mod pose_with_covariance_stamped;
-pub use pose_with_covariance_stamped::PoseWithCovarianceStamped;
-pub use pose_with_covariance_stamped::PoseWithCovarianceStampedRequest;
-pub use pose_with_covariance_stamped::PoseWithCovarianceStampedResponse;

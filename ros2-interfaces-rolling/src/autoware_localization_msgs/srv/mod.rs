@@ -1,4 +1,0 @@
-mod initialize_localization;
-pub use initialize_localization::InitializeLocalization;
-pub use initialize_localization::InitializeLocalizationRequest;
-pub use initialize_localization::InitializeLocalizationResponse;

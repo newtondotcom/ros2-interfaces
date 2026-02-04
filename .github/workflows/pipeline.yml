@@ -15,7 +15,7 @@ on:
           - iron
   push:
     branches:
-      - main
+      - dev
     paths:
       - 'scripts/**'
       - '.github/workflows/pipeline.yml'
