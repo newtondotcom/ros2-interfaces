@@ -910,7 +910,8 @@ def update_cargo_toml(
             continue
         if in_package_section:
             if line.strip().startswith("version ="):
-                new_cargo_toml_lines.append(f'version = "{version}"\n')
+                local_version = f"0.0.{version}"
+                new_cargo_toml_lines.append(f'version = "{local_version}"\n')
             elif line.strip().startswith("["):
                 in_package_section = False
                 new_cargo_toml_lines.append(line)
@@ -920,9 +921,9 @@ def update_cargo_toml(
             new_cargo_toml_lines.append(line)
 
     # Remove existing [features] section
-    new_cargo_toml_lines = []
+    final_cargo_toml_lines = []
     in_features_section = False
-    for line in cargo_toml_lines:
+    for line in new_cargo_toml_lines:
         if line.strip().startswith("[features]"):
             in_features_section = True
             continue
@@ -930,17 +931,17 @@ def update_cargo_toml(
             if line.strip().startswith("["):
                 # End of features section
                 in_features_section = False
-                new_cargo_toml_lines.append(line)
+                final_cargo_toml_lines.append(line)
             else:
                 continue  # Skip existing feature definitions
         else:
-            new_cargo_toml_lines.append(line)
+            final_cargo_toml_lines.append(line)
 
     # Add new [features] section
-    new_cargo_toml_lines.append("[features]\n")
-    new_cargo_toml_lines.append("default = []\n")
+    final_cargo_toml_lines.append("[features]\n")
+    final_cargo_toml_lines.append("default = []\n")
     all_str = ", ".join(f'"{package}"' for package in sorted(packages))
-    new_cargo_toml_lines.append(f"all = [{all_str}]\n")
+    final_cargo_toml_lines.append(f"all = [{all_str}]\n")
 
     for package in sorted(packages):
         deps = set(package_dependencies.get(package, []))
@@ -948,13 +949,13 @@ def update_cargo_toml(
         if deps:
             # Include dependencies in the feature definition
             deps_str = ", ".join(f'"{dep}"' for dep in sorted(deps))
-            new_cargo_toml_lines.append(f"{package} = [{deps_str}]\n")
+            final_cargo_toml_lines.append(f"{package} = [{deps_str}]\n")
         else:
-            new_cargo_toml_lines.append(f"{package} = []\n")
+            final_cargo_toml_lines.append(f"{package} = []\n")
 
     # Write updated Cargo.toml
     with open(cargo_toml_path, "w") as f:
-        f.writelines(new_cargo_toml_lines)
+        f.writelines(final_cargo_toml_lines)
 
     print(f"Updated {cargo_toml_path}")
 
