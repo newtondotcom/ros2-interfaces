@@ -1,7 +1,7 @@
 [package]
 name = "ros2-interfaces-humble"
 version = "0.0.0"
-authors = ["Nisse Knudsen <nisse@make87.com>", "Phillip Thomas <phillip@make87.com>", "Robin Augereau <https://www.linkedin.com/in/robin-augereau/>]
+authors = ["Nisse Knudsen <nisse@make87.com>", "Phillip Thomas <phillip@make87.com>", "Robin Augereau <https://www.linkedin.com/in/robin-augereau/>"]
 description = "Structs for Messages and Services listed by ROS Index for ROS2 humble. Built around the `ros2-client` crate."
 homepage = "https://www.make87.com"
 edition = "2024"
