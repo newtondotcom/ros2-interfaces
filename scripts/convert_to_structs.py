@@ -317,7 +317,7 @@ def process_package(
             for filename in msg_files:
                 msg_file_path = filename
                 struct_name = filename.stem
-                print(f"Processing message '{struct_name}' in package '{package_name}'")
+                # print(f"Processing message '{struct_name}' in package '{package_name}'")
                 message_spec = parse_msg_file(msg_file_path)
 
                 # Generate code for the message
@@ -330,7 +330,7 @@ def process_package(
                 struct_file = msg_output_dir / f"{to_snake_case(struct_name)}.rs"
                 with open(struct_file, "w") as f:
                     f.write(rust_struct_code)
-                print(f"Generated {struct_file}")
+                #print(f"Generated {struct_file}")
 
                 # Update the mod.rs file in msg/
                 msg_mod_lines.append(f"mod {to_snake_case(struct_name)};")
@@ -359,9 +359,9 @@ def process_package(
             for filename in srv_files:
                 srv_file_path = filename
                 service_name = filename.stem
-                print(
-                    f"Processing service '{service_name}' in package '{package_name}'"
-                )
+                #print(
+                #    f"Processing service '{service_name}' in package '{package_name}'"
+                #)
                 request_spec, response_spec = parse_srv_file(srv_file_path)
 
                 # Generate code for the service
@@ -378,7 +378,7 @@ def process_package(
                 service_file = srv_output_dir / f"{to_snake_case(service_name)}.rs"
                 with open(service_file, "w") as f:
                     f.write(rust_service_code)
-                print(f"Generated {service_file}")
+                #print(f"Generated {service_file}")
 
                 # Update the mod.rs file in srv/
                 srv_mod_lines.append(f"mod {to_snake_case(service_name)};")
@@ -861,7 +861,7 @@ def generate_lib_rs(output_dir: Path, packages: List[str]):
     with open(lib_rs_path, "w") as f:
         f.write("\n".join(lines))
 
-    print(f"Generated {lib_rs_path}")
+    #print(f"Generated {lib_rs_path}")
 
 
 def update_cargo_toml(
