@@ -94,7 +94,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update ros2-interfaces-${{ env.DISTRO }} package: v0.0.${{ env.VERSION }}"
+            git commit -m "auto-feat: update ros2-interfaces-${{ env.DISTRO }} package @ v0.0.${{ env.VERSION }}"
             git push origin main
           fi
 
