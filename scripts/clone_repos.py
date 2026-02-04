@@ -53,10 +53,9 @@ def main():
         help="Directory where repositories will be cloned",
     )
     parser.add_argument(
-        "--limit",
-        type=int,
-        default=None,
-        help="Limit the number of repositories to clone (for dev purposes)",
+        "--no-deps",
+        action="store_true",
+        help="Only clone packages without dependencies (for dev purposes)",
     )
     args = parser.parse_args()
 
@@ -79,9 +78,13 @@ def main():
         print("No repositories found in JSON file", file=sys.stderr)
         sys.exit(1)
 
-    # Apply limit if specified
-    if args.limit is not None and args.limit > 0:
-        repositories = repositories[:args.limit]
+    # Filter packages without dependencies if --no-deps is specified
+    if args.no_deps:
+        repositories = [
+            repo for repo in repositories
+            if not repo.get("dependencies") or len(repo.get("dependencies", [])) == 0
+        ]
+        print(f"Filtering to packages without dependencies...")
 
     print(f"Found {len(repositories)} repositories to clone")
     print(f"Target directory: {output_dir.absolute()}\n")
