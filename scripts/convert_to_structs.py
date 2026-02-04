@@ -115,7 +115,6 @@ def main(packages_dir: Path, crate_dir: Path, distro: str, version: str):
     generate_lib_rs(src_dir, processed_packages)
     update_cargo_toml(
         crate_dir / "Cargo.toml",
-        crate_dir / "README.md",
         processed_packages,
         package_dependencies,
     )
@@ -867,25 +866,16 @@ def generate_lib_rs(output_dir: Path, packages: List[str]):
 
 def update_cargo_toml(
     cargo_toml_path: Path,
-    readme_path: Path,
     packages: List[str],
     package_dependencies: dict,
     distro: str,
     version: str,
 ):
-    with open(readme_path, "r") as f:
-        readme_content = f.read()
-    readme_content = readme_content.replace("DISTRO", distro).replace(
-        "{{ version }}", version
-    )
-    with open(readme_path, "w") as f:
-        f.write(readme_content)
-
     # Read existing Cargo.toml content
     with open(cargo_toml_path, "r") as f:
         cargo_toml_lines = f.readlines()
 
-    # Update the [package] name and version
+    # Update the version
     new_cargo_toml_lines = []
     in_package_section = False
     for line in cargo_toml_lines:
@@ -894,15 +884,8 @@ def update_cargo_toml(
             new_cargo_toml_lines.append(line)
             continue
         if in_package_section:
-            if line.strip().startswith("name ="):
-                new_cargo_toml_lines.append(f'name = "ros2-interfaces-{distro}"\n')
-            elif line.strip().startswith("version ="):
+            if line.strip().startswith("version ="):
                 new_cargo_toml_lines.append(f'version = "{version}"\n')
-            elif line.strip().startswith("description ="):
-                new_description = (
-                    line.split("=", 1)[1].strip().strip('"').replace("DISTRO", distro)
-                )
-                new_cargo_toml_lines.append(f'description = "{new_description}"\n')
             elif line.strip().startswith("["):
                 in_package_section = False
                 new_cargo_toml_lines.append(line)
