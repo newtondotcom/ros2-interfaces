@@ -86,8 +86,8 @@ def main():
             if not repo.get("dependencies") or len(repo.get("dependencies", [])) == 0
         ]
         print(f"Filtering to packages without dependencies...")
-        repositories = repositories[:10]
-        print(f"Reducing to 10 of them...")
+        # repositories = repositories[:10]
+        # print(f"Reducing to 10 of them...")
 
     print(f"Found {len(repositories)} repositories to clone")
     print(f"Target directory: {output_dir.absolute()}\n")
