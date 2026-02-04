@@ -58,7 +58,7 @@ jobs:
 
       - name: Clone ${{ env.DISTRO }} repos
         working-directory: scripts
-        run: uv run clone_repos.py --json-file ${{ env.TMP_DIR }}/list --output-dir ${{ env.TMP_DIR }}/cloned ${{ github.event_name == 'push' && '--no-deps' || '' }}
+        run: uv run clone_repos.py --json-file ${{ env.TMP_DIR }}/list --output-dir ${{ env.TMP_DIR }}/cloned
 
       - name: Extract interfaces
         working-directory: scripts
@@ -87,6 +87,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           cp -rf ${{ env.TMP_DIR }}/src ros2-interfaces-${{ env.DISTRO }}/
+          cp -f ${{ env.TMP_DIR }}/Cargo.toml ros2-interfaces-${{ env.DISTRO }}/
           git add ros2-interfaces-${{ env.DISTRO }}
           if git diff --staged --quiet; then
             echo "No changes to commit"

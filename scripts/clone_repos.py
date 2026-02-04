@@ -53,11 +53,6 @@ def main():
         required=True,
         help="Directory where repositories will be cloned",
     )
-    parser.add_argument(
-        "--no-deps",
-        action="store_true",
-        help="Only clone packages without dependencies (for dev purposes)",
-    )
     args = parser.parse_args()
 
     json_file = Path(args.json_file)
@@ -78,17 +73,6 @@ def main():
     if not repositories:
         print("No repositories found in JSON file", file=sys.stderr)
         sys.exit(1)
-
-    # Filter packages without dependencies if --no-deps is specified
-    if args.no_deps:
-        repositories = [
-            repo
-            for repo in repositories
-            if not repo.get("dependencies") or len(repo.get("dependencies", [])) == 0
-        ]
-        print(f"Filtering to packages without dependencies...")
-        # repositories = repositories[:10]
-        # print(f"Reducing to 10 of them...")
 
     print(f"Found {len(repositories)} repositories to clone")
     print(f"Target directory: {output_dir.absolute()}\n")
