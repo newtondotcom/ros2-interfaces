@@ -1,0 +1,1 @@
+> This folder contains a small subset of scripts to generate Rust interfaces package for various distro of ROS2
