@@ -3,6 +3,7 @@ import argparse
 import json
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 
@@ -85,28 +86,39 @@ def main():
             if not repo.get("dependencies") or len(repo.get("dependencies", [])) == 0
         ]
         print(f"Filtering to packages without dependencies...")
+        repositories = repositories[:10]
+        print(f"Reducing to 10 of them...")
 
     print(f"Found {len(repositories)} repositories to clone")
     print(f"Target directory: {output_dir.absolute()}\n")
 
-    # Clone each repository
+    # Clone repositories using multiple threads
     success_count = 0
     fail_count = 0
+    max_workers = min(4, len(repositories))  # Use up to 4 threads
 
-    for repo in repositories:
-        name = repo.get("name")
-        git_url = repo.get("git_url")
-        branch = repo.get("branch")
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all clone tasks
+        futures = {}
+        for repo in repositories:
+            name = repo.get("name")
+            git_url = repo.get("git_url")
+            branch = repo.get("branch")
 
-        if not all([name, git_url, branch]):
-            print(f"Skipping invalid entry: {repo}", file=sys.stderr)
-            fail_count += 1
-            continue
+            if not all([name, git_url, branch]):
+                print(f"Skipping invalid entry: {repo}", file=sys.stderr)
+                fail_count += 1
+                continue
 
-        if clone_repo(git_url, branch, output_dir, name):
-            success_count += 1
-        else:
-            fail_count += 1
+            future = executor.submit(clone_repo, git_url, branch, output_dir, name)
+            futures[future] = name
+
+        # Process completed tasks
+        for future in as_completed(futures):
+            if future.result():
+                success_count += 1
+            else:
+                fail_count += 1
 
     # Summary
     print(f"\n{'=' * 60}")
