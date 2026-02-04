@@ -4,10 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       distro:
-        description: 'ROS2 Distribution (leave empty for all)'
+        description: 'ROS2 Distribution to build (default: all)'
         required: false
         type: choice
         options:
+          - all
           - rolling
           - jazzy
           - humble
@@ -26,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: ${{ github.event_name == 'push' && fromJSON('["rolling"]') || (github.event.inputs.distro && fromJSON(format('["{0}"]', github.event.inputs.distro)) || fromJSON('["rolling", "jazzy", "humble", "iron"]')) }}
+        distro: ${{ github.event_name == 'push' && fromJSON('["rolling"]') || (github.event.inputs.distro == 'all' && fromJSON('["rolling", "jazzy", "humble", "iron"]') || fromJSON(format('["{0}"]', github.event.inputs.distro))) }}
     env:
      TMP_DIR: /tmp/ros2-interfaces
      DISTRO: ${{ matrix.distro }}
