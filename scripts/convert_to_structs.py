@@ -87,6 +87,7 @@ def main(packages_dir: Path, crate_dir: Path, version: str):
         "cras_msgs",  # 6 errors
         "rosbag2_test_msgdefs",  # 6 errors
         "mrpt_msgs",  # 6 errors
+        "mrpt_nav_interfaces"
     ]
 
     # Collect all packages (directories) in the packages_dir
@@ -116,6 +117,9 @@ def main(packages_dir: Path, crate_dir: Path, version: str):
             print(
                 f"Package '{package}' has no .msg or .srv files. Excluding from lib.rs."
             )
+
+    # Clean up directories for unprocessed packages
+    cleanup_unprocessed_packages(src_dir, all_packages, processed_packages)
 
     # Generate lib.rs and Cargo.toml using only processed packages
     generate_lib_rs(src_dir, processed_packages)
@@ -283,6 +287,21 @@ def parse_field(type_str: str, name: str, default_value: Optional[str]) -> Field
 
     # Regular field
     return Field(type=type_str, name=name, default_value=default_value)
+
+
+def cleanup_unprocessed_packages(
+    src_dir: Path, all_packages: List[str], processed_packages: List[str]
+) -> None:
+    """Remove directories for packages that were not successfully processed."""
+    import shutil
+    
+    processed_set = set(processed_packages)
+    for package in all_packages:
+        if package not in processed_set:
+            package_dir = src_dir / package
+            if package_dir.exists():
+                shutil.rmtree(package_dir)
+                print(f"Cleaned up unprocessed package directory: {package_dir}")
 
 
 def process_package(
