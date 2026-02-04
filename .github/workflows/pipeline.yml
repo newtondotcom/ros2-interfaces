@@ -38,24 +38,30 @@ jobs:
         uses: astral-sh/setup-uv@v7
 
       - name: Set up Python
+        working-directory: scripts
         run: uv python install
 
       - name: Install the project
+        working-directory: scripts
         run: uv sync --locked --all-extras --dev
 
       - name: Create required folders
         run: mkdir -p ${{ env.TMP_DIR }}
 
       - name: Get ${{ env.DISTRO }} repos
+        working-directory: scripts
         run: uv run scripts/query_repos.py --distro ${{ env.DISTRO }} --output ${{ env.TMP_DIR }}/list
 
       - name: Clone ${{ env.DISTRO }} repos
+        working-directory: scripts
         run: uv run scripts/clone_repos.py --json-file ${{ env.TMP_DIR }}/list --output-dir ${{ env.TMP_DIR }}/cloned
 
       - name: Extract interfaces
+        working-directory: scripts
         run: uv run scripts/extract_interfaces.py --distro ${{ env.DISTRO }} --json-file ${{ env.TMP_DIR }}/list --cloned-dir ${{ env.TMP_DIR }}/cloned --output-dir ${{ env.TMP_DIR }}/extracted
 
       - name: Convert to rust structs
+        working-directory: scripts
         run: uv run scripts/convert_to_structs.py ${{ env.TMP_DIR }}/extracted/${{ env.DISTRO }} ${{ env.TMP_DIR }} ${{ env.DISTRO }} ${{ env.VERSION }}
 
       - name: Set up Rust
