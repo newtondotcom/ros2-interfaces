@@ -76,7 +76,7 @@ COPY_TRAIT_TYPES = {
 }
 
 
-def main(packages_dir: Path, crate_dir: Path, distro: str, version: str):
+def main(packages_dir: Path, crate_dir: Path, version: str):
     assert crate_dir.is_dir() and crate_dir.exists(), (
         f"Invalid or non-existing crate directory: {crate_dir}"
     )
@@ -117,7 +117,6 @@ def main(packages_dir: Path, crate_dir: Path, distro: str, version: str):
         crate_dir / "Cargo.toml",
         processed_packages,
         package_dependencies,
-        distro,
         version,
     )
 
@@ -870,7 +869,6 @@ def update_cargo_toml(
     cargo_toml_path: Path,
     packages: List[str],
     package_dependencies: dict,
-    distro: str,
     version: str,
 ):
     # Read existing Cargo.toml content
@@ -954,8 +952,7 @@ if __name__ == "__main__":
     main(
         packages_dir=Path(sys.argv[1]),
         crate_dir=Path(sys.argv[2]),
-        distro=sys.argv[3],
-        version=sys.argv[4],
+        version=sys.argv[3],
     )
 
     sys.exit(0)

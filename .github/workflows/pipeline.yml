@@ -48,6 +48,10 @@ jobs:
       - name: Create required folders
         run: mkdir -p ${{ env.TMP_DIR }}
 
+      - name: Copy required file
+        working-directory: ros2-interfaces-${{ env.DISTRO }}
+        run: cp Cargo.toml ${{ env.TMP_DIR }}/
+
       - name: Get ${{ env.DISTRO }} repos
         working-directory: scripts
         run: uv run query_repos.py --distro ${{ env.DISTRO }} --output ${{ env.TMP_DIR }}/list
@@ -62,7 +66,7 @@ jobs:
 
       - name: Convert to rust structs
         working-directory: scripts
-        run: uv run convert_to_structs.py ${{ env.TMP_DIR }}/extracted/${{ env.DISTRO }} ${{ env.TMP_DIR }} ${{ env.DISTRO }} ${{ env.VERSION }}
+        run: uv run convert_to_structs.py ${{ env.TMP_DIR }}/extracted/${{ env.DISTRO }} ${{ env.TMP_DIR }} ${{ env.VERSION }}
 
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
