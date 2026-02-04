@@ -16,7 +16,7 @@ def clone_repo(git_url: str, branch: str, target_dir: Path, repo_name: str):
         return True
 
     try:
-        #print(f"Cloning {repo_name} from {git_url} (branch: {branch})...")
+        # print(f"Cloning {repo_name} from {git_url} (branch: {branch})...")
         subprocess.run(
             [
                 "git",
@@ -32,7 +32,7 @@ def clone_repo(git_url: str, branch: str, target_dir: Path, repo_name: str):
             capture_output=True,
             text=True,
         )
-        #print(f"✓ Successfully cloned {repo_name}")
+        # print(f"✓ Successfully cloned {repo_name}")
         return True
     except subprocess.CalledProcessError as e:
         print(f"✗ Failed to clone {repo_name}: {e.stderr}", file=sys.stderr)
@@ -82,7 +82,8 @@ def main():
     # Filter packages without dependencies if --no-deps is specified
     if args.no_deps:
         repositories = [
-            repo for repo in repositories
+            repo
+            for repo in repositories
             if not repo.get("dependencies") or len(repo.get("dependencies", [])) == 0
         ]
         print(f"Filtering to packages without dependencies...")
