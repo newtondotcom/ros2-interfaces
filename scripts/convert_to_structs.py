@@ -81,7 +81,13 @@ def main(packages_dir: Path, crate_dir: Path, version: str):
         f"Invalid or non-existing crate directory: {crate_dir}"
     )
 
-    ignore_list = ["tuw_object_msgs", "social_nav_msgs"]
+    ignore_list = [
+        "tuw_object_msgs",
+        "social_nav_msgs",
+        "cras_msgs",  # 6 errors
+        "rosbag2_test_msgdefs",  # 6 errors
+        "mrpt_msgs",  # 6 errors
+    ]
 
     # Collect all packages (directories) in the packages_dir
     all_packages = [
