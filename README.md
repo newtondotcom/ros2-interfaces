@@ -32,6 +32,7 @@ stateDiagram-v2
     Fail1: Build Failed
     Test: Run Tests<br/>std_msgs publisher
     Fail2: Tests Failed
+    PublishCheck: Up to date distro folder
     PublishCrates: Publish to Crates.io
     Update: Update Distro Folder<br/>Commit & Push
     Cleanup: Clean Temp Dir
